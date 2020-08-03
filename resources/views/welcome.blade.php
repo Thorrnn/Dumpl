@@ -68,33 +68,43 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+                        @if(Auth::user()->isDisabled())
+                            <strong> <a href="{{url('/')}}">Главная</a></strong>
+                        @elseif(Auth::user()->isUser())
+                            <strong> <a href="{{url('/user/index')}}">Кабинет</a></strong>
+                            <strong> <a href="{{url('/')}}">Главная</a></strong>
+                        @elseif(Auth::user()->isVisitor())
+                            <strong> <a href="{{url('/')}}">Главная</a></strong>
+                        @elseif(Auth::user()->isAdmin())
+                            <strong> <a href="{{url('/admin/index')}}">панель администратора</a></strong>
+                            <strong> <a href="{{url('/')}}">Главная</a></strong>
+                        @endif
+                        <strong>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault()
+                                document.getElementById('logout-form').submit();">
+                                Войти
+                            </a>
+                        </strong>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method = "POST" style="display: none";>
+                            @csrf
+                        </form>
+
+                        @else
+                        <strong>
+                            <a href="{{ route('login') }}"style="text-decoration: none">Войти</a>
+                        </strong>
+
+                        @if(Route::has('register'))
+                            <strong>
+                                <a href="{{route('register')}}" style="text-decoration: none">Регистрация</a>
+                            </strong>
                         @endif
                     @endauth
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
         </div>
     </body>
 </html>
