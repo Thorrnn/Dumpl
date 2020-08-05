@@ -57,4 +57,10 @@ class User extends Authenticatable
         $disabled = $this->roles()->where('name', 'disabled')->exists();
         if($disabled) return "disabled";
     }
+
+    public function isVisitor()
+    {
+        $user = $this->roles()->where('name', 'disabled')->exists();
+        if($user) return "user";
+    }
 }
