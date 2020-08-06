@@ -164,7 +164,7 @@
                         <div class="form-group row">
                             <label for="aboutMyself" class="col-md-4 col-form-label text-md-right">aboutMyself</label>
                             <div class="col-md-6">
-                                <textarea name="aboutMyself" type="text" class="form-control" autofocus @error('aboutMyself') is-invalid @enderror" placeholder="Описание альбома">{{old('aboutMyself')}}</textarea>
+                                <textarea name="aboutMyself" type="text" class="form-control @error('aboutMyself') is-invalid @enderror"  placeholder="Описание альбома">{{old('aboutMyself')}}</textarea>
 
                                 @error('aboutMyself')
                                 <span class="invalid-feedback" role="alert">

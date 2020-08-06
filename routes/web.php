@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 
 
@@ -23,13 +21,16 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], function(){
-
+    Route::get('/', function () {
+        return view('welcome');
+    });
     Auth::routes();
     Route::resource('editor', 'CKEditorController');
     Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
 
     Route::get('/home', 'HomeController@index')->name('home');
     /** Admin side **/
+
     Route::group(['middleware' => ['status', 'auth']], function (){
         $groupData =[
             'namespace' => 'Blog\Admin',
@@ -39,8 +40,13 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         Route::group($groupData, function (){
             Route::resource('index', 'MainController')
                 ->names('blog.admin.index');
+
+
+
         });
     });
+
+    Route::get('user/index', 'Blog\User\MainController@index');
 });
 
 

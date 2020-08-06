@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c000e19eb8ff7d585cb65cb4fd407e2b",
+    "content-hash": "b5ebc2e69008adc0f14f859aa6ad1d87",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -475,6 +475,65 @@
                 "trusted proxy"
             ],
             "time": "2020-06-23T01:36:47+00:00"
+        },
+        {
+            "name": "fomvasss/laravel-meta-tags",
+            "version": "3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fomvasss/laravel-meta-tags.git",
+                "reference": "8ec66457d8a4976dd95335b3cb6dfaa9738f8d74"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fomvasss/laravel-meta-tags/zipball/8ec66457d8a4976dd95335b3cb6dfaa9738f8d74",
+                "reference": "8ec66457d8a4976dd95335b3cb6dfaa9738f8d74",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^5.8|^6.0|^7.0",
+                "illuminate/support": "^5.8|^6.0|^7.0",
+                "illuminate/view": "^5.8|^6.0|^7.0",
+                "php": ">=7.0.0"
+            },
+            "type": "composer-package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Fomvasss\\LaravelMetaTags\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "MetaTag": "Fomvasss\\LaravelMetaTags\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fomvasss\\LaravelMetaTags\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vasyl Fomin",
+                    "email": "fomvasss@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A package to manage SEO (meta-tags, xml-fields, etc.)",
+            "keywords": [
+                "Sitemap",
+                "laravel",
+                "meta",
+                "meta tags",
+                "seo",
+                "tags",
+                "xml-map"
+            ],
+            "time": "2020-03-02T21:17:07+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -4352,6 +4411,68 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2020-07-13T06:12:54+00:00"
+        },
+        {
+            "name": "torann/laravel-meta-tags",
+            "version": "v3.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Torann/laravel-meta-tags.git",
+                "reference": "b8db8455847d5f8c19e6c445bb7bd43c67dd3569"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Torann/laravel-meta-tags/zipball/b8db8455847d5f8c19e6c445bb7bd43c67dd3569",
+                "reference": "b8db8455847d5f8c19e6c445bb7bd43c67dd3569",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1|^6.0|~7.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Torann\\LaravelMetaTags\\MetaTagsServiceProvider"
+                    ],
+                    "aliases": {
+                        "MetaTag": "Torann\\LaravelMetaTags\\Facades\\MetaTag"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Torann\\LaravelMetaTags\\": "src/Torann/LaravelMetaTags/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lito",
+                    "email": "lito@eordes.com"
+                },
+                {
+                    "name": "Daniel Stainback",
+                    "email": "daniel@lyften.com"
+                }
+            ],
+            "description": "A package to manage Header Meta Tags",
+            "keywords": [
+                "head",
+                "laravel",
+                "meta",
+                "meta tags",
+                "tags"
+            ],
+            "time": "2020-03-09T13:47:58+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
