@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersTable extends Migration
 {
@@ -11,6 +11,7 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
+
     /*  дошкольное образование; preschool education;
         общее среднее образование; general secondary education;
         внешкольное образование; out-of-school education;
@@ -24,22 +25,24 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->engine = 'InnoDB';
+            $table->bigIncrements('id');
             $table->string('login');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->rememberToken();
             $table->string('name');
             $table->string('surname');
             $table->integer('age');
             $table->enum('role',['admin', 'moderator','user']);
             $table->enum('sex',['male', 'female']);
             $table->enum('education',['preschool', 'generalSecondary', 'out-of-school', 'vocational', 'higher',
-                    'postgraduate', 'graduateSchool', 'doctoralStudies', 'self-education']);
+                'postgraduate', 'graduateSchool', 'doctoralStudies', 'self-education']);
             $table->enum('fieldActivity',['ecology', 'economy', 'medicine', 'physicalEducation' , 'pedagogy' , 'management' , 'art' , 'science']);
             $table->string('aboutMyself');
-            $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
