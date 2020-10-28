@@ -65,25 +65,26 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+            ddsdsd
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         @if(Auth::user()->isDisabled())
-                            <strong> <a href="{{url('/')}}">Главная</a></strong>
+                            <strong> <a href="{{route('home')}}">Главная</a></strong>
                         @elseif(Auth::user()->isUser())
-                            <strong> <a href="{{url('/user/index')}}">Кабинет</a></strong>
-                            <strong> <a href="{{url('/')}}">Главная</a></strong>
+                            <strong> <a href="{{route('index')}}">КабинетUser</a></strong>
+                            <strong> <a href="{{route('home')}}">Главная</a></strong>
                         @elseif(Auth::user()->isVisitor())
-                            <strong> <a href="{{url('/')}}">Главная</a></strong>
+                            <strong> <a href="{{route('home')}}">Главная</a></strong>
                         @elseif(Auth::user()->isAdmin())
-                            <strong> <a href="{{url('/admin/index')}}">панель администратора</a></strong>
-                            <strong> <a href="{{url('/')}}">Главная</a></strong>
+                            <strong> <a href="{{url('/admin/index')}}">Панель администратора</a></strong>
+                            <strong> <a href="{{route('home')}}">Главная</a></strong>
                         @endif
                         <strong>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault()
                                 document.getElementById('logout-form').submit();">
-                                Войти
+                                Выйти
                             </a>
                         </strong>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Blog\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
 class MainController extends Controller
 {
 
@@ -20,7 +21,7 @@ class MainController extends Controller
      */
     public function index()
     {
-        MetaTag::setTags(['title' => 'Пользователь']);
+       // MetaTag::setTags(['title' => 'Пользователь']);
         return view('blog.user.index');
     }
 

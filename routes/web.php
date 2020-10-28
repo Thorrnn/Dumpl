@@ -46,7 +46,7 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         });
     });
 
-    Route::get('user/index', 'Blog\User\MainController@index');
+    Route::get('user/index', 'Blog\User\MainController@index')->name('index');
 });
 
 
