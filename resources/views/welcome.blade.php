@@ -64,6 +64,7 @@
         </style>
     </head>
     <body>
+
         <div class="flex-center position-ref full-height">
             ddsdsd
             @if (Route::has('login'))
@@ -107,5 +108,10 @@
             @endif
 
         </div>
+{{--        <div>--}}
+{{--            <a href="<?= route('setlocale', ['lang' => 'en']) ?>">English</a>--}}
+{{--            <a href="<?= route('setlocale', ['lang' => 'ru']) ?>">Русский</a>--}}
+{{--            <a href="<?= route('setlocale', ['lang' => 'uk']) ?>">Українська</a>--}}
+{{--        </div>--}}
     </body>
 </html>

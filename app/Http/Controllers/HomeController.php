@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Middleware\LocaleMiddleware;
 class HomeController extends Controller
 {
     /**
