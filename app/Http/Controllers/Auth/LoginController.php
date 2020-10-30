@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Auth;
+use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     /*
@@ -38,12 +39,17 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect(route('welcome'));
+    }
+
     public function redirectPath()
     {
         if (method_exists($this, 'redirectTo')) {
             return $this->redirectTo();
         }
 
-        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : route('welcome');
     }
 }

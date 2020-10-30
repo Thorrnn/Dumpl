@@ -71,10 +71,10 @@
                 <div class="top-right links">
                     @auth
                         @if(Auth::user()->isDisabled())
-                            <strong> <a href="{{route('home')}}">Главная</a></strong>
+                            <strong> <a href="{{route('welcome')}}">Главная</a></strong>
                         @elseif(Auth::user()->isUser())
                             <strong> <a href="{{route('index')}}">КабинетUser</a></strong>
-                            <strong> <a href="{{route('home')}}">Главная</a></strong>
+                            <strong> <a href="{{route('welcome')}}">Главная</a></strong>
                         @elseif(Auth::user()->isVisitor())
                             <strong> <a href="{{route('home')}}">Главная</a></strong>
                         @elseif(Auth::user()->isAdmin())

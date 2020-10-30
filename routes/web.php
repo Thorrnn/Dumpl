@@ -32,7 +32,7 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
     Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
 
     Route::get('/home', 'HomeController@index')->name('home');
-
+    Route::get('/', 'HomeController@index')->name('welcome');
 
     /** Admin side **/
     Route::group(['middleware' => ['status', 'auth']], function (){
@@ -51,6 +51,8 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
     });
 
     Route::get('user/index', 'Blog\User\MainController@index')->name('index');
+
+    Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 });
 
 
