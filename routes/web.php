@@ -16,24 +16,24 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
-    return redirect('/'. App\Http\Middleware\LocaleMiddleware::$mainLanguage);
-});
+
 
 
 Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], function(){
-    Route::get('/', function () {
+   /* Route::get('/', function () {
         return view('welcome');
     });
-
+*/
+    Route::get('/', function () {
+        return redirect('/'. App\Http\Middleware\LocaleMiddleware::$mainLanguage);
+    });
 
     Auth::routes();
     Route::resource('editor', 'CKEditorController');
     Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
 
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/', 'HomeController@index')->name('welcome');
-
+    Route::get('/welcome', 'HomeController@index')->name('welcome');
+    
     /** Admin side **/
     Route::group(['middleware' => ['status', 'auth']], function (){
         $groupData =[
@@ -49,7 +49,6 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
 
         });
     });
-
     Route::get('user/index', 'Blog\User\MainController@index')->name('index');
 
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
