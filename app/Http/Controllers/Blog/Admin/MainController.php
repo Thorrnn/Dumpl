@@ -10,7 +10,7 @@ class MainController extends AdminBaseController
 {
     public function index()
     {
-        MetaTag::setTags(['title' => 'Админ панель']);
+        //MetaTag::setTags(['title' => 'Админ панель']);
 
        return view('blog.admin.main.index');
     }
