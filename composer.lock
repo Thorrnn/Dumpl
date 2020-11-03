@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5ebc2e69008adc0f14f859aa6ad1d87",
+    "content-hash": "cd67db5856507245adcf0703baf6d08c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -478,22 +478,22 @@
         },
         {
             "name": "fomvasss/laravel-meta-tags",
-            "version": "3.2.0",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fomvasss/laravel-meta-tags.git",
-                "reference": "8ec66457d8a4976dd95335b3cb6dfaa9738f8d74"
+                "reference": "b852c149fc4619aaadc7667d1a1a464e3c585e92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fomvasss/laravel-meta-tags/zipball/8ec66457d8a4976dd95335b3cb6dfaa9738f8d74",
-                "reference": "8ec66457d8a4976dd95335b3cb6dfaa9738f8d74",
+                "url": "https://api.github.com/repos/fomvasss/laravel-meta-tags/zipball/b852c149fc4619aaadc7667d1a1a464e3c585e92",
+                "reference": "b852c149fc4619aaadc7667d1a1a464e3c585e92",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "^5.8|^6.0|^7.0",
-                "illuminate/support": "^5.8|^6.0|^7.0",
-                "illuminate/view": "^5.8|^6.0|^7.0",
+                "illuminate/database": "^5.8|^6.0|^7.0|^8.0",
+                "illuminate/support": "^5.8|^6.0|^7.0|^8.0",
+                "illuminate/view": "^5.8|^6.0|^7.0|^8.0",
                 "php": ">=7.0.0"
             },
             "type": "composer-package",
@@ -533,7 +533,11 @@
                 "tags",
                 "xml-map"
             ],
-            "time": "2020-03-02T21:17:07+00:00"
+            "support": {
+                "issues": "https://github.com/fomvasss/laravel-meta-tags/issues",
+                "source": "https://github.com/fomvasss/laravel-meta-tags/tree/3.3.0"
+            },
+            "time": "2020-09-28T10:52:07+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -4472,6 +4476,9 @@
                 "meta tags",
                 "tags"
             ],
+            "support": {
+                "source": "https://github.com/Torann/laravel-meta-tags/tree/master"
+            },
             "time": "2020-03-09T13:47:58+00:00"
         },
         {
@@ -7680,5 +7687,5 @@
         "php": "^7.2.5"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
