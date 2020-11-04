@@ -3,16 +3,15 @@
 namespace App\Http\Controllers\Blog\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Repositories\Admin\MainRepository;
 use App\Repositories\Admin\UserRepository;
-use Illuminate\Http\Request;
 use MetaTag;
-
 class UserController extends AdminBaseController
 {
     private $userRepository;
 
-    private function __construct()
+    public function __construct()
     {
         parent::__construct();
         $this->userRepository = app(UserRepository::class);

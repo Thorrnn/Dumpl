@@ -45,12 +45,14 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
             Route::resource('index', 'MainController')
                 ->names('blog.admin.index');
 
-            Route::resource('user','UserController')
-                ->names('blog.admin.users');
+
 
         });
     });
     Route::get('user/index', 'Blog\User\MainController@index')->name('index');
+
+    Route::resource('user','\App\Http\Controllers\Blog\Admin\UserController')
+        ->names('blog.admin.users');
 
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
