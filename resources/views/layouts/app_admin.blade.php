@@ -5,7 +5,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="" type="image/png" />
-    <title>{!! MetaTag::tag('title') !!}</title>
+    <title>{{ MetaTag::get('title') }}</title>
 	<!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -145,8 +145,8 @@
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="">Список пользователей</a></li>
-                        <li><a href="">Добавить пользователя</a></li>
+                        <li><a href="{{route('blog.admin.users.index')}}">Список пользователей</a></li>
+                        <li><a href="{{route('blog.admin.users.create')}}">Добавить пользователя</a></li>
                     </ul>
                 </li>
                 <li class="treeview">

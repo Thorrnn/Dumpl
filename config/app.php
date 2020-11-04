@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
        // Torann\LaravelMetaTags\MetaTagsServiceProvider::class,
+        Torann\LaravelMetaTags\MetaTagsServiceProvider::class,
     ],
 
     /*
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'MetaTag' => Fomvasss\LaravelMetaTags\Facade::class,
+
         //'MetaTag' => Torann\LaravelMetaTags\Facades\MetaTag::class,
     ],
 

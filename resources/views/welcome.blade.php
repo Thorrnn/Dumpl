@@ -79,7 +79,7 @@
                             <strong> <a href="{{route('home')}}">Главная</a></strong>
                         @elseif(Auth::user()->isAdmin())
                             <strong> <a href="{{url('/admin/index')}}">Панель администратора</a></strong>
-                            <strong> <a href="{{route('home')}}">Главная</a></strong>
+
                         @endif
                         <strong>
                             <a class="dropdown-item" href="{{ route('logout') }}"

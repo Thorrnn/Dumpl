@@ -33,7 +33,7 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
     Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
 
     Route::get('/welcome', 'HomeController@index')->name('welcome');
-    
+
     /** Admin side **/
     Route::group(['middleware' => ['status', 'auth']], function (){
         $groupData =[
@@ -45,13 +45,15 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
             Route::resource('index', 'MainController')
                 ->names('blog.admin.index');
 
-
+            Route::resource('user','UserController')
+                ->names('blog.admin.users');
 
         });
     });
     Route::get('user/index', 'Blog\User\MainController@index')->name('index');
 
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 });
 
 
