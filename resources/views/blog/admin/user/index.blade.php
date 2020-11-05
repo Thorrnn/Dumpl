@@ -1,15 +1,14 @@
 @extends('layouts.app_admin')
 
 @section('content')
-    <select class="content-header">
+
+    <section class="content-header">
         @component('blog.admin.components.breadcrumb')
             @slot('title')Список пользователей@endslot;
             @slot('parent')Главная@endslot;
             @slot('active')Список пользователей@endslot;
         @endcomponent
-    </select>
 
-    <section class="content">
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
@@ -43,7 +42,7 @@
                                             <td>{{ucfirst($user->name)}}</td>
                                             <td>{{$user->role}}</td>
                                             <td>
-                                                <a href="{{route('blog.admin.user.edit', $user->id)}}" title="просмотреть пользователя">
+                                                <a href="{{route('blog.admin.users.edit', $user->id)}}" title="просмотреть пользователя">
                                                     <i class="btx btn-xs"></i>
                                                     <button type="submit" class="btn btn-success btn-xs">Просмотреть</button>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;

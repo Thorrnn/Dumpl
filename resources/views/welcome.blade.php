@@ -78,7 +78,7 @@
                         @elseif(Auth::user()->isVisitor())
                             <strong> <a href="{{route('home')}}">Главная</a></strong>
                         @elseif(Auth::user()->isAdmin())
-                            <strong> <a href="{{url('/admin/index')}}">Панель администратора</a></strong>
+                            <strong> <a href="{{route('blog.admin.index')}}">Панель администратора</a></strong>
 
                         @endif
                         <strong>

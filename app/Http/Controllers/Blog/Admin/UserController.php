@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Blog\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminUserEditRequest;
+use App\Models\Admin\User;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 use App\Repositories\Admin\MainRepository;
 use App\Repositories\Admin\UserRepository;
@@ -38,7 +41,8 @@ class UserController extends AdminBaseController
      */
     public function create()
     {
-        //
+        MetaTag::set('title', 'Добавление пользователя');
+        return view('blog.admin.user.add');
     }
 
     /**
@@ -47,9 +51,33 @@ class UserController extends AdminBaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminUserEditRequest $request)
     {
-        //
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+        ]);
+
+        if (!$user){
+            return back()
+                ->withErrors(['msg'=>'Ошибка создания'])
+                ->withInput();
+        } else {
+            $role = UserRole::create([
+                'user_id'=>$user->id,
+                'role_id'=>(int)$request['role']
+            ]);
+            if (!$role){
+                return back()
+                    ->withErrors(['msg' =>'Ошибка создания роли пользователя'])
+                    ->withInput();
+            } else {
+                redirect()
+                    ->route('blog.admin.users.index')
+                    ->with(['success'=>'Успешно сохранено']);
+            }
+        }
     }
 
     /**
