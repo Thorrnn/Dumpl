@@ -4,6 +4,7 @@ return [
     'registerList' => [
         'name' => 'Имя',
         'surname' => 'Фамилия',
+        'login' => 'Login',
         'role' => 'Роль',
         'email' => 'Email адресс',
         'password' =>'Пароль',

@@ -42,11 +42,8 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         ];
 
         Route::group($groupData, function (){
-            Route::resource('index', 'MainController')
+            Route::resource('admin/index', 'MainController')
                 ->names('blog.admin.index');
-
-
-
         });
     });
     Route::get('user/index', 'Blog\User\MainController@index')->name('index');

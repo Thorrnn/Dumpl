@@ -18,35 +18,79 @@
                         @csrf
                         <div class="box-body">
                             <div class="form-group has-feedback">
-                                <label for="name">Имя</label>
+                                <label for="name">{{__('register.registerList.login')}}</label>
+                                <input type="text" class="form-control" name="name" id="name" value="@if(old('name')) {{old('name')}} @else @endif" required>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="">{{__('register.registerList.password')}}</label>
+                                <input type="text" class="form-control" name="password" value="@if(old('password')) {{old('password')}} @else @endif" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">{{__('register.registerList.confirm_password')}}</label>
+                                <input type="text" class="form-control" name="password_confirmation" value="@if(old('password_confirmation')) {{old('password_confirmation')}}
+                                @else @endif" required>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="name">{{__('register.registerList.name')}}</label>
                                 <input type="text" class="form-control" name="name" id="name" value="@if(old('name')) {{old('name')}} @else @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
                             <div class="form-group has-feedback">
-                                <label for="surname">Фамилия</label>
+                                <label for="surname">{{__('register.registerList.surname')}}</label>
                                 <input type="text" class="form-control" name="surname" id="surname" value="@if(old('surname')) {{old('surname')}} @else @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
-                            <div class="form-group">
-                                <label for="">Пароль</label>
-                                <input type="text" class="form-control" name="password" value="@if(old('password')) {{old('password')}} @else @endif" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Подтверждение пароля</label>
-                                <input type="text" class="form-control" name="password_confirmation" value="@if(old('password_confirmation')) {{old('password_confirmation')}}
-                                    @else @endif" required>
-                            </div>
                             <div class="form-group has-feedback">
-                                <label for="surname">Email</label>
+                                <label for="surname">{{__('register.registerList.email')}}</label>
                                 <input type="email" class="form-control" name="email" id="email" value="@if(old('email')) {{old('email')}} @else @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
                             <div class="form-group has-feedback">
-                                <label for="address">Роль</label>
+                                <label for="surname">{{__('register.registerList.age')}}</label>
+                                <input type="email" class="form-control" name="age" id="age" value="@if(old('age')) {{old('age')}} @else @endif" required>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="address">{{__('register.registerList.role')}}</label>
                                 <select name="role" id="role" class="form-control">
                                     <option value="2" selected>Пользователь</option>
                                     <option value="3" >Администратор</option>
                                     <option value="1" >Disabled</option>
+                                </select>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="address">{{__('register.registerList.sex')}}</label>
+                                <select name="sex" id="sex" class="form-control">
+                                    <option value="male" selected>Мужской</option>
+                                    <option value="female" >Женский</option>
+                                </select>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="address">{{__('register.registerList.education')}}</label>
+                                <select name="sex" id="sex" class="form-control">
+                                    <option value="preschool">Дошкольное образование
+                                    <option value="generalSecondary">Общее среднее образование
+                                    <option value="out-of-school">Внешкольное образование
+                                    <option value="vocational">Профессионально-техническое образование
+                                    <option value="higher">Высшее образование
+                                    <option value="postgraduate">Последипломное образование
+                                    <option value="graduateSchool">Аспирантуру
+                                    <option value="doctoralStudies">Докторантуру
+                                    <option value="self-education">Самообразование
+                                </select>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="address">{{__('register.registerList.fieldActivity')}}</label>
+                                <select name="sex" id="sex" class="form-control">
+                                    <option value="ecology">Экология
+                                    <option value="economy">Экономика
+                                    <option value="medicine">Медицина
+                                    <option value="physicalEducation">Физическая культура
+                                    <option value="pedagogy">Образоваие
+                                    <option value="management">Менеджмент
+                                    <option value="art">Искусство
+                                    <option value="science">Наука
                                 </select>
                             </div>
                         </div>

@@ -36,7 +36,7 @@ class AdminUserEditRequest extends FormRequest
     {
         return [
             'login.min' => 'Минимальная длина логина 3 символа',
-            'email.umique' => 'Этот email уже зарегистрирован',
+            'email.unique' => 'Этот email уже зарегистрирован',
             'password.confirmed' => 'Пароли не совпадают'
         ];
     }
