@@ -26,7 +26,10 @@ class AdminUserEditRequest extends FormRequest
     {
         $id = $_POST['id'];
         return [
+            'surname' => 'required|min:3|max:20|string',
             'name' => 'required|min:3|max:20|string',
+            'age' => 'required| numeric',
+            'sex' => 'required',
             'email' => ['required','max:255', 'string','email',  Rule::unique('users')->ignore('id')],
             'password' => 'nullable|string|min:3|max:20|confirmed'
         ];

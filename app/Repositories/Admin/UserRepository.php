@@ -30,4 +30,12 @@ class UserRepository extends CoreRepository
         return $users;
     }
 
+    public function getUserRole($user_id){
+        $role = $this->startConditions()
+            ->find($user_id)
+            ->roles()
+            ->first();
+        return $role;
+
+    }
 }

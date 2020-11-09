@@ -14,14 +14,20 @@ class User extends Model
 
     protected $fillable = [
         'name',
+        'surname',
         'login',
         'email',
+        'fieldActivity',
+        'sex',
+        'age',
+        'education',
+        'aboutMyself',
         'password',
+        'remember_token',
     ];
 
     protected $hidden = [
-        'password',
-        'remember_token',
+
     ];
     protected $casts = [
         'email_verified_at' => 'datetime',

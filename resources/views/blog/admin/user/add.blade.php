@@ -19,7 +19,7 @@
                         <div class="box-body">
                             <div class="form-group has-feedback">
                                 <label for="name">{{__('register.registerList.login')}}</label>
-                                <input type="text" class="form-control" name="name" id="name" value="@if(old('name')) {{old('name')}} @else @endif" required>
+                                <input type="text" class="form-control" name="login" id="login" value="@if(old('login')) {{old('login')}} @else @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
                             <div class="form-group">
@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="surname">{{__('register.registerList.age')}}</label>
-                                <input type="email" class="form-control" name="age" id="age" value="@if(old('age')) {{old('age')}} @else @endif" required>
+                                <input type="text" class="form-control" name="age" id="age" value="@if(old('age')) {{old('age')}} @else @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
                             <div class="form-group has-feedback">
@@ -68,7 +68,7 @@
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="address">{{__('register.registerList.education')}}</label>
-                                <select name="sex" id="sex" class="form-control">
+                                <select name="education" id="education" class="form-control">
                                     <option value="preschool">Дошкольное образование
                                     <option value="generalSecondary">Общее среднее образование
                                     <option value="out-of-school">Внешкольное образование
@@ -82,7 +82,7 @@
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="address">{{__('register.registerList.fieldActivity')}}</label>
-                                <select name="sex" id="sex" class="form-control">
+                                <select name="fieldActivity" id="fieldActivity" class="form-control">
                                     <option value="ecology">Экология
                                     <option value="economy">Экономика
                                     <option value="medicine">Медицина
@@ -92,6 +92,10 @@
                                     <option value="art">Искусство
                                     <option value="science">Наука
                                 </select>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="address">{{__('register.registerList.aboutMyself')}}</label>
+                            <textarea name="aboutMyself" type="text" class="form-control @error('aboutMyself') is-invalid @enderror"  placeholder="Опишите себя">{{old('aboutMyself')}}</textarea>
                             </div>
                         </div>
                         <div class="box-footer">

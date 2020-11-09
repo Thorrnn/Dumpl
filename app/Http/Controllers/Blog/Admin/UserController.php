@@ -54,8 +54,16 @@ class UserController extends AdminBaseController
     public function store(AdminUserEditRequest $request)
     {
         $user = User::create([
+            'login' => $request['login'],
             'name' => $request['name'],
             'email' => $request['email'],
+            'surname' => $request['surname'],
+            'sex' => $request['sex'],
+            'role' => $request['role'],
+            'age' => $request['age'],
+            'aboutMyself' => $request['aboutMyself'],
+            'education' => $request['education'],
+            'fieldActivity' => $request['fieldActivity'],
             'password' => bcrypt($request['password']),
         ]);
 
@@ -99,7 +107,16 @@ class UserController extends AdminBaseController
      */
     public function edit($id)
     {
-        //
+        $perpage = 10;
+        $item= $this->userRepository->getId($id);
+        if (empty($item)){
+            abort(404);
+        }
+        $role = $this->userRepository->getUserRole($id);
+
+
+        MetaTag::set('title', "Редактирования пользователя № {$item->id}");
+        return view('blog.admin.user.edit', compact('item','role'));
     }
 
     /**
@@ -109,9 +126,27 @@ class UserController extends AdminBaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminUserEditRequest $request, User $user, UserRole $role)
     {
-        //
+        $user->login = $request['login'];
+        $user->name = $request['name'];
+        $user->surname = $request['surname'];
+        $user->sex = $request['sex'];
+        $user->email = $request['email'];
+        $request['password'] == null ?: $user->password = bcrypt($request['password']);
+        $save = $user->save();
+
+        if (!$save) {
+            return back()
+                ->withErrors(['msg' => 'Ошибка сохранения'])
+                ->withInput();
+        }
+        else{
+            $role->where('user_id', $user->id)->update(['role_id' => (int)$request['role']]);
+            return redirect()
+                ->route('blog.admin.user.edit', $user->id)
+                ->with(['success' => 'Успешно сохранено']);
+        }
     }
 
     /**
@@ -120,8 +155,15 @@ class UserController extends AdminBaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $result = $user->forceDelete();
+        if($result){
+            return redirect()
+                ->route('blog.admin.users.index')
+                ->with(['success' => "Пользователь" .ucfirst($user->name) . "удален"]);
+        } else {
+            return back() -> withErrors(['msg' => 'Ошибка удаления']);
+        }
     }
 }
