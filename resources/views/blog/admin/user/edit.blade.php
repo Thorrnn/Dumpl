@@ -19,8 +19,8 @@
                             @csrf
                             <div class="box-body">
                                 <div class="form-group has-feedback">
-                                    <label for="login">Логин <small style="font-size: small; font-weight: normal">меняется автоматически</small></label>
-                                    <input type="text" class="form-control" placeholder="{{ucfirst($item->login)}}" disabled>
+                                    <label for="name">{{__('register.registerList.login')}}</label>
+                                    <input type="text" class="form-control" name="login" id="login" value="@if(old('login')){{ old('login')}}@else{{$item->login ?? ""}}@endif" required>
                                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 </div>
                                 <div class="form-group">
@@ -34,13 +34,13 @@
                                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 </div>
                                 <div class="form-group has-feedback">
-                                    <label for="name">Имя</label>
+                                    <label for="name">{{__('register.registerList.name')}}</label>
                                     <input type="text" class="form-control" name="name" id="name" value="@if(old('name')){{ old('name')}}@else{{$item->name ?? ""}}@endif" required>
                                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 </div>
                                 <div class="form-group has-feedback">
                                     <label for="surname">{{__('register.registerList.surname')}}</label>
-                                    <input type="text" class="form-control" name="surname" id="surname" value="@if(old('surname')) {{old('surname')}} @else @endif" required>
+                                    <input type="text" class="form-control" name="surname" id="surname" value="@if(old('surname')){{ old('surname')}}@else{{$item->surname ?? ""}}@endif" required>
                                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 </div>
                                 <div class="form-group has-feedback">
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="form-group has-feedback">
                                     <label for="surname">{{__('register.registerList.age')}}</label>
-                                    <input type="text" class="form-control" name="age" id="age" value="@if(old('age')) {{old('age')}} @else @endif" required>
+                                    <input type="text" class="form-control" name="age" id="age" value="@if(old('age')){{ old('age')}}@else{{$item->age ?? ""}}@endif" required>
                                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 </div>
                                 <div class="form-group has-feedback">
@@ -64,35 +64,35 @@
                                 <div class="form-group has-feedback">
                                     <label for="address">{{__('register.registerList.sex')}}</label>
                                     <select name="sex" id="sex" class="form-control">
-                                        <option value="male"  @php if ('sex' == 'male') echo 'selected' @endphp>Мужской</option>
-                                        <option value="female"  @php if ('sex' == 'female') echo 'selected' @endphp>Женский</option>
+                                        <option value="male"  @php if ($item->sex == 'male') echo 'selected' @endphp>Мужской</option>
+                                        <option value="female"  @php if ($item->sex == 'female') echo 'selected' @endphp>Женский</option>
                                     </select>
                                 </div>
                                 <div class="form-group has-feedback">
                                     <label for="address">{{__('register.registerList.education')}}</label>
                                     <select name="education" id="education" class="form-control">
-                                        <option value="preschool" @php if ('education' == 'preschool') echo 'selected' @endphp>Дошкольное образование
-                                        <option value="generalSecondary" @php if ('education' == 'generalSecondary') echo 'selected' @endphp>Общее среднее образование
-                                        <option value="out-of-school" @php if ('education' == 'out-of-school') echo 'selected' @endphp>Внешкольное образование
-                                        <option value="vocational" @php if ('education' == 'vocational') echo 'selected' @endphp>Профессионально-техническое образование
-                                        <option value="higher" @php if ('education' == 'higher') echo 'selected' @endphp>Высшее образование
-                                        <option value="postgraduate" @php if ('education' == 'postgraduate') echo 'selected' @endphp>Последипломное образование
-                                        <option value="graduateSchool" @php if ('education' == 'graduateSchool') echo 'selected' @endphp>Аспирантуру
-                                        <option value="doctoralStudies" @php if ('education' == 'doctoralStudies') echo 'selected' @endphp>Докторантуру
-                                        <option value="self-education" @php if ('education' == 'self-education') echo 'selected' @endphp>Самообразование
+                                        <option value="preschool" @php if ($item->education == 'preschool') echo 'selected' @endphp>Дошкольное образование
+                                        <option value="generalSecondary" @php if ($item->education == 'generalSecondary') echo 'selected' @endphp>Общее среднее образование
+                                        <option value="out-of-school" @php if ($item->education == 'out-of-school') echo 'selected' @endphp>Внешкольное образование
+                                        <option value="vocational" @php if ($item->education == 'vocational') echo 'selected' @endphp>Профессионально-техническое образование
+                                        <option value="higher" @php if ($item->education == 'higher') echo 'selected' @endphp>Высшее образование
+                                        <option value="postgraduate" @php if ($item->education == 'postgraduate') echo 'selected' @endphp>Последипломное образование
+                                        <option value="graduateSchool" @php if ($item->education == 'graduateSchool') echo 'selected' @endphp>Аспирантуру
+                                        <option value="doctoralStudies" @php if ($item->education == 'doctoralStudies') echo 'selected' @endphp>Докторантуру
+                                        <option value="self-education" @php if ($item->education == 'self-education') echo 'selected' @endphp>Самообразование
                                     </select>
                                 </div>
                                 <div class="form-group has-feedback">
                                     <label for="address">{{__('register.registerList.fieldActivity')}}</label>
                                     <select name="fieldActivity" id="fieldActivity" class="form-control">
-                                        <option value="ecology" @php if ('fieldActivity' == 'ecology') echo 'selected' @endphp>Экология
-                                        <option value="economy" @php if ('fieldActivity' == 'economy') echo 'selected' @endphp>Экономика
-                                        <option value="medicine" @php if ('fieldActivity' == 'medicine') echo 'selected' @endphp>Медицина
-                                        <option value="physicalEducation" @php if ('fieldActivity' == 'physicalEducation') echo 'selected' @endphp>Физическая культура
-                                        <option value="pedagogy" @php if ('fieldActivity' == 'pedagogy') echo 'selected' @endphp>Образоваие
-                                        <option value="management" @php if ('fieldActivity' == 'management') echo 'selected' @endphp>Менеджмент
-                                        <option value="art" @php if ('fieldActivity' == 'art') echo 'selected' @endphp>Искусство
-                                        <option value="science" @php if ('fieldActivity' == 'science') echo 'selected' @endphp>Наука
+                                        <option value="ecology" @php if ($item->fieldActivity == 'ecology') echo 'selected' @endphp>Экология
+                                        <option value="economy" @php if ($item->fieldActivity == 'economy') echo 'selected' @endphp>Экономика
+                                        <option value="medicine" @php if ($item->fieldActivity == 'medicine') echo 'selected' @endphp>Медицина
+                                        <option value="physicalEducation" @php if ($item->fieldActivity == 'physicalEducation') echo 'selected' @endphp>Физическая культура
+                                        <option value="pedagogy" @php if ($item->fieldActivity == 'pedagogy') echo 'selected' @endphp>Образоваие
+                                        <option value="management" @php if ($item->fieldActivity == 'management') echo 'selected' @endphp>Менеджмент
+                                        <option value="art" @php if ($item->fieldActivity == 'art') echo 'selected' @endphp>Искусство
+                                        <option value="science" @php if ($item->fieldActivity == 'science') echo 'selected' @endphp>Наука
                                     </select>
                                 </div>
                                 <div class="form-group has-feedback">
