@@ -19,4 +19,11 @@ class MainRepository extends CoreRepository
             ->count();
         return $users;
     }
+
+    public static function getCountArticles(){
+        $articles = \DB::table('articles')
+            ->get()
+            ->count();
+        return $articles;
+    }
 }
