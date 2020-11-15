@@ -23,7 +23,7 @@ class ArticleRepository extends CoreRepository
     public function getAllArticles($perpage){
         $users = $this->startConditions()
             ->leftjoin('users', 'users.id','=','articles.author_id')
-            ->select('users.name','users.surname','users.id','articles.id','articles.title','articles.fieldsArticles','articles.status','articles.id')
+            ->select('users.name','users.surname','users.id','articles.id','articles.title','articles.fieldsArticles','articles.status')
             ->orderBy('articles.id')
             //  ->toBase()
             ->paginate($perpage);

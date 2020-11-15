@@ -39,7 +39,6 @@
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->surname}}</td>
-                                            <td>{{ucfirst($user->name)}}</td>
                                             <td>{{$user->role}}</td>
                                             <td>
                                                 <a href="{{route('blog.admin.users.edit', $user->id)}}" title="просмотреть пользователя">

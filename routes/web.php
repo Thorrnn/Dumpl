@@ -50,7 +50,8 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
 
     Route::resource('user','\App\Http\Controllers\Blog\Admin\UserController')
         ->names('blog.admin.users');
-
+    Route::resource('article','\App\Http\Controllers\Blog\Admin\ArticleController')
+        ->names('blog.admin.articles');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 });

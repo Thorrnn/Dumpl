@@ -55,13 +55,13 @@
 
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
+                            <img src="{{asset('adminlte/dist/img/avatar5.png')}}" class="user-image" alt="User Image">
                             <span class="hidden-xs">{{ucfirst (Auth::user()->name) }} </span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                                <img src="{{asset('adminlte/dist/img/avatar5.png')}}" class="img-circle" alt="User Image">
                                 <p>
                                     {{ ucfirst(Auth::user()->name) }}
                                 </p>
@@ -97,7 +97,7 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                    <img src="{{asset('adminlte/dist/img/avatar5.png')}}" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p>{{ ucfirst (Auth::user()->name) }} </p>
@@ -109,35 +109,31 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">Меню</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li><a href="/"><i class="fa fa-home"></i> <span>В магазин</span></a></li>
-                <li><a href=""><i class="fa fa-user"></i> <span>Главная админки</span></a></li>
-                <li><a href=""><i class="fa fa-shopping-cart"></i> <span>Заказы</span></a></li>
-
-
+                <li><a href="{{route('welcome')}}"><i class="fa fa-home"></i> <span>На сайт</span></a></li>
 
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-navicon"></i> <span>Категории</span>
+                    <a href="#"><i class="fa fa-navicon"></i> <span>Статьи</span>
                         <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="">Список категорий</a></li>
-                        <li><a href="">Добавить категорию</a></li>
+                        <li><a href="{{route('blog.admin.articles.index')}}">Список статей</a></li>
+                        <li><a href="{{route('blog.admin.articles.create')}}">Добавить статью</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-cubes"></i> <span>Товары</span>
+                    <a href="#"><i class="fa fa-cubes"></i> <span>Тесты</span>
                         <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="">Список товаров</a></li>
-                        <li><a href="">Добавить товар</a></li>
+                        <li><a href="">Список тестов</a></li>
+                        <li><a href="">Создать тест</a></li>
                     </ul>
                 </li>
-                <li><a href=""><i class="fa fa-database"></i> <span>Кэширование</span></a></li>
+                <li><a href=""><i class="fa fa-database"></i> <span>Анализ</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-users"></i> <span>Пользователи</span>
                         <span class="pull-right-container">
@@ -149,32 +145,10 @@
                         <li><a href="{{route('blog.admin.users.create')}}">Добавить пользователя</a></li>
                     </ul>
                 </li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-usd"></i> <span>Валюты</span>
-                        <span class="pull-right-container">
-<i class="fa fa-angle-left pull-right"></i>
-</span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="">Список валют</a></li>
-                        <li><a href="">Добавить валюту</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-filter"></i> <span>Фильтры</span>
-                        <span class="pull-right-container">
-<i class="fa fa-angle-left pull-right"></i>
-</span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="">Группы фильтров</a></li>
-                        <li><a href="">Фильтры</a></li>
-                    </ul>
-                </li>
             </ul>
 
             <!-- search form -->
-
+<!--
             <form action="" method="get" autocomplete="off"  style="position: absolute;">
                 <div class="input-group">
                     <input id="search" name="search" type="text" class="form-control" placeholder="Живой поиск...." style="color: whitesmoke; background-color:#20262a; border: none;">
@@ -182,8 +156,8 @@
                         <button type="submit" value="" class="btn btn-flat" style="background-color: #ebeff4;"><i class="fa fa-search"></i></button>
                     </span>
                 </div>
-            </form>
-
+            </form>*/
+-->
 
 
             <!-- /.search form -->
@@ -201,10 +175,8 @@
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 3.0
-        </div>
-        <strong>Copyright &copy; 2019  All rights reserved.</strong>
+
+        <strong>Created by Dmitry Gladchenko</strong>
     </footer>
 
     <div class="control-sidebar-bg"></div>

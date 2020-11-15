@@ -8,6 +8,7 @@ use App\Models\Admin\Article;
 use App\Repositories\Admin\ArticleRepository;
 use App\Repositories\Admin\MainRepository;
 use Illuminate\Http\Request;
+use MetaTag;
 
 class ArticleController extends AdminBaseController
 {
