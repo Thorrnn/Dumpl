@@ -21,13 +21,13 @@ class ArticleRepository extends CoreRepository
 
 
     public function getAllArticles($perpage){
-        $users = $this->startConditions()
+        $articles = $this->startConditions()
             ->leftjoin('users', 'users.id','=','articles.author_id')
             ->select('users.name','users.surname','users.id','articles.id','articles.title','articles.fieldsArticles','articles.status')
-            ->orderBy('articles.id')
+            ->orderBy('articles.id');
             //  ->toBase()
-            ->paginate($perpage);
-        return $users;
+           // ->paginate($perpage);
+        return $articles;
     }
 
 
