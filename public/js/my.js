@@ -1,0 +1,3 @@
+/** KCEditor */
+
+$(' #editorBodyArticles').ckeditor();

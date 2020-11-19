@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="surname">{{__('register.registerList.age')}}</label>
-                                <input type="text" class="form-control" name="age" id="age" value="@if(old('age')) {{old('age')}} @else @endif" required>
+                                <input type="text" class="form-control" name="age" id="age" pattern="^[0-9]" data-error="Только цифры" value="@if(old('age')) {{old('age')}} @else @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
                             <div class="form-group has-feedback">

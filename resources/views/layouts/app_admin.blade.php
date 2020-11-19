@@ -202,6 +202,10 @@
 <!-- AdminLTE App -->
 <script src="{{asset('adminlte/dist/js/adminlte.min.js')}}"></script>
 
+<script src=" {{asset('adminlte/bower_components/ckeditor/ckeditor.js')}} "></script>
+<script src=" {{asset('adminlte/bower_components/ckeditor/adapters/jquery.js')}} "></script>
+
+<script src=" {{asset('js/my.js')}} "></script>
 <!-- === = ===  -->
 
 </body>
