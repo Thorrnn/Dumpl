@@ -50,7 +50,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="3" class="text-center"><h2>Пользователей нет</h2></td>
+                                        <td colspan="3" class="text-center"><h2>Список статей пуст</h2></td>
                                     </tr>
                                 @endforelse
                                 </tbody>

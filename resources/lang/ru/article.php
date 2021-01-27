@@ -15,7 +15,7 @@ return [
         'articles' => 'Статьи',
         'users' => 'Пользователи',
         'published' => 'Опубликовано',
-        'unpublished' => 'Не опубликовано'
+        'unpublished' => 'Не опубликовано',
 
     ],
 

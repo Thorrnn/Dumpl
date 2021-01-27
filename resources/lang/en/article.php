@@ -2,18 +2,20 @@
 
 return [
     'navList' => [
-        'author' => 'Главная',
+        'author' => 'Автор статьи',
+        'author_id' => 'ID автора',
         'list' => 'Список',
-        'about' => 'О проекте',
         'login' => 'Войти',
-
-        'name' =>'MedicLab',
-        'logout' => 'Выйти',
-        'profile' => 'Профиль',
+        'title' => 'Название',
+        'body' => 'Тело',
+        'info' => 'Информация',
+        'annotation' => 'Вступление',
+        'status' => 'Статус',
+        'fieldsArticles' => 'Направленность статьи',
         'articles' => 'Статьи',
         'users' => 'Пользователи',
-
-        'grades' => 'Оценки',
+        'published' => 'Опубликовано',
+        'unpublished' => 'Не опубликовано'
     ],
 
 ];
