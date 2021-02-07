@@ -8,6 +8,7 @@ use App\Models\Admin\Article;
 use App\Repositories\Admin\ArticleRepository;
 use App\Repositories\Admin\MainRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use MetaTag;
 
 class ArticleController extends AdminBaseController
@@ -59,9 +60,8 @@ class ArticleController extends AdminBaseController
             'info' => $request['info'],
             'annotation' => $request['annotation'],
             'status' => $request['status'],
-            'author_id' => $request['author_id'],
-            'info' => $request['info'],
-            'fieldsArticles' => $request['fieldsArticles'],
+            'author_id' => Auth::user()->id,
+            'fieldsArticles' => 'medicine',
         ]);
 
         if (!$article){
@@ -70,7 +70,7 @@ class ArticleController extends AdminBaseController
                 ->withInput();
             } else {
                 redirect()
-                    ->route('blog.admin.article.index')
+                    ->route('blog.admin.articles.index')
                     ->with(['success'=>'Статья создана']);
             }
         }

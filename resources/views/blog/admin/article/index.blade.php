@@ -8,7 +8,9 @@
             @slot('parent')Главная@endslot;
             @slot('active')Список статей@endslot;
         @endcomponent
+    </section>
 
+    <section class="content">
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
@@ -56,14 +58,9 @@
                                 </tbody>
                             </table>
                         </div>
-
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
 
     </section>

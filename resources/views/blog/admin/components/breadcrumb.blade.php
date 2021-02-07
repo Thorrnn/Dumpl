@@ -6,5 +6,8 @@
     @if(isset($user))
         <li><a href="{{ route('blog.admin.users.index') }}"><i></i>{{$user}}</a></li>
     @endif
+    @if(isset($article))
+        <li><a href="{{ route('blog.admin.articles.index') }}"><i></i>{{$article}}</a></li>
+    @endif
     <li><i class="active"></i>{{$active}}</li>
 </ol>

@@ -53,6 +53,9 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
     Route::resource('article','\App\Http\Controllers\Blog\Admin\ArticleController')
         ->names('blog.admin.articles');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+    Route::resource('survey','\App\Http\Controllers\Blog\Admin\SurveyController')
+        ->names('blog.admin.surveies');
+    Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 });
 
@@ -87,3 +90,5 @@ Route::get('setlocale/{lang}', function ($lang) {
     return redirect($url); //Перенаправляем назад на ту же страницу
 
 })->name('setlocale');
+
+

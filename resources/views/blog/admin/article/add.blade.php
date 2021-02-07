@@ -35,7 +35,7 @@
                                 <label for="name">{{__('article.navList.annotation')}}</label>
                                 <input type="text" class="form-control" name="annotation" id="annotation" value="@if(old('annotation')) {{old('annotation')}} @else @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                            </div>-->
+                            </div>
 
                             <div class="form-group has-feedback">
                                 <label for="body">{{__('article.navList.info')}}</label>
