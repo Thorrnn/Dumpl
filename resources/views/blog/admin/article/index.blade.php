@@ -22,26 +22,28 @@
                                     <th>ID</th>
                                     <th>Название</th>
                                     <th>Статус</th>
+                                    <th>Сфера</th>
                                     <th>Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($paginator as $articles)
+                                @forelse($paginator as $article)
                                     @php
                                         $class = '';
                                     @endphp
                                     <tr class="{{$class}}">
-                                        <td>{{$articles->id}}</td>
-                                        <td>{{$articles->title}}</td>
-                                        <td>{{$articles->status}}</td>
+                                        <td>{{$article->id}}</td>
+                                        <td>{{$article->title}}</td>
+                                        <td>{{$article->status}}</td>
+                                        <td>{{$article->fieldsArticles}}</td>
                                         <td>
-                                            <a href="{{route('blog.admin.articles.edit', $articles->id)}}" title="просмотреть пользователя">
+                                            <a href="{{route('blog.admin.articles.edit', $article->id)}}" title="просмотреть пользователя">
                                                 <i class="btx btn-xs"></i>
                                                 <button type="submit" class="btn btn-success btn-xs">Просмотреть</button>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                             </a>
                                             <a class="btn btn-xs">
-                                                <form method="post" action="{{route('blog.admin.articles.destroy', $articles->id)}}"
+                                                <form method="post" action="{{route('blog.admin.articles.destroy', $article->id)}}"
                                                       style="float: none">
                                                     @method('DELETE')
                                                     @csrf

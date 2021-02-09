@@ -4,7 +4,7 @@
 namespace App\Repositories\Admin;
 
 
-use App\Models\Admin\User as Model;
+use App\Models\Admin\Article as Model;
 use App\Repositories\CoreRepository;
 
 class ArticleRepository extends CoreRepository
@@ -22,11 +22,11 @@ class ArticleRepository extends CoreRepository
 
     public function getAllArticles($perpage){
         $articles = $this->startConditions()
-            ->leftjoin('users', 'users.id','=','articles.author_id')
-            ->select('users.name','users.surname','users.id','articles.id','articles.title','articles.fieldsArticles','articles.status')
-            ->orderBy('articles.id');
+           // ->leftjoin('users', 'users.id','=','articles.author_id')
+            ->select('articles.id','articles.title','articles.fieldsArticles','articles.status')
+            ->orderBy('articles.title')
             //  ->toBase()
-           // ->paginate($perpage);
+            ->paginate($perpage);
         return $articles;
     }
 

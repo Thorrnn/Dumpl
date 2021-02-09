@@ -4,9 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Создание статьи@endslot;
+            @slot('title')Редактирование статьи@endslot;
             @slot('parent')Главная@endslot;
-            @slot('active')Создание статьи@endslot;
+            @slot('active')Редактирование статьи@endslot;
         @endcomponent
     </section>
 
@@ -14,42 +14,43 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
-                    <form action="{{ route('blog.admin.articles.store') }} " method="post" data-toggle="validator">
+                    <form action="{{ route('blog.admin.articles.update', $item->id) }} " method="post" data-toggle="validator">
+                        @method('PUT')
                         @csrf
                         <div class="box-body">
                             <div class="form-group has-feedback">
                                 <label for="name">{{__('article.navList.title')}}</label>
-                                <input type="text" class="form-control" name="title" id="title" value="@if(old('title')) {{old('title')}} @else @endif" required>
+                                <input type="text" class="form-control" name="title" id="title" value="@if(old('title')) {{old('title')}} @else {{$item->title ?? ""}} @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
 
                             <div class="form-group has-feedback">
                                 <label for="address">{{__('article.navList.status')}}</label>
                                 <select name="status" id="status" class="form-control">
-                                    <option value="published">Опубликован</option>
-                                    <option value="unpublished" selected>Неопубликован</option>
+                                    <option value="published" @php if ($item->status == 'published') echo 'selected' @endphp >Опубликован</option>
+                                    <option value="unpublished" @php if ($item->status == 'unpublished') echo 'selected' @endphp>Неопубликован</option>
                                 </select>
                             </div>
 
                             <div class="form-group has-feedback">
                                 <label for="name">{{__('article.navList.annotation')}}</label>
-                                <input type="text" class="form-control" name="annotation" id="annotation" value="@if(old('annotation')) {{old('annotation')}} @else @endif" required>
+                                <input type="text" class="form-control" name="annotation" id="annotation" value="@if(old('annotation')) {{old('annotation')}} @else {{$item->annotation ?? ""}} @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
 
                             <div class="form-group has-feedback">
-                                <label for="info">{{__('article.navList.info')}}</label>
-                                <textarea name="info" id="editorInfoArticles" cols="80" rows="10">{{ old('info') }}</textarea>
+                                <label for="body">{{__('article.navList.info')}}</label>
+                                <textarea name="info" id="editorInfoArticles" cols="80" rows="10">@if( old('info')) {{old('info')}} @else {{$item->info ?? ""}} @endif </textarea>
                             </div>
-                            <div class="form-group has-feedback">
-                                <label for="body">{{__('article.navList.body')}}</label>
-                                <textarea name="body" id="editorBodyArticles" cols="80" rows="10">{{ old('body') }}</textarea>
+                               <div class="form-group has-feedback">
+                                <label for="body">Body</label>
+                                <textarea name="body" id="editorBodyArticles" cols="80" rows="10">@if( old('body')) {{old('body')}} @else {{$item->body ?? ""}} @endif</textarea>
                             </div>
                             <input type="hidden" id="_token" value="{{ csrf_token() }}">
 
                         </div>
                         <div class="box-footer">
-                            <input type="hidden" name="id" value="">
+                            <input type="hidden" name="id" value="{{$item->id}}">
                             <button type="submit" class="btn btn-primary">Сохранить</button>
 
                         </div>
