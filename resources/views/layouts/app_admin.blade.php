@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="" type="image/png" />
+    <link rel="shortcut icon" href="" type="image/png"/>
     <title>{{ MetaTag::get('title') }}</title>
-	<!-- Tell the browser to be responsive to screen width -->
+    <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="{{asset('adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -23,13 +23,14 @@
     <link rel="stylesheet" href="{{asset('css/my.css')}}">
 
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-<style>
-    .wrapper{
-        overflow:hidden;
-    }
-</style>
+    <style>
+        .wrapper {
+            overflow: hidden;
+        }
+    </style>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -61,7 +62,8 @@
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="{{asset('adminlte/dist/img/avatar5.png')}}" class="img-circle" alt="User Image">
+                                <img src="{{asset('adminlte/dist/img/avatar5.png')}}" class="img-circle"
+                                     alt="User Image">
                                 <p>
                                     {{ ucfirst(Auth::user()->name) }}
                                 </p>
@@ -70,13 +72,15 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="{{ route('blog.admin.users.edit', Auth::user()->id) }}" class="btn btn-default btn-flat">Профиль</a>
+                                    <a href="{{ route('blog.admin.users.edit', Auth::user()->id) }}"
+                                       class="btn btn-default btn-flat">Профиль</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"
                                        class="btn btn-default btn-flat">Выход</a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
 
@@ -114,8 +118,8 @@
                 <li class="treeview">
                     <a href="#"><i class="fa fa-navicon"></i> <span>Статьи</span>
                         <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{route('blog.admin.articles.index')}}">Список статей</a></li>
@@ -123,10 +127,21 @@
                     </ul>
                 </li>
                 <li class="treeview">
+                    <a href="#"><i class="fa fa-cubes"></i> <span>Опросы</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('blog.admin.surveies.index')}}">Список опросов</a></li>
+                        <li><a href="{{route('blog.admin.surveies.create')}}">Добавить опрос</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
                     <a href="#"><i class="fa fa-cubes"></i> <span>Тесты</span>
                         <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="">Список тестов</a></li>
@@ -148,16 +163,16 @@
             </ul>
 
             <!-- search form -->
-<!--
-            <form action="" method="get" autocomplete="off"  style="position: absolute;">
-                <div class="input-group">
-                    <input id="search" name="search" type="text" class="form-control" placeholder="Живой поиск...." style="color: whitesmoke; background-color:#20262a; border: none;">
-                    <span class="input-group-btn">
-                        <button type="submit" value="" class="btn btn-flat" style="background-color: #ebeff4;"><i class="fa fa-search"></i></button>
-                    </span>
-                </div>
-            </form>*/
--->
+            <!--
+                        <form action="" method="get" autocomplete="off"  style="position: absolute;">
+                            <div class="input-group">
+                                <input id="search" name="search" type="text" class="form-control" placeholder="Живой поиск...." style="color: whitesmoke; background-color:#20262a; border: none;">
+                                <span class="input-group-btn">
+                                    <button type="submit" value="" class="btn btn-flat" style="background-color: #ebeff4;"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </form>*/
+            -->
 
 
             <!-- /.search form -->
@@ -169,7 +184,7 @@
     <div class="content-wrapper">
 
         <main id="app">
-{{--            @include('blog.admin.components.result_messages')--}}
+            {{--            @include('blog.admin.components.result_messages')--}}
             @yield('content')
         </main>
     </div>
@@ -182,7 +197,6 @@
     <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>

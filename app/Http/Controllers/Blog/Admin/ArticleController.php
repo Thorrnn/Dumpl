@@ -70,7 +70,7 @@ class ArticleController extends AdminBaseController
                 ->withInput();
             } else {
                 redirect()
-                    ->route('blog.admin.articles.index')
+                    ->route('blog.admin.article.index')
                     ->with(['success'=>'Статья создана']);
             }
         }
@@ -83,7 +83,8 @@ class ArticleController extends AdminBaseController
      */
     public function show($id)
     {
-        //
+        return redirect()
+            ->route('blog.admin.article.index');
     }
 
     /**
@@ -111,9 +112,13 @@ class ArticleController extends AdminBaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminArticleRequest $request, $id)
     {
-        //
+        $article = Article::findOrFail($id);
+        $article->update($request->all());
+
+        return redirect()
+            ->route('blog.admin.article.index');
     }
 
     /**

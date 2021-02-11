@@ -20,30 +20,21 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Логин</th>
-                                    <th>Email</th>
-                                    <th>Имя</th>
-                                    <th>Фамилия</th>
-                                    <th>Роль</th>
-                                    <th>Действия</th>
+                                    <th>Название</th>
+                                    <th>Номер статьи</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($paginator as $user)
+                                    @forelse($paginator as $survey)
                                         @php
                                         $class = '';
-                                        $status = $user->role;
-                                        if($status == 'disabled') $class = "danger";
                                         @endphp
                                         <tr class="{{$class}}">
                                             <td>{{$user->id}}</td>
                                             <td>{{$user->login}}</td>
                                             <td>{{$user->email}}</td>
-                                            <td>{{$user->name}}</td>
-                                            <td>{{$user->surname}}</td>
-                                            <td>{{$user->role}}</td>
                                             <td>
-                                                <a href="{{route('blog.admin.users.edit', $user->id)}}" title="просмотреть пользователя">
+                                                <a href="{{route('blog.admin.users.edit', $user->id)}}" title="просмотреть опрос">
                                                     <i class="btx btn-xs"></i>
                                                     <button type="submit" class="btn btn-success btn-xs">Просмотреть</button>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;

@@ -26,4 +26,11 @@ class MainRepository extends CoreRepository
             ->count();
         return $articles;
     }
+
+    public static function getCountSurveies(){
+        $surveies = \DB::table('$surveies')
+            ->get()
+            ->count();
+        return $surveies;
+    }
 }
