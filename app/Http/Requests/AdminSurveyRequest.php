@@ -3,8 +3,10 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class AdminSurveyRequest
+class AdminSurveyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -33,7 +35,7 @@ class AdminSurveyRequest
     public function messages()
     {
         return [
-            'title.min' => 'Минимальная длина названия 5 символов',
+            'info.min' => 'Минимальная длина названия 5 символов',
         ];
     }
 }

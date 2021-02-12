@@ -133,8 +133,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('blog.admin.surveies.index')}}">Список опросов</a></li>
-                        <li><a href="{{route('blog.admin.surveies.create')}}">Добавить опрос</a></li>
+                        <li><a href="{{route('blog.admin.surveys.index')}}">Список опросов</a></li>
+                        <li><a href="{{route('blog.admin.surveys.create')}}">Добавить опрос</a></li>
                     </ul>
                 </li>
                 <li class="treeview">

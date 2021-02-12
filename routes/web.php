@@ -52,7 +52,7 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         ->names('blog.admin.articles');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
     Route::resource('survey','\App\Http\Controllers\Blog\Admin\SurveyController')
-        ->names('blog.admin.surveies');
+        ->names('blog.admin.surveys');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 });

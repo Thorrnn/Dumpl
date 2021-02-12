@@ -27,10 +27,10 @@ class SurveyController
     public function index()
     {
         $perpage = 0;
-        $countSurveies = MainRepository::getCountSurveies();
+        $countSurveys = MainRepository::getCountSurveies();
         $paginator = $this->surveyRepository->getAllSurveies($perpage);;
-        MetaTag::set('title', 'Список опросов');
-        return view('blog.admin.survey.index', compact('countSurveies','paginator'));
+        //MetaTag::set('title', 'Список опросов');
+        return view('blog.admin.survey.index', compact('countSurveys','paginator'));
     }
 
     /**
@@ -52,12 +52,12 @@ class SurveyController
      */
     public function store(SurveyRepository $request)
     {
-        $article = Article::create([
+        $survey = Survey::create([
             'title' => $request['info'],
             'body' => $request['status']
         ]);
 
-        if (!$article){
+        if (!$survey){
             return back()
                 ->withErrors(['msg'=>'Ошибка создания опроса'])
                 ->withInput();
@@ -76,8 +76,8 @@ class SurveyController
      */
     public function show($id)
     {
-        return redirect()
-            ->route('blog.admin.survey.index');
+        /*return redirect()
+            ->route('blog.admin.survey.index');*/
     }
 
     /**
@@ -89,7 +89,7 @@ class SurveyController
     public function edit($id)
     {
         $perpage = 10;
-        $item= $this->articleRepository->getId($id);
+        $item= $this->surveyRepository->getId($id);
         if (empty($item)){
             abort(404);
         }
@@ -107,11 +107,11 @@ class SurveyController
      */
     public function update(SurveyRepository $request, $id)
     {
-        $article = Article::findOrFail($id);
+       /* $article = Article::findOrFail($id);
         $article->update($request->all());
 
         return redirect()
-            ->route('blog.admin.survey.index');
+            ->route('blog.admin.survey.index');*/
     }
 
     /**
