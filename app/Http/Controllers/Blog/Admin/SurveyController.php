@@ -9,6 +9,7 @@ use App\Models\Admin\Survey;
 use App\Repositories\Admin\SurveyRepository;
 use App\Repositories\Admin\MainRepository;
 use Illuminate\Support\Facades\Auth;
+use MetaTag;
 
 class SurveyController
 {
@@ -53,8 +54,8 @@ class SurveyController
     public function store(SurveyRepository $request)
     {
         $survey = Survey::create([
-            'title' => $request['info'],
-            'body' => $request['status']
+            'info' => $request['info'],
+            'status' => $request['status']
         ]);
 
         if (!$survey){
@@ -93,6 +94,8 @@ class SurveyController
         if (empty($item)){
             abort(404);
         }
+
+
 
         MetaTag::set('title', "Редактирования опроса № {$item->id}");
         return view('blog.admin.survey.edit', compact('item'));

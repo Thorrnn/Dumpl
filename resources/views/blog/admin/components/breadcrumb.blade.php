@@ -9,5 +9,8 @@
     @if(isset($article))
         <li><a href="{{ route('blog.admin.articles.index') }}"><i></i>{{$article}}</a></li>
     @endif
+    @if(isset($survey))
+        <li><a href="{{ route('blog.admin.surveys.index') }}"><i></i>{{$survey}}</a></li>
+    @endif
     <li><i class="active"></i>{{$active}}</li>
 </ol>
