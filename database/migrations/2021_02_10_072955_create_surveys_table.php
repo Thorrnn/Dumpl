@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSurveiesTable extends Migration
+class CreateSurveysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSurveiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('surveies', function (Blueprint $table) {
+        Schema::create('surveys', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('info');
@@ -32,6 +32,6 @@ class CreateSurveiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('surveies');
+        Schema::dropIfExists('surveys');
     }
 }

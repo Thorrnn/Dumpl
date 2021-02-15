@@ -9,10 +9,12 @@ use App\Models\UserRole;
 use Illuminate\Http\Request;
 use App\Repositories\Admin\MainRepository;
 use App\Repositories\Admin\UserRepository;
+
 use MetaTag;
 class UserController extends AdminBaseController
 {
     private $userRepository;
+
 
     public function __construct()
     {

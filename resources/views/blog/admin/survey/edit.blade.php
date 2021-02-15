@@ -36,13 +36,43 @@
                                 <div class="box-footer">
                                     <input type="hidden" name="id" value="{{$item->id}}">
                                     <button type="submit" class="btn btn-primary">Сохранить</button>
-
                                 </div>
-
                             </form>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <h3>Список вопросов</h3>
+                        <div class="box">
+                            <div class="box-body">
+                                @if($count)
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Название</th>
+                                                <th>Статус</th>
+                                                <th>Действие</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($questions as $question)
+                                                <tr class="{{$class}}">
+                                                    <td>{{$question->id}}</td>
+                                                    <td>{{$question->title}}</td>
+                                                    <td>{{$question->status}}</td>
+                                                    <td><a href="{{route('blog.admin.survey_questions.edit', $survey->id)}}"><i class="fa fa-fw fa-eye"></i></a></td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @else
+                                    <p class="text-danger">Вопросов нет</p>
+                                @endif
+                            </div>
 
                         </div>
-
                     </div>
 
                 </div>

@@ -15,6 +15,7 @@ class SurveyController
 {
     private $surveyRepository;
 
+
     public function __construct()
     {
         $this->surveyRepository = app(SurveyRepository::class);
@@ -28,8 +29,8 @@ class SurveyController
     public function index()
     {
         $perpage = 0;
-        $countSurveys = MainRepository::getCountSurveies();
-        $paginator = $this->surveyRepository->getAllSurveies($perpage);;
+        $countSurveys = MainRepository::getCountSurveys();
+        $paginator = $this->surveyRepository->getAllSurveys($perpage);;
         //MetaTag::set('title', 'Список опросов');
         return view('blog.admin.survey.index', compact('countSurveys','paginator'));
     }
@@ -96,9 +97,11 @@ class SurveyController
         }
 
 
+        $questions=$this->surveyRepository->getQuestionSurvey($id);
+        $count=$this->surveyRepository->getQuestionCount($id);
 
         MetaTag::set('title', "Редактирования опроса № {$item->id}");
-        return view('blog.admin.survey.edit', compact('item'));
+        return view('blog.admin.survey.edit', compact('item','count','questions'));
     }
 
     /**
