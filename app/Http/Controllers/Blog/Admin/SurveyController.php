@@ -31,7 +31,7 @@ class SurveyController
         $perpage = 0;
         $countSurveys = MainRepository::getCountSurveys();
         $paginator = $this->surveyRepository->getAllSurveys($perpage);;
-        //MetaTag::set('title', 'Список опросов');
+        MetaTag::set('title', 'Список опросов');
         return view('blog.admin.survey.index', compact('countSurveys','paginator'));
     }
 
@@ -97,9 +97,9 @@ class SurveyController
         }
 
 
-        $questions=$this->surveyRepository->getQuestionSurvey($id);
+        $questions=$this->surveyRepository->getQuestionSurvey($id, $perpage);
         $count=$this->surveyRepository->getQuestionCount($id);
-
+        //dd($questions);
         MetaTag::set('title', "Редактирования опроса № {$item->id}");
         return view('blog.admin.survey.edit', compact('item','count','questions'));
     }
@@ -111,13 +111,13 @@ class SurveyController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SurveyRepository $request, $id)
+    public function update(AdminSurveyRequest $request, $id)
     {
-       /* $article = Article::findOrFail($id);
-        $article->update($request->all());
+        $survey = Survey::findOrFail($id);
+        $survey->update($request->all());
 
         return redirect()
-            ->route('blog.admin.survey.index');*/
+            ->route('blog.admin.survey.index');
     }
 
     /**

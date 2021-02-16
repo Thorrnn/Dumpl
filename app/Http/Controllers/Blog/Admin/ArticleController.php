@@ -31,6 +31,7 @@ class ArticleController extends AdminBaseController
         $perpage = 0;
         $countArticles = MainRepository::getCountArticles();
         $paginator = $this->articleRepository->getAllArticles($perpage);
+
         MetaTag::set('title', 'Список статей');
         return view('blog.admin.article.index', compact('countArticles','paginator'));
     }

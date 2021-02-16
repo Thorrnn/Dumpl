@@ -56,7 +56,7 @@
                                             </thead>
                                             <tbody>
                                             @foreach($questions as $question)
-                                                <tr>
+                                                <tr class="{{$class}}">
                                                     <td>{{$question->id}}</td>
                                                     <td>{{$question->title}}</td>
                                                     <td><a href="{{route('blog.admin.survey_questions.edit', $question->id)}}"><i class="fa fa-fw fa-eye"></i></a></td>
