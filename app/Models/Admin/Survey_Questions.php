@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Survey_Questions extends Model
 {
     protected $fillable = [
-        'title', 'status'
+        'title'
     ];
     public function survey()
     {
