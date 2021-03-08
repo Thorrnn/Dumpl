@@ -41,6 +41,13 @@
                         </div>
                     </div>
                     <div class="col-md-12">
+                        <div>
+                            <a href="{{route('add_question', $item->id)}}" title="Добавить вопрос">
+                                <i class="btx btn-xs"></i>
+                                <button type="submit" class="btn btn-success btn-xs">Добавить вопрос</button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                            </a>
+                        </div>
                         <h3>Список вопросов</h3>
                         <div class="box">
                             <div class="box-body">

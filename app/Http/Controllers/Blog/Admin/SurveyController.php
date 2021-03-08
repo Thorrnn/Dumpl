@@ -52,7 +52,7 @@ class SurveyController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SurveyRepository $request)
+    public function store(AdminSurveyRequest $request)
     {
         $survey = Survey::create([
             'info' => $request['info'],
@@ -65,7 +65,7 @@ class SurveyController
                 ->withInput();
         } else {
             redirect()
-                ->route('blog.admin.survey.index')
+                ->route('blog.admin.surveys.index')
                 ->with(['success'=>'Опрос создана']);
         }
     }

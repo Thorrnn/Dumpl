@@ -42,8 +42,14 @@ class SurveyQuestionController
      */
     public function create()
     {
+
         MetaTag::set('title', 'Создание вопроса опроса');
         return view('blog.admin.survey_question.add');
+    }
+
+    public function add_question($id){
+        MetaTag::set('title', 'Создание вопроса опроса');
+        return view('blog.admin.survey_question.add', compact('id'));
     }
 
     /**
@@ -52,21 +58,22 @@ class SurveyQuestionController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SurveyRepository $request)
+    public function store(AdminSurvey_QuestionRequest $request)
     {
-        $survey = Survey::create([
-            'info' => $request['info'],
-            'status' => $request['status']
+        $survey_question = Survey_Questions::create([
+            'title' => $request['title'],
+            'type' => 'integer',
+            'survey_id' => $request['survey_id']
         ]);
 
-        if (!$survey){
+        if (!$survey_question){
             return back()
-                ->withErrors(['msg'=>'Ошибка создания вопроса опроса'])
+                ->withErrors(['msg'=>'Ошибка создания вопроса  опроса'])
                 ->withInput();
         } else {
             redirect()
-                ->route('blog.admin.survey_question.index')
-                ->with(['success'=>'Опрос создана']);
+                ->route('blog.admin.surveys.edit', compact('survey_id'))
+                ->with(['success'=>'Вопрос опрос создан']);
         }
     }
 
