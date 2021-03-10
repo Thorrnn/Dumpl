@@ -144,8 +144,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="">Список тестов</a></li>
-                        <li><a href="">Создать тест</a></li>
+                        <li><a href="{{route('blog.admin.tests.index')}}">Список тестов</a></li>
+                        <li><a href="{{route('blog.admin.tests.create')}}">Создать тест</a></li>
                     </ul>
                 </li>
                 <li><a href=""><i class="fa fa-database"></i> <span>Анализ</span></a></li>

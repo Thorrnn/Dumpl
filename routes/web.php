@@ -53,6 +53,8 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
     Route::resource('survey','\App\Http\Controllers\Blog\Admin\SurveyController')
         ->names('blog.admin.surveys');
+    Route::resource('test','\App\Http\Controllers\Blog\Admin\TestController')
+        ->names('blog.admin.tests');
     Route::resource('survey_question','\App\Http\Controllers\Blog\Admin\SurveyQuestionController')
         ->names('blog.admin.survey_questions');
     Route::get('survey_question/create/{id}', '\App\Http\Controllers\Blog\Admin\SurveyQuestionController@add_question')->name('add_question');

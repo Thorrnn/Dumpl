@@ -41,4 +41,12 @@ class MainRepository extends CoreRepository
             ->count();
         return $questions;
     }
+
+    public static function getCountTests(){
+        $tests = \DB::table('test')
+            ->get()
+            ->count();
+        return $tests;
+    }
+
 }

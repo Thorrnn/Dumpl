@@ -12,6 +12,9 @@
     @if(isset($survey))
         <li><a href="{{ route('blog.admin.surveys.index') }}"><i></i>{{$survey}}</a></li>
     @endif
+    @if(isset($test))
+        <li><a href="{{ route('blog.admin.tests.index') }}"><i></i>{{$test}}</a></li>
+    @endif
     @if(isset($survey_question))
         <li><a href="{{ route('blog.admin.survey_questions.index') }}"><i></i>{{$survey_question}}</a></li>
     @endif

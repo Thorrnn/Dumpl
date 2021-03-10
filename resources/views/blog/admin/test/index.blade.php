@@ -4,9 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Список опросов@endslot;
+            @slot('title')Список тестов@endslot;
             @slot('parent')Главная@endslot;
-            @slot('active')Список опросов@endslot;
+            @slot('active')Список тестов@endslot;
         @endcomponent
     </section>
 
@@ -25,22 +25,22 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($paginator as $survey)
+                                    @forelse($paginator as $test)
                                         @php
                                         $class = '';
                                         @endphp
                                         <tr class="{{$class}}">
-                                            <td>{{$survey->id}}</td>
-                                            <td>{{$survey->info}}</td>
-                                            <td>{{$survey->status}}</td>
+                                            <td>{{$test->id}}</td>
+                                            <td>{{$test->title}}</td>
+                                            <td>{{$test->status}}</td>
                                             <td>
-                                                <a href="{{route('blog.admin.surveys.edit', $survey->id)}}" title="просмотреть опрос">
+                                                <a href="{{route('blog.admin.tests.edit', $test->id)}}" title="просмотреть тест">
                                                     <i class="btx btn-xs"></i>
                                                     <button type="submit" class="btn btn-success btn-xs">Просмотреть</button>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                                 </a>
                                                 <a class="btn btn-xs">
-                                                <form method="post" action="{{route('blog.admin.surveys.destroy', $survey->id)}}"
+                                                <form method="post" action="{{route('blog.admin.tests.destroy', $test->id)}}"
                                                     style="float: none">
                                                     @method('DELETE')
                                                     @csrf
@@ -51,7 +51,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="3" class="text-center"><h2>Опросов нет</h2></td>
+                                            <td colspan="3" class="text-center"><h2>Тестов нет</h2></td>
                                         </tr>
                                     @endforelse
                                 </tbody>
