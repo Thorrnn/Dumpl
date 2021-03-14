@@ -8,6 +8,15 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="/css/app.css" rel="stylesheet">
+
+        <link href = {{ asset("bootstrap/css/bootstrap.css") }} rel="stylesheet" />
+
+        <!-- Custom styles for this template -->
+        <link href = {{ asset("bootstrap/css/sticky-footer-navbar.css") }} rel="stylesheet" />
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap-theme.min.css') }}">
 
         <!-- Styles -->
         <style>
@@ -61,53 +70,78 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-        </style>
+                    </style>
     </head>
     <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 navbar-container bg-light">
+                <!-- Вертикальное меню -->
+                <nav class="navbar  navbar-expand-lg navbar-light bg-dark navbar-expand-sm">
+                    <!-- Контейнер (определяет ширину компонента Navbar) -->
+                    <div class="container">
+                        <!-- Бренд и кнопка «Гамбургер» -->
+                        <a class="navbar-brand" href="#">Content Analysis</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbar-example" aria-controls="navbar-example"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <!-- Основная часть меню -->
+                        <div class="collapse navbar-collapse ">
+                            <!-- Этот блок расположен слева -->
+                            <ul class="navbar-nav nav list-group text-center">
+                                <li class="nav-item  mx-2">
+                                    <a href="{{route('welcome')}}"><span class = "glyphicon glyphicon-home"></span>Главная</a>
+                                </li>
+                                <li class="nav-item mx-2">
+                                    <a href="{{route('welcome')}}"><span class = "glyphicon glyphicon-home"></span>Главная</a>
+                                </li>
+                                <li class="nav-item mx-2">
+                                    <a href="{{route('blog.user.surveys.index')}}">Тесты</a>
+                                </li>
 
-        <div class="flex-center position-ref full-height">
-            ddsdsd
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        @if(Auth::user()->isDisabled())
-                            <strong> <a href="{{route('welcome')}}">Главная</a></strong>
-                        @elseif(Auth::user()->isUser())
-                            <strong> <a href="{{route('index')}}">КабинетUser</a></strong>
-                            <strong> <a href="{{route('welcome')}}">Главная</a></strong>
-                        @elseif(Auth::user()->isVisitor())
-                            <strong> <a href="{{route('home')}}">Главная</a></strong>
-                        @elseif(Auth::user()->isAdmin())
-                            <strong> <a href="{{route('blog.admin.users.index')}}">Панель администратора</a></strong>
+                                @if (Route::has('login'))
+                                    @auth
 
-                        @endif
-                        <strong>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault()
+                                    @if(Auth::user()->isUser())
+                                        <li class="nav-item mx-2">
+                                            <a href="{{route('index')}}">Кабинет User</a>
+                                        </li>
+                                    @elseif(Auth::user()->isAdmin())
+                                        <li class="nav-item mx-2">
+                                            <a href="{{route('blog.admin.users.index')}}">Панель администратора</a>
+                                        </li>
+                                    @endif
+                            </ul>
+                        </div>
+                        <div class="flex-center">
+                            <!-- Этот блок расположен справа -->
+                                <a class="dropdown-item " href="{{ route('logout') }}"
+                                   onclick="event.preventDefault()
                                 document.getElementById('logout-form').submit();">
-                                Выйти
-                            </a>
-                        </strong>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method = "POST" style="display: none";>
-                            @csrf
-                        </form>
-
-                        @else
-                        <strong>
-                            <a href="{{ route('login') }}"style="text-decoration: none">Войти</a>
-                        </strong>
-
-                        @if(Route::has('register'))
-                            <strong>
-                                <a href="{{route('register')}}" style="text-decoration: none">Регистрация</a>
-                            </strong>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
+                                    Выйти
+                                </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method = "POST" style="display: none";>
+                                @csrf
+                            </form>
+                            @else<a href="{{ route('login') }}"style="text-decoration: none">Войти</a>
+                                 @if(Route::has('register')) <a href="{{route('register')}}" style="text-decoration: none">Регистрация</a>@endif
+                            @endauth
+                            @endif
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-12 content-container" style="background-color: #ffe0b2">
+                <!-- Основной контент страницы  -->
+                ...
+            </div>
         </div>
+    </div>
+
+
+        <script src="/js/app.js"></script>
 {{--        <div>--}}
 {{--            <a href="<?= route('setlocale', ['lang' => 'en']) ?>">English</a>--}}
 {{--            <a href="<?= route('setlocale', ['lang' => 'ru']) ?>">Русский</a>--}}

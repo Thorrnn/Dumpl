@@ -41,7 +41,27 @@ class TestQuestionController
         return view('blog.admin.test_question.add', compact('id'));
     }
 
+    public function store(AdminTest_QuestionRequest $request)
+    {
+        $survey_question = Test_Questions::create([
+            'title' => $request['title'],
+            'option_a' => $request['option_a'],
+            'option_b' => $request['option_b'],
+            'option_c' => $request['option_c'],
+            'option_c' => $request['option_c'],
+            'test_id' => $request['test_id']
+        ]);
 
+        if (!$survey_question){
+            return back()
+                ->withErrors(['msg'=>'Ошибка создания вопроса  опроса'])
+                ->withInput();
+        } else {
+            redirect()
+                ->route('blog.admin.tests.edit', compact('test_id'))
+                ->with(['success'=>'Вопрос теста создан']);
+        }
+    }
     public function edit($id)
     {
         $perpage = 10;

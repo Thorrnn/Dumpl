@@ -58,9 +58,4 @@ class User extends Authenticatable
         if($disabled) return "disabled";
     }
 
-    public function isVisitor()
-    {
-        $user = $this->roles()->where('name', 'disabled')->exists();
-        if($user) return "user";
-    }
 }

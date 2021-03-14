@@ -1,10 +1,9 @@
 <?php
 
 
-namespace App\Repositories\Admin;
+namespace App\Repositories\User;
 
-
-use App\Models\Admin\Survey as Model;
+use App\Models\User\Survey as Model;
 use App\Repositories\CoreRepository;
 
 class SurveyRepository extends CoreRepository
@@ -13,18 +12,16 @@ class SurveyRepository extends CoreRepository
     {
         parent::__construct();
     }
-
     protected function getModelClass()
     {
         return Model::class;
     }
 
-
-    public function getAllSurveys($perpage){
+    public function getAccessSurveys($perpage){
         $surveys = $this->startConditions()
-            ->select('surveys.id','surveys.info', 'surveys.status')
+            ->select('surveys.id','surveys.info')
             ->orderBy('surveys.id')
-              //->toBase()
+            //->toBase()
             ->paginate($perpage);
         return $surveys;
     }
@@ -35,7 +32,7 @@ class SurveyRepository extends CoreRepository
             ->select('survey_questions.id', 'survey_questions.title')
             ->where('surveys.id' ,$survey_id)
             ->orderby('survey_questions.id')
-              ->toBase()
+            ->toBase()
             ->paginate($perpage);
         return $question;
 
