@@ -3,7 +3,7 @@
 
 namespace App\Repositories\Admin;
 
-use App\Models\Admin\Test as Model;
+use App\Models\Admin\Tests as Model;
 use App\Repositories\CoreRepository;
 
 class Test_QuestionRepository extends CoreRepository

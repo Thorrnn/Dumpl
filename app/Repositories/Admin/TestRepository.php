@@ -5,7 +5,7 @@ namespace App\Repositories\Admin;
 
 
 use App\Repositories\CoreRepository;
-use App\Models\Admin\Test as Model;
+use App\Models\Admin\Tests as Model;
 
 class TestRepository extends CoreRepository
 {

@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Blog\Admin;
 
 use App\Http\Requests\AdminSurveyRequest;
 use App\Models\Admin\Survey;
-use App\Repositories\User\SurveyRepository;
+use App\Repositories\Admin\SurveyRepository;
 use App\Repositories\Admin\MainRepository;
 use Illuminate\Support\Facades\Auth;
 use MetaTag;
