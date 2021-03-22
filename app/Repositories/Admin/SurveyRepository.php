@@ -47,4 +47,14 @@ class SurveyRepository extends CoreRepository
             ->count();
         return $count;
     }
+
+    public function getCountLeter($text){
+        $count = iconv_strlen($text);
+        return $count;
+    }
+
+    public function getCountWord($text){
+        $count = str_word_count($text);
+        return $count;
+    }
 }

@@ -13,7 +13,7 @@ class CreateSurveyQuestionsTable extends Migration
      */
     public function up()
     {
-        {
+
             Schema::create('survey_questions', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
                 $table->bigIncrements('id');
@@ -29,7 +29,6 @@ class CreateSurveyQuestionsTable extends Migration
 
             });
 
-        }
     }
 
     /**
