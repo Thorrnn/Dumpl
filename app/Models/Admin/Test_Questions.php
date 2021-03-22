@@ -13,6 +13,6 @@ class Test_Questions extends Model
     ];
     public function test()
     {
-        return $this->belongsTo(Test::class);
+        return $this->belongsTo(Tests::class);
     }
 }

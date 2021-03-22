@@ -25,4 +25,10 @@ class SurveyController
         //MetaTag::set('title', 'Список опросов');
         return view('blog.user.survey.index', compact('countSurveys','paginator'));
     }
+
+    public function create()
+    {
+
+        return view('blog.user.survey.add');
+    }
 }

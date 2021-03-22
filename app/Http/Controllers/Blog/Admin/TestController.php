@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Blog\Admin;
 use App\Http\Requests\AdminSurveyRequest;
 use App\Http\Requests\AdminTestRequest;
 use App\Models\Admin\Survey;
-use App\Models\Admin\Test;
+use App\Models\Admin\Tests;
 use App\Repositories\Admin\MainRepository;
 use App\Repositories\Admin\TestRepository;
 use kcfinder\text;
@@ -39,7 +39,7 @@ class TestController
 
     public function store(AdminTestRequest $request)
     {
-        $test = Test::create([
+        $test = Tests::create([
             'title' => $request['title'],
             'info' => $request['info'],
             'status' => $request['status']
@@ -80,14 +80,14 @@ class TestController
      */
     public function update(AdminTestRequest $request, $id)
     {
-        $test = Test::findOrFail($id);
+        $test = Tests::findOrFail($id);
         $test->update($request->all());
 
         return redirect()
             ->route('blog.admin.test.index');
     }
 
-    public function destroy(Test $test)
+    public function destroy(Tests $test)
     {
         $result = $test->forceDelete();
         if($result){

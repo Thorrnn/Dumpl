@@ -17,6 +17,7 @@ class CreateQuestionSurveyAnswersTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->integer('answer');
+            $table->bigInteger('question_id');
             $table->enum('status',['published', 'unpublished']);
             $table->timestamps();
             $table->softDeletes();

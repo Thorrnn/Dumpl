@@ -43,7 +43,7 @@ class MainRepository extends CoreRepository
     }
 
     public static function getCountTests(){
-        $tests = \DB::table('test')
+        $tests = \DB::table('tests')
             ->get()
             ->count();
         return $tests;
