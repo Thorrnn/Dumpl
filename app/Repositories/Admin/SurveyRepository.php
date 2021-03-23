@@ -57,4 +57,32 @@ class SurveyRepository extends CoreRepository
         $count = str_word_count($text);
         return $count;
     }
+
+    public function getCountSyllables($text){
+        #char patterns
+        $RusA = "[абвгдеёжзийклмнопрстуфхцчшщъыьэюя]";
+        $RusV = "[аеёиоуыэюя]";
+        $RusN = "[бвгджзклмнпрстфхцчшщ]";
+        $RusX = "[йъь]";
+
+        #main ruller
+        $regs[] = "~(". $RusX . ")(" . $RusA . $RusA . ")~iu";
+        $regs[] = "~(". $RusV . ")(" . $RusV . $RusA  . ")~iu";
+        $regs[] = "~(". $RusV . $RusN . ")(" . $RusN . $RusV . ")~iu";
+        $regs[] = "~(". $RusN . $RusV . ")(" . $RusN . $RusV . ")~iu";
+        $regs[] = "~(". $RusV . $RusN . ")(" . $RusN . $RusN. $RusV . ")~iu";
+        $regs[] = "~(". $RusV . $RusN . $RusN . ")(". $RusN . $RusN . $RusV . ")~iu";
+        $regs[] = "~(". $RusX . ")(" . $RusA . $RusA . ")~iu";
+        $regs[] = "~(". $RusV . ")(" . $RusA . $RusV  . ")~iu";
+
+
+        foreach($regs as $cur_regxp) {
+            $count = preg_replace( $cur_regxp , "$1-$2" , $text);
+        }
+       return $count;
+    }
+
+    public function getCountSentence{
+        
+    }
 }
