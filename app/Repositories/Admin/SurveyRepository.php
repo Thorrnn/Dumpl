@@ -83,6 +83,6 @@ class SurveyRepository extends CoreRepository
     }
 
     public function getCountSentence{
-        
+
     }
 }
