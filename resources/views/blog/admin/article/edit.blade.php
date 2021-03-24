@@ -46,8 +46,34 @@
                                 <label for="body">Body</label>
                                 <textarea name="body" id="editorBodyArticles" cols="80" rows="10">@if( old('body')) {{old('body')}} @else {{$item->body ?? ""}} @endif</textarea>
                             </div>
+                            <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Символов</th>
+                                    <th>Слов</th>
+                                    <th>Предложений</th>
+                                    <th>Індекс Колман - Ліау</th>
+                                    <th>Читабельність за Флеша – Кінкейдом</th>
+                                    <th>Автоматичний індекс легкості читання</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $class = '';
+                                    @endphp
+                                    <tr class="{{$class}}">
+                                        <td>{{stat->letter}}</td>
+                                        <td>{{stat->words}}</td>
+                                        <td>{{stat->sentences}}</td>
+                                        <td>{{stat->ColemanLiauIndex}}</td>
+                                        <td>{{stat->FleschReadingEase}}</td>
+                                        <td>{{stat->ARI}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                             <input type="hidden" id="_token" value="{{ csrf_token() }}">
-
                         </div>
                         <div class="box-footer">
                             <input type="hidden" name="id" value="{{$item->id}}">
