@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Blog\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminArticleRequest;
 use App\Models\Admin\Article;
+use App\Models\Admin\Stat_article;
 use App\Repositories\Admin\ArticleRepository;
 use App\Repositories\Admin\MainRepository;
+use App\Repositories\Admin\Stat_articleRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use MetaTag;
@@ -15,10 +17,12 @@ class ArticleController extends AdminBaseController
 {
 
     private $articleRepository;
+    private $stat_articleRepository;
 
     public function __construct()
     {
         $this->articleRepository = app(ArticleRepository::class);
+        $this->stat_articleRepository = app(Stat_articleRepository::class);
     }
 
     /**
@@ -70,6 +74,20 @@ class ArticleController extends AdminBaseController
                 ->withErrors(['msg'=>'Ошибка создания статьи'])
                 ->withInput();
             } else {
+
+            $stat_article = Stat_article::create([
+                'sentences' => $this->articleRepository->getCountSentence($request['body']),
+                'words' => $this->articleRepository->getCountWord($request['body']),
+                'letter' => $this->articleRepository->getCountLeter($request['body']),
+                'ColemanLiauIndex' => $this->articleRepository->getColemanLiauIndex($request['body']),
+                'ARI' => $this->articleRepository->getARI($request['body']),
+                'FleschReadingEase' => 2/*$this->articleRepository->getFleschReadingEase($request['body'])*/,
+                'article_id' => $article.id,
+            ]);
+
+
+
+
                 redirect()
                     ->route('blog.admin.article.index')
                     ->with(['success'=>'Статья создана']);
@@ -100,10 +118,12 @@ class ArticleController extends AdminBaseController
         $item= $this->articleRepository->getId($id);
         if (empty($item)){
             abort(404);
+        } else {
+            $stat= $this->stat_articleRepository->getId($id);
         }
 
         MetaTag::set('title', "Редактирования статьи № {$item->id}");
-        return view('blog.admin.article.edit', compact('item'));
+        return view('blog.admin.article.edit', compact('item','stat'));
     }
 
     /**
@@ -117,6 +137,16 @@ class ArticleController extends AdminBaseController
     {
         $article = Article::findOrFail($id);
         $article->update($request->all());
+
+        $stat_article = Article::findOrFail($id);
+        $stat_article ->updated([
+            'sentences' => $this->articleRepository->getCountSentence($request['body']),
+            'words' => $this->articleRepository->getCountWord($request['body']),
+            'letter' => $this->articleRepository->getCountLeter($request['body']),
+            'ColemanLiauIndex' => $this->articleRepository->getColemanLiauIndex($request['body']),
+            'ARI' => $this->articleRepository->getARI($request['body']),
+            'FleschReadingEase' =>  2/*$this->articleRepository->getFleschReadingEase($request['body'])*/,
+        ]);
 
         return redirect()
             ->route('blog.admin.article.index');
