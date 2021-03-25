@@ -67,7 +67,8 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
     Route::resource('survey_user','\App\Http\Controllers\Blog\User\SurveyController')
         ->names('blog.user.surveys');
 
-
+    Route::resource('test_user','\App\Http\Controllers\Blog\User\TestController')
+        ->names('blog.user.tests');
 
 });
 

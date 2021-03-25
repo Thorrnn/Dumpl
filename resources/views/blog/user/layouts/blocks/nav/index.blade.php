@@ -1,90 +1,90 @@
 <div id="app">
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="container">
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url(App\Http\Middleware\LocaleMiddleware::getLocale() .'/')}} ">{{__('nav.navList.home')}}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url(App\Http\Middleware\LocaleMiddleware::getLocale() .'/articles')}} ">{{__('nav.navList.articles')}}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url(App\Http\Middleware\LocaleMiddleware::getLocale() .'/results')}} ">{{__('nav.navList.rate')}}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url(App\Http\Middleware\LocaleMiddleware::getLocale() .'/about')}} ">{{__('nav.navList.about')}}</a>
-                    </li>
-                </ul>
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    <li>
-                        <a class="text-small nav-link" href="<?= route('setlocale', ['lang' => 'en']) ?>">eng.</a>
 
-                    </li>
-                    <li>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 navbar-container bg-light">
+                <!-- Вертикальное меню -->
+                <nav class="navbar  navbar-expand-lg navbar-light bg-dark navbar-expand-sm">
+                    <!-- Контейнер (определяет ширину компонента Navbar) -->
+                    <div class="container">
+                        <!-- Бренд и кнопка «Гамбургер» -->
+                        <a class="navbar-brand" href="#">Content Analysis</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbar-example" aria-controls="navbar-example"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <!-- Основная часть меню -->
+                        <div class="collapse navbar-collapse ">
+                            <!-- Этот блок расположен слева -->
+                            <ul class="navbar-nav nav list-group text-center">
+                                <li class="nav-item  mx-2">
+                                    <a href="{{route('home')}}"><span class = "glyphicon glyphicon-home"></span>Главная</a>
+                                </li>
+                                <li class="nav-item mx-2">
+                                    <a href="{{route('welcome')}}"><span class = "glyphicon glyphicon-home"></span>Главная</a>
+                                </li>
+                                <li class="nav-item mx-2">
+                                    <a href="{{route('blog.user.surveys.index')}}">Тесты</a>
+                                </li>
 
-                        <a class="text-small nav-link" href="<?= route('setlocale', ['lang' => 'ru']) ?>">рус.</a>
-                    </li>
+                                @if (Route::has('login'))
+                                    @auth
 
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('nav.navList.login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('nav.navList.register') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                        @if(Auth::user()->isUser())
+                                            <li class="nav-item mx-2">
+                                                <a href="{{route('index')}}">Кабинет User</a>
+                                            </li>
+                                        @elseif(Auth::user()->isAdmin())
+                                            <li class="nav-item mx-2">
+                                                <a href="{{route('blog.admin.users.index')}}">Панель администратора</a>
+                                            </li>
+                                        @endif
+                            </ul>
+                        </div>
+                        <div class="flex-center collapse navbar-collapse">
+                            <!-- Этот блок расположен справа -->
+                            <a class="dropdown-item " href="{{ route('logout') }}"
+                               onclick="event.preventDefault()
+                                document.getElementById('logout-form').submit();">
+                                Выйти
                             </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method = "POST" style="display: none";>
+                                @csrf
+                            </form>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                <a class="dropdown-item" href="{{url(App\Http\Middleware\LocaleMiddleware::getLocale() .'/profile')}}">
-                                    {{ __('nav.navList.profile') }}
+                            <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Dropdown link
                                 </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item " href="{{ route('logout') }}"
+                                       onclick="event.preventDefault()
+                                document.getElementById('logout-form').submit();">
+                                        Выйти
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method = "POST" style="display: none";>
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                            </ul>
 
-                                @if(Auth::user()->role =='admin')
-                                    <a class="dropdown-item" href="{{url(App\Http\Middleware\LocaleMiddleware::getLocale() .'/users')}} ">{{ __('nav.navList.users')}}</a>
-                                    <a class="dropdown-item" href="{{url(App\Http\Middleware\LocaleMiddleware::getLocale() .'/adm/grades')}} ">{{ __('nav.navList.grades')}}</a>
-                                    <a class="dropdown-item" href="{{url(App\Http\Middleware\LocaleMiddleware::getLocale() .'/adm/articles')}} ">{{ __('nav.navList.articles')}}</a>
-                                @endif
-                                @if(Auth::user()->role == 'jury')
-                                    <a class="dropdown-item" href="{{url(App\Http\Middleware\LocaleMiddleware::getLocale() .'/grades')}}">{{ __('nav.navList.my_grades')}}</a>
-                                @endif
-                                @if(Auth::user()->role == 'competitor')
-                                    <a class="dropdown-item" href="{{url(App\Http\Middleware\LocaleMiddleware::getLocale() .'/profile/articles')}}">{{ __('nav.navList.my_articles')}}</a>
+
+                            @else<a href="{{ route('login') }}"style="text-decoration: none">Войти</a>
+                            @if(Route::has('register')) <a href="{{route('register')}}" style="text-decoration: none">Регистрация</a>@endif
+                            @endauth
                             @endif
-
-                            <!--<a class="dropdown-item" href="articles">
-                                    {{ __('nav.navList.articles') }}
-                                </a>-->
-
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
-                                    {{ __('nav.navList.logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-12 content-container" style="background-color: #ffe0b2">
+                <!-- Основной контент страницы  -->
+                ...
             </div>
         </div>
-    </nav>
+    </div>
+    <script src="/js/app.js"></script>
 </div>
