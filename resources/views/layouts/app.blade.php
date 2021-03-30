@@ -35,10 +35,10 @@
                             <a href="{{route('welcome')}}"><span class = "glyphicon glyphicon-home"></span>Главная</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="{{route('blog.user.surveys.index')}}">Тесты</a>
+                            <a href="{{route('blog.user.tests.index')}}">Тесты</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="{{route('blog.user.tests.index')}}">Опросы</a>
+                            <a href="{{route('blog.user.surveys.index')}}">Опросы</a>
                         </li>
 
                         @if (Route::has('login'))

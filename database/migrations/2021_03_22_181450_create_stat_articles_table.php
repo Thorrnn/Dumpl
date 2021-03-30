@@ -22,7 +22,7 @@ class CreateStatArticlesTable extends Migration
             $table->integer('ColemanLiauIndex');
             $table->integer('ARI');
             $table->integer('FleschReadingEase');
-            $table->bigInteger('article_id');
+            $table->unsignedBigInteger('article_id');
             $table->timestamps();
             $table->softDeletes();
 

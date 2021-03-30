@@ -18,6 +18,7 @@ class CreateAnswersSurveyQuestionTable extends Migration
                 $table->engine = 'InnoDB';
                 $table->bigIncrements('id');
                 $table->string('title');
+                $table->UnsignedBigInteger('survey_question_id');
                 $table->enum('type',['text', 'integer']);
                 $table->timestamps();
                 $table->softDeletes();

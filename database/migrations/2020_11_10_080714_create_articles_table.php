@@ -21,7 +21,7 @@ class CreateArticlesTable extends Migration
             $table->string('info');
             $table->text('annotation');
             $table->enum('status',['published', 'unpublished']);
-            $table->bigInteger('author_id')->unsigned();
+            $table->UnsignedBigInteger('author_id')->unsigned();
             $table->enum('fieldsArticles',['ecology', 'economy', 'medicine', 'physicalEducation' , 'pedagogy' , 'management' , 'art' , 'science']);
             $table->timestamps();
             $table->softDeletes();

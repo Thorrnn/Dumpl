@@ -17,10 +17,15 @@ class CreateSurveysTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('info');
+            $table->UnsignedBigInteger('article_id');
             $table->enum('status',['published', 'unpublished']);
             $table->timestamps();
             $table->softDeletes();
 
+            $table->foreign('article_id')
+                ->references('id')->on('articles')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
 
     }
