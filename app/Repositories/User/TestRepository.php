@@ -25,4 +25,13 @@ class TestRepository extends CoreRepository
             ->paginate($perpage);
         return $tests;
     }
+
+    public function getArticleById($article_id){
+        $article = $this->startConditions()
+            ->select('articles.id','articles.title', 'articles.body', 'articles.annotation')
+            ->where('articles.id','=',$article_id)
+            ->toBase();
+
+        return $article;
+    }
 }

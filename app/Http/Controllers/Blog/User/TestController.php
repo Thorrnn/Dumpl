@@ -18,14 +18,14 @@ class TestController
     {
         $perpage = 0;
         $countTests = MainRepository::getCountTests();
-        $paginator = $this->testRepository->getAccessTest($perpage);;
+        $paginator = $this->testRepository->getAccessTest($perpage);
         //MetaTag::set('title', 'Список опросов');
         return view('blog.user.test.index', compact('countTests','paginator'));
     }
 
-    public function create()
+    public function create($article_id)
     {
-
-        return view('blog.user.test.add');
+        $article = $this->testRepository->getArticleById($article_id);
+        return view('blog.user.test.add', compact('article'));
     }
 }

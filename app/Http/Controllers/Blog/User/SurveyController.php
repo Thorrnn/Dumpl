@@ -22,13 +22,12 @@ class SurveyController
         $perpage = 0;
         $countSurveys = MainRepository::getCountSurveys();
         $paginator = $this->surveyRepository->getAccessSurveys($perpage);;
-        //MetaTag::set('title', 'Список опросов');
         return view('blog.user.survey.index', compact('countSurveys','paginator'));
     }
 
-    public function create()
-    {
-
+    public function create($article_id)
+    {   $perpage=0;
+       // $article = $this->surveyRepository->getArticleById($article_id);
         return view('blog.user.survey.add');
     }
 }

@@ -44,4 +44,14 @@ class SurveyRepository extends CoreRepository
             ->count();
         return $count;
     }
+
+    public function getArticleById($article_id, $perpage){
+        $article = $this->startConditions()
+            ->select('articles.id','articles.title', 'articles.body', 'articles.annotation')
+            ->where('articles.id', $article_id)
+            ->toBase()
+            ->paginate($perpage);
+
+        return $article;
+    }
 }
