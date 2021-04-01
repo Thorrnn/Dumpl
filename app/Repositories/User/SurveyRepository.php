@@ -49,7 +49,7 @@ class SurveyRepository extends CoreRepository
         $article = $this->startConditions()
             ->select('articles.id','articles.title', 'articles.body', 'articles.annotation')
             ->where('articles.id', $article_id)
-            ->toBase()
+            //->toBase()
             ->paginate($perpage);
 
         return $article;

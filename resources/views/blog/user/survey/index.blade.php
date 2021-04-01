@@ -17,7 +17,7 @@
                                         <tr class="{{$class}}">
                                             <td>{{$survey->info}}</td>
                                             <td>
-                                                <a href="{{route('blog.user.surveys.create', $survey->id)}}" title="Пройти опрос">
+                                                <a href="{{route('blog.user.surveys.pass_poll', $survey->id)}}" title="Пройти опрос">
                                                     <i class="btx btn-xs"></i>
                                                     <button type="submit" class="btn btn-success btn-xs">Пройти</button>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;

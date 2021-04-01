@@ -14,11 +14,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
-
-                    <form action="{{ route('blog.admin.survey_questions.store', ['id'=>1] )}} " method="post" data-toggle="validator">
+                    @php $survey_id = $id @endphp
+                    <form action="{{ route('blog.admin.survey_questions.store', ['id'] )}} " method="post" data-toggle="validator">
                         @csrf
                         <div class="box-body">
-            @php $survey_id = $id @endphp
+
 
                             <div class="form-group has-feedback">
                                 <label for="title">Title</label>

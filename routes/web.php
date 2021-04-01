@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Blog\User\SurveyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,12 +64,14 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
-    Route::resource('survey_user','\App\Http\Controllers\Blog\User\SurveyController')
+    Route::resource('u_survey','\App\Http\Controllers\Blog\User\SurveyController')
         ->names('blog.user.surveys');
 
-    Route::resource('test_user','\App\Http\Controllers\Blog\User\TestController')
+    Route::resource('u_test','\App\Http\Controllers\Blog\User\TestController')
         ->names('blog.user.tests');
 
+    Route::get('pass_poll/{id}', '\App\Http\Controllers\Blog\User\SurveyController@pass_poll')->name('blog.user.surveys.pass_poll');
+    Route::get('/welcome', 'HomeController@index')->name('welcome');
 });
 
 
