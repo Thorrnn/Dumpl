@@ -19,9 +19,10 @@ class CreateStatArticlesTable extends Migration
             $table->integer('sentences');
             $table->integer('words');
             $table->integer('letter');
+            $table->integer('syllables');
             $table->integer('ColemanLiauIndex');
             $table->integer('ARI');
-            $table->integer('FleschReadingEase');
+            $table->integer('FleschReadingEaseIndex');
             $table->unsignedBigInteger('article_id');
             $table->timestamps();
             $table->softDeletes();

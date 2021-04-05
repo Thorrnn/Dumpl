@@ -13,7 +13,7 @@ class CreateQuestionSurveyAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('question_survey_answers', function (Blueprint $table) {
+        Schema::create('survey_question_answers', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->integer('answer');

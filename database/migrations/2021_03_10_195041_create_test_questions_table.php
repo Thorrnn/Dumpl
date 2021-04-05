@@ -20,9 +20,8 @@ class CreateTestQuestionsTable extends Migration
             $table->string('option_a');
             $table->string('option_b');
             $table->string('option_c');
-            $table->UnsignedBigInteger('test_id');
             $table->string('option_correct');
-
+            $table->UnsignedBigInteger('test_id');
 
             $table->timestamps();
             $table->softDeletes();
