@@ -39,7 +39,7 @@ class SurveyController
     {   $perpage=0;
         $survey= $this->surveyRepository->getId($id);
         //$item= $this->articleController->getId($survey->id);
-        dd($survey);
+        //dd($survey);
         return view('blog.user.survey.add', compact('survey'));
     }
 }
