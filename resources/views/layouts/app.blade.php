@@ -44,13 +44,13 @@
                         @if (Route::has('login'))
                             @auth
 
-                                @if(Auth::user()->isUser())
+                                @if((Auth::user()->role =='user'))
                                     <li class="nav-item mx-2">
                                         <a href="{{route('index')}}">Кабинет User</a>
                                     </li>
-                                @elseif(Auth::user()->isAdmin())
+                                @elseif(Auth::user()->role =='admin')
                                     <li class="nav-item mx-2">
-                                        <a href="{{route('blog.admin.users.index')}}">Панель администратора</a>
+                                        <a href="{{route('blog.admin.articles.index')}}">Панель администратора</a>
                                     </li>
                                 @endif
 

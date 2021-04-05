@@ -9,6 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class Survey extends Model
 {
     protected $fillable = [
-        'info', 'status'
+        'id', 'title', 'annotation', 'article_id', 'status'
     ];
 }

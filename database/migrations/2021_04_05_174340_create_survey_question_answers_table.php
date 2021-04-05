@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionSurveyAnswersTable extends Migration
+class CreateSurveyQuestionAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -29,7 +29,6 @@ class CreateQuestionSurveyAnswersTable extends Migration
                 ->onUpdate('cascade');
         });
 
-
     }
 
     /**
@@ -39,6 +38,6 @@ class CreateQuestionSurveyAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('question_survey_answers');
+        Schema::dropIfExists('survey_question_answers');
     }
 }

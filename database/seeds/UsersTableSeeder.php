@@ -24,7 +24,7 @@
                     'fieldActivity' => 'science',
                     'aboutMyself' => 'admin',
                     'age' => 23,
-                    'email' => 'admin.com',
+                    'email' => 'admin1@gmail.com',
                     'password' => bcrypt(12345678),
                 ],
                 [
@@ -38,23 +38,10 @@
                     'fieldActivity' => 'science',
                     'aboutMyself' => 'user',
                     'age' => 18,
-                    'email' => 'user.com',
+                    'email' => 'user1@gmail.com',
                     'password' => bcrypt(12345678),
                 ],
-                [
-                    'id' => 3,
-                    'login' => 'disabled',
-                    'name' => 'disabled',
-                    'surname' => 'disabled',
-                    'role' => 'disabled',
-                    'sex' => 'male',
-                    'education' => 'graduateSchool',
-                    'fieldActivity' => 'science',
-                    'aboutMyself' => 'disabled',
-                    'age' => 10,
-                    'email' => 'disabled.com',
-                    'password' => bcrypt(12345678),
-                ],
+
 
             ];
             DB::table('users')->insert($data);

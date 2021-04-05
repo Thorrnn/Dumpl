@@ -13,6 +13,7 @@ class User extends Model
     use Notifiable;
 
     protected $fillable = [
+        'id',
         'name',
         'surname',
         'login',
@@ -33,9 +34,6 @@ class User extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles()
-    {
-        return $this->belongsToMany('App\Models\Role', 'user_roles');
-    }
+
 
 }

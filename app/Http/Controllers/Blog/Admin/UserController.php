@@ -73,21 +73,12 @@ class UserController extends AdminBaseController
             return back()
                 ->withErrors(['msg'=>'Ошибка создания'])
                 ->withInput();
-        } else {
-            $role = UserRole::create([
-                'user_id'=>$user->id,
-                'role_id'=>(int)$request['role']
-            ]);
-            if (!$role){
-                return back()
-                    ->withErrors(['msg' =>'Ошибка создания роли пользователя'])
-                    ->withInput();
-            } else {
+        }
+        else {
                 redirect()
                     ->route('blog.admin.users.index')
                     ->with(['success'=>'Успешно сохранено']);
             }
-        }
     }
 
     /**
