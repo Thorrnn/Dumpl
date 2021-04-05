@@ -24,7 +24,7 @@ class CreateAnswersSurveyQuestionTable extends Migration
                 $table->softDeletes();
 
                 $table->foreign('survey_question_id')
-                    ->references('id')->on('surveys_questions')
+                    ->references('id')->on('survey_questions')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
 

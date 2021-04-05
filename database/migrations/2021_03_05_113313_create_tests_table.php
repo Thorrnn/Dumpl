@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSurveysTable extends Migration
+class CreateTestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateSurveysTable extends Migration
      */
     public function up()
     {
-        Schema::create('surveys', function (Blueprint $table) {
+        Schema::create('tests', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('annotation');
+            $table->text('annotation');
             $table->UnsignedBigInteger('article_id');
             $table->enum('status',['published', 'unpublished']);
             $table->timestamps();
@@ -29,6 +29,7 @@ class CreateSurveysTable extends Migration
                 ->onUpdate('cascade');
         });
 
+
     }
 
     /**
@@ -38,6 +39,6 @@ class CreateSurveysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('surveys');
+        Schema::dropIfExists('tests');
     }
 }
