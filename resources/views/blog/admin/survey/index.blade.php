@@ -31,7 +31,7 @@
                                         @endphp
                                         <tr class="{{$class}}">
                                             <td>{{$survey->id}}</td>
-                                            <td>{{$survey->info}}</td>
+                                            <td>{{$survey->title}}</td>
                                             <td>{{$survey->status}}</td>
                                             <td>
                                                 <a href="{{route('blog.admin.surveys.edit', $survey->id)}}" title="просмотреть опрос">

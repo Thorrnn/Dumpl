@@ -27,7 +27,7 @@ class AdminSurveyRequest extends FormRequest
     {
         $id = $_POST['id'];
         return [
-            'info' => 'required|min:5|max:100|string',
+            'title' => 'required|min:5|max:100|string',
 
         ];
     }
@@ -35,7 +35,7 @@ class AdminSurveyRequest extends FormRequest
     public function messages()
     {
         return [
-            'info.min' => 'Минимальная длина названия 5 символов',
+            'title.min' => 'Минимальная длина названия 5 символов',
         ];
     }
 }

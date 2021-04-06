@@ -15,7 +15,7 @@
                                         $class = '';
                                         @endphp
                                         <tr class="{{$class}}">
-                                            <td>{{$survey->info}}</td>
+                                            <td>{{$survey->title}}</td>
                                             <td>
                                                 <a href="{{route('blog.user.surveys.pass_poll', $survey->id)}}" title="Пройти опрос">
                                                     <i class="btx btn-xs"></i>

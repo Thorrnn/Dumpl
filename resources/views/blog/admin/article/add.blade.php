@@ -45,6 +45,30 @@
                                 <label for="body">{{__('article.navList.body')}}</label>
                                 <textarea name="body" id="editorBodyArticles" cols="80" rows="10">{{ old('body') }}</textarea>
                             </div>
+                            <div class="form-group row">
+                                <label for="education" class="col-md-4 col-form-label text-md-right">Education</label>
+                                <div class="col-md-6">
+                                    <input list="fieldsArticles" class="form-control @error('fieldsArticles') is-invalid @enderror"
+                                           name="fieldsArticles" value="{{ old('fieldsArticles') }}" required autocomplete="fieldsArticles" autofocus>
+                                    <datalist id="fieldsArticles">
+                                        <option value="ecology">Екологія
+                                        <option value="economy">Економіка
+                                        <option value="medicine">Медицина
+                                        <option value="physicalEducation">Фізичне виховання
+                                        <option value="pedagogy">Педагогіка
+                                        <option value="management">Менеджмент
+                                        <option value="art">Мистецтво
+                                        <option value="science">Наукові праці
+                                    </datalist>
+                                    @error('sex')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+
                             <input type="hidden" id="_token" value="{{ csrf_token() }}">
 
                         </div>

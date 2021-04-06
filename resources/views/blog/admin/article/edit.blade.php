@@ -54,22 +54,28 @@
                                     <th>Слов</th>
                                     <th>Предложений</th>
                                     <th>Індекс Колман - Ліау</th>
-                                    <th>Читабельність за Флеша – Кінкейдом</th>
                                     <th>Автоматичний індекс легкості читання</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @forelse($stat as $statistic)
                                     @php
                                         $class = '';
                                     @endphp
-                                    <tr class="{{$class}}">
-                                        <td>{{stat->letter}}</td>
-                                        <td>{{stat->words}}</td>
-                                        <td>{{stat->sentences}}</td>
-                                        <td>{{stat->ColemanLiauIndex}}</td>
-                                        <td>{{stat->FleschReadingEase}}</td>
-                                        <td>{{stat->ARI}}</td>
+                                    <tr>
+                                        <td>{{$statistic->letter}}</td>
+                                        <td>{{$statistic->words}}</td>
+                                        <td>{{$statistic->sentences}}</td>
+                                        <td>{{$statistic->ColemanLiauIndex}}</td>
+                                        <td>{{$statistic->ARI}}</td>
                                     </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="3" class="text-center"><h2>Статистика недоступна</h2></td>
+                                    </tr>
+                                @endforelse
+
+
                                 </tbody>
                             </table>
                         </div>

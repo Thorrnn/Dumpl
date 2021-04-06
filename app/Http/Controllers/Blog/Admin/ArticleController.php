@@ -66,7 +66,7 @@ class ArticleController extends AdminBaseController
             'annotation' => $request['annotation'],
             'status' => $request['status'],
             'author_id' => Auth::user()->id,
-            'fieldsArticles' => 'medicine',
+            'fieldsArticles' => $request['fieldsArticles'],
         ]);
 
         if (!$article){
@@ -80,16 +80,11 @@ class ArticleController extends AdminBaseController
                 'words' => $this->articleRepository->getCountWord($request['body']),
                 'letter' => $this->articleRepository->getCountLeter($request['body']),
                 'ColemanLiauIndex' => $this->articleRepository->getColemanLiauIndex($request['body']),
-                'ARI' => $this->articleRepository->getARI($request['body']),
-                'FleschReadingEase' => 2/*$this->articleRepository->getFleschReadingEase($request['body'])*/,
-                'article_id' => $article.id,
+                'ARI' =>$this->articleRepository->getARI($request['body']),
+                'article_id' => $article->id,
             ]);
-
-
-
-
                 redirect()
-                    ->route('blog.admin.article.index')
+                    ->route('blog.admin.articles.index')
                     ->with(['success'=>'Статья создана']);
             }
         }
@@ -119,7 +114,9 @@ class ArticleController extends AdminBaseController
         if (empty($item)){
             abort(404);
         } else {
-            $stat= $this->stat_articleRepository->getId($id);
+            $stat=$this->articleRepository->getStatArticle($id);
+
+
         }
 
         MetaTag::set('title', "Редактирования статьи № {$item->id}");

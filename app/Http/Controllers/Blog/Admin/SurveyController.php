@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Blog\Admin;
 
 use App\Http\Requests\AdminSurveyRequest;
 use App\Models\Admin\Survey;
+use App\Repositories\Admin\ArticleRepository;
 use App\Repositories\Admin\SurveyRepository;
 use App\Repositories\Admin\MainRepository;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,7 @@ class SurveyController
     public function __construct()
     {
         $this->surveyRepository = app(SurveyRepository::class);
+        $this->articleRepository = app(ArticleRepository::class);
     }
 
     /**
@@ -30,7 +32,7 @@ class SurveyController
     {
         $perpage = 0;
         $countSurveys = MainRepository::getCountSurveys();
-        $paginator = $this->surveyRepository->getAllSurveys($perpage);;
+        $paginator = $this->surveyRepository->getAllSurveys($perpage);
         MetaTag::set('title', 'Список опросов');
         return view('blog.admin.survey.index', compact('countSurveys','paginator'));
     }
@@ -42,8 +44,10 @@ class SurveyController
      */
     public function create()
     {
+        $perpage = 0;
+        $articles = $this->articleRepository->getAllArticles($perpage);
         MetaTag::set('title', 'Создание опроса');
-        return view('blog.admin.survey.add');
+        return view('blog.admin.survey.add', compact('articles'));
     }
 
     /**
@@ -55,7 +59,9 @@ class SurveyController
     public function store(AdminSurveyRequest $request)
     {
         $survey = Survey::create([
-            'info' => $request['info'],
+            'title' => $request['title'],
+            'annotation' => $request['annotation'],
+            'article_id' => $request['article_id'],
             'status' => $request['status']
         ]);
 

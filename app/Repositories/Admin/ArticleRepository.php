@@ -6,6 +6,7 @@ namespace App\Repositories\Admin;
 
 use App\Models\Admin\Article as Model;
 use App\Repositories\CoreRepository;
+use Illuminate\Support\Facades\DB;
 
 class ArticleRepository extends CoreRepository
 {
@@ -73,6 +74,7 @@ class ArticleRepository extends CoreRepository
                 $count=$count+1;
             }
         }
+        if ($count == 0) $count=1;
         return $count;
     }
 
@@ -89,12 +91,12 @@ class ArticleRepository extends CoreRepository
 
         return $index;
     }
-    public function getFleschReadingEase($text){
-        $index = 206.835 - (1.015 * ($this->getCountWord($text) / $this->getCountSentence($text)))
-            - (84.6 * ($this->getCountSyllables($text)/$this->getCountWord($text)));
 
-        return $index;
+    public function getStatArticle($article_id){
+        $articles = DB::select('select * from stat_articles where article_id = :article_id',['article_id'=>$article_id] );
+        return $articles;
     }
+
 
 
 
