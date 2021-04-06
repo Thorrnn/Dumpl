@@ -4,10 +4,20 @@
     <section class="content">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                <p>{{$survey->info}}</p>
-                    <input type="text" class="form-control" name="title" id="title" value="@if(old('title')) {{old('title')}} @else {{$item->title ?? ""}} @endif" required>
-                </div>
+                @forelse($article as $ar)
+                    @php
+                        $class = '';
+                    @endphp
+                    <div class="col-12">
+                        <h2 class="text-center">{{$ar->title}}</h2>
+                        <p class="text-justify">{!!$ar->body!!}</p>
+                    </div>
+                @empty
+                    <tr>
+                        <td colspan="3" class="text-center"><h2>Помилка завантаження статті</h2></td>
+                    </tr>
+                @endforelse
+
             </div>
         </div>
     </section>

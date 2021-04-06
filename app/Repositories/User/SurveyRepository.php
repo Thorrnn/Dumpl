@@ -19,7 +19,7 @@ class SurveyRepository extends CoreRepository
 
     public function getAccessSurveys($perpage){
         $surveys = $this->startConditions()
-            ->select('surveys.id','surveys.info')
+            ->select('surveys.id','surveys.title', 'surveys.annotation')
             ->orderBy('surveys.id')
             //->toBase()
             ->paginate($perpage);

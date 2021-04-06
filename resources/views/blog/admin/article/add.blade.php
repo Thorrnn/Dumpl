@@ -18,36 +18,36 @@
                         @csrf
                         <div class="box-body">
                             <div class="form-group has-feedback">
-                                <label for="name">{{__('article.navList.title')}}</label>
+                                <label for="name">Назва</label>
                                 <input type="text" class="form-control" name="title" id="title" value="@if(old('title')) {{old('title')}} @else @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
 
                             <div class="form-group has-feedback">
-                                <label for="address">{{__('article.navList.status')}}</label>
+                                <label for="address">Статус</label>
                                 <select name="status" id="status" class="form-control">
-                                    <option value="published">Опубликован</option>
-                                    <option value="unpublished" selected>Неопубликован</option>
+                                        <option value="published">Опублікован</option>
+                                    <option value="unpublished" selected>Неопублікована</option>
                                 </select>
                             </div>
 
                             <div class="form-group has-feedback">
-                                <label for="name">{{__('article.navList.annotation')}}</label>
+                                <label for="name">Анотація</label>
                                 <input type="text" class="form-control" name="annotation" id="annotation" value="@if(old('annotation')) {{old('annotation')}} @else @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
 
                             <div class="form-group has-feedback">
-                                <label for="info">{{__('article.navList.info')}}</label>
+                                <label for="info">Опис</label>
                                 <textarea name="info" id="editorInfoArticles" cols="80" rows="10">{{ old('info') }}</textarea>
                             </div>
                             <div class="form-group has-feedback">
-                                <label for="body">{{__('article.navList.body')}}</label>
+                                <label for="body">Тіло</label>
                                 <textarea name="body" id="editorBodyArticles" cols="80" rows="10">{{ old('body') }}</textarea>
                             </div>
-                            <div class="form-group row">
-                                <label for="education" class="col-md-4 col-form-label text-md-right">Education</label>
-                                <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <label for="education">Сфера діяльності</label>
+
                                     <input list="fieldsArticles" class="form-control @error('fieldsArticles') is-invalid @enderror"
                                            name="fieldsArticles" value="{{ old('fieldsArticles') }}" required autocomplete="fieldsArticles" autofocus>
                                     <datalist id="fieldsArticles">
@@ -65,7 +65,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                </div>
+
                             </div>
 
 
@@ -74,7 +74,7 @@
                         </div>
                         <div class="box-footer">
                             <input type="hidden" name="id" value="">
-                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                            <button type="submit" class="btn btn-primary">Створити</button>
 
                         </div>
 

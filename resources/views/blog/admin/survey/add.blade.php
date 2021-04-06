@@ -18,31 +18,29 @@
                         @csrf
                         <div class="box-body">
                             <div class="form-group has-feedback">
-                                <label for="title">Title</label>
+                                <label for="title">Назва</label>
                                 <input type="text" class="form-control" name="title" id="title" value="@if(old('title')) {{old('title')}} @else @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
                             <div class="form-group has-feedback">
-                                <label for="address">Status</label>
+                                <label for="address">Статус</label>
                                 <select name="status" id="status" class="form-control">
-                                    <option value="published">published</option>
-                                    <option value="unpublished" selected>unpublished</option>
+                                    <option value="published">Опубліковано</option>
+                                    <option value="unpublished" selected>Неопубліковано</option>
                                 </select>
                             </div>
-                            <div class="form-group row">
-                                <label for="annotation" class="col-md-4 col-form-label text-md-right">Annotation</label>
-                                <div class="col-md-6">
-                                    <textarea name="annotation" type="text" class="form-control @error('annotation') is-invalid @enderror"  placeholder="Описание опроса">{{old('annotation')}}</textarea>
+                            <div class="form-group has-feedback">
+                                <label for="annotation">Опис</label>
+                                    <textarea name="annotation" type="text" class="form-control @error('annotation') is-invalid @enderror"  placeholder="Опис опитування">{{old('annotation')}}</textarea>
 
                                     @error('annotation')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                </div>
                             </div>
                             <div class="form-group has-feedback">
-                                <label for="article_id">Article_id</label>
+                                <label for="article_id">Стаття</label>
                                 <select name="article_id" id="article_id" class="form-control">
                                 @forelse($articles as $article)
                                         @php
@@ -50,7 +48,7 @@
                                         @endphp
                                     <option value="{{$article->id}}">{{$article->title}}</option>
                                 @empty
-                                        <option value="0">Статей нет</option>
+                                        <option value="0">Статей немає</option>
                                 @endforelse
                                 </select>
                             </div>
@@ -59,7 +57,7 @@
                         </div>
                         <div class="box-footer">
                             <input type="hidden" name="id" value="">
-                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                            <button type="submit" class="btn btn-primary">Створити</button>
 
                         </div>
 

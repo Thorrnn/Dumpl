@@ -5,14 +5,25 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{__('register.registerList.register')}}</div>
+                <div class="card-header">Реєстрація</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+                            <label for="login" class="col-md-4 col-form-label text-md-right">Логін</label>
+                            <div class="col-md-6">
+                                <input id="login" type="text" class="form-control @error('login') is-invalid @enderror" name="login" value="{{ old('login') }}" required autocomplete="login" autofocus>
+
+                                @error('login')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Ім'я</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -25,19 +36,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="login" class="col-md-4 col-form-label text-md-right">Login</label>
-                            <div class="col-md-6">
-                                <input id="login" type="text" class="form-control @error('login') is-invalid @enderror" name="login" value="{{ old('login') }}" required autocomplete="login" autofocus>
-
-                                @error('login')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="surname" class="col-md-4 col-form-label text-md-right">Surname</label>
+                            <label for="surname" class="col-md-4 col-form-label text-md-right">Прізвище</label>
 
                             <div class="col-md-6">
                                 <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
@@ -50,7 +49,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="sex" class="col-md-4 col-form-label text-md-right">Sex</label>
+                            <label for="sex" class="col-md-4 col-form-label text-md-right">Стать</label>
                             <div class="col-md-6">
                                 <input list="sex" class="form-control @error('sex') is-invalid @enderror"
                                        name="sex" value="{{ old('sex') }}" required autocomplete="sex" autofocus>
@@ -67,7 +66,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="education" class="col-md-4 col-form-label text-md-right">Education</label>
+                            <label for="education" class="col-md-4 col-form-label text-md-right">Рівень освіти</label>
                             <div class="col-md-6">
                                 <input list="education" class="form-control @error('education') is-invalid @enderror"
                                        name="education" value="{{ old('education') }}" required autocomplete="education" autofocus>
@@ -91,7 +90,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="fieldActivity" class="col-md-4 col-form-label text-md-right">fieldActivity</label>
+                            <label for="fieldActivity" class="col-md-4 col-form-label text-md-right">Сфера діяльності</label>
                             <div class="col-md-6">
                                 <input list="fieldActivity" class="form-control @error('fieldActivity') is-invalid @enderror"
                                        name="fieldActivity" value="{{ old('fieldActivity') }}" required autocomplete="fieldActivity" autofocus>
@@ -114,7 +113,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="age" class="col-md-4 col-form-label text-md-right">Age</label>
+                            <label for="age" class="col-md-4 col-form-label text-md-right">Вік</label>
 
                             <div class="col-md-6">
                                 <input id="age" type="text" class="form-control @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autocomplete="age" autofocus>
@@ -127,7 +126,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">email</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -141,7 +140,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Пароль</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -155,16 +154,16 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Підтвердження паролю</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="aboutMyself" class="col-md-4 col-form-label text-md-right">aboutMyself</label>
+                            <label for="aboutMyself" class="col-md-4 col-form-label text-md-right">Інформація про себе</label>
                             <div class="col-md-6">
-                                <textarea name="aboutMyself" type="text" class="form-control @error('aboutMyself') is-invalid @enderror"  placeholder="Описание альбома">{{old('aboutMyself')}}</textarea>
+                                <textarea name="aboutMyself" type="text" class="form-control @error('aboutMyself') is-invalid @enderror"  placeholder="Опишіть себе">{{old('aboutMyself')}}</textarea>
 
                                 @error('aboutMyself')
                                 <span class="invalid-feedback" role="alert">
@@ -179,7 +178,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                   Reg
+                                  Зареєструватися
                                 </button>
                             </div>
                         </div>

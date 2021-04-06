@@ -3,45 +3,31 @@
 @section('content')
     <section class="content">
         <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="box">
-                    <div class="box-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
-                                <tbody>
-                                    @forelse($paginator as $survey)
-                                        @php
-                                        $class = '';
-                                        @endphp
-                                        <tr class="{{$class}}">
-                                            <td>{{$survey->title}}</td>
-                                            <td>
-                                                <a href="{{route('blog.user.surveys.pass_poll', $survey->id)}}" title="Пройти опрос">
-                                                    <i class="btx btn-xs"></i>
-                                                    <button type="submit" class="btn btn-success btn-xs">Пройти</button>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="3" class="text-center"><h2>Доступных опросов нет</h2></td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                        </div>
-
-
+            <div class="row">
+                    @forelse($paginator as $survey)
+                        @php
+                            $class = '';
+                        @endphp
+                    <div class="{{$class}}, col-12 mb-3">
+                        <h2 class="text-center">{{$survey->title}}</h2>
+                        <p>{{$survey->annotation}}</p>
+                        <a class="align-content-end" href="{{route('blog.user.surveys.pass_poll', $survey->id)}}" title="Пройти опитування">
+                            <i class="btx btn-xs"></i>
+                            <button type="submit" class="btn btn-success btn-xs">Пройти опитування</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </a>
                     </div>
 
+                    @empty
+                        <div>
+                            <h2>Доступных опросов нет</h2>
+                        </div>
+                        @endforelse
                 </div>
+
 
             </div>
 
-        </div>
-        </div>
     </section>
-    @endsection
+@endsection
 

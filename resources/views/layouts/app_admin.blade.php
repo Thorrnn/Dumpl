@@ -116,48 +116,48 @@
                 <li><a href="{{route('welcome')}}"><i class="fa fa-home"></i> <span>На сайт</span></a></li>
 
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-navicon"></i> <span>Статьи</span>
+                    <a href="#"><i class="fa fa-navicon"></i> <span>Статті</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{route('blog.admin.articles.index')}}">Список статей</a></li>
-                        <li><a href="{{route('blog.admin.articles.create')}}">Добавить статью</a></li>
+                        <li><a href="{{route('blog.admin.articles.create')}}">Додати статтю</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-cubes"></i> <span>Опросы</span>
+                    <a href="#"><i class="fa fa-cubes"></i> <span>Опитування</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('blog.admin.surveys.index')}}">Список опросов</a></li>
-                        <li><a href="{{route('blog.admin.surveys.create')}}">Добавить опрос</a></li>
+                        <li><a href="{{route('blog.admin.surveys.index')}}">Список опитувань</a></li>
+                        <li><a href="{{route('blog.admin.surveys.create')}}">Добавить опитування</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-cubes"></i> <span>Тесты</span>
+                    <a href="#"><i class="fa fa-cubes"></i> <span>Тести</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('blog.admin.tests.index')}}">Список тестов</a></li>
-                        <li><a href="{{route('blog.admin.tests.create')}}">Создать тест</a></li>
+                        <li><a href="{{route('blog.admin.tests.index')}}">Список тестів</a></li>
+                        <li><a href="{{route('blog.admin.tests.create')}}">Створити тест</a></li>
                     </ul>
                 </li>
-                <li><a href=""><i class="fa fa-database"></i> <span>Анализ</span></a></li>
+                <li><a href=""><i class="fa fa-database"></i> <span>Аналіз</span></a></li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-users"></i> <span>Пользователи</span>
+                    <a href="#"><i class="fa fa-users"></i> <span>Користувачі</span>
                         <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('blog.admin.users.index')}}">Список пользователей</a></li>
-                        <li><a href="{{route('blog.admin.users.create')}}">Добавить пользователя</a></li>
+                        <li><a href="{{route('blog.admin.users.index')}}">Список користувачів</a></li>
+                        <li><a href="{{route('blog.admin.users.create')}}">Додати користувача</a></li>
                     </ul>
                 </li>
             </ul>

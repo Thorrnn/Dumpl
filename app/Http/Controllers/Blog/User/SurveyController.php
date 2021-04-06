@@ -25,6 +25,7 @@ class SurveyController
         $perpage = 0;
         $countSurveys = MainRepository::getCountSurveys();
         $paginator = $this->surveyRepository->getAccessSurveys($perpage);
+
         return view('blog.user.survey.index', compact('countSurveys','paginator'));
     }
 
@@ -38,8 +39,8 @@ class SurveyController
     public function pass_poll($id)
     {   $perpage=0;
         $survey= $this->surveyRepository->getId($id);
-        //$item= $this->articleController->getId($survey->id);
+        $article= $this->articleController->getArticle($survey->article_id);
         //dd($survey);
-        return view('blog.user.survey.add', compact('survey'));
+        return view('blog.user.survey.add', compact('survey','article'));
     }
 }

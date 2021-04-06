@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('welcome')}}"> ContentAnalysis </a>
+                <a class="navbar-brand" href="{{ route('welcome')}}" style="text-shadow: 1px 1px 0px #000;  font-size:30px">Content Analysis</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -32,13 +32,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item mx-2">
-                            <a href="{{route('welcome')}}"><span class = "glyphicon glyphicon-home"></span>Главная</a>
+                            <a href="{{route('welcome')}} "style="font-size:20px; color:black">Головна</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="{{route('blog.user.tests.index')}}">Тесты</a>
+                            <a href="{{route('blog.user.tests.index')}}" style="font-size:20px; color:black">Тести</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="{{route('blog.user.surveys.index')}}">Опросы</a>
+                            <a href="{{route('blog.user.surveys.index')}}"style="font-size:20px; color:black">Опитування</a>
                         </li>
 
                         @if (Route::has('login'))
@@ -46,11 +46,11 @@
 
                                 @if((Auth::user()->role =='user'))
                                     <li class="nav-item mx-2">
-                                        <a href="{{route('index')}}">Кабинет User</a>
+                                        <a href="{{route('index')}}" style="font-size:20px; color:black">Кабінет User</a>
                                     </li>
                                 @elseif(Auth::user()->role =='admin')
                                     <li class="nav-item mx-2">
-                                        <a href="{{route('blog.admin.articles.index')}}">Панель администратора</a>
+                                        <a href="{{route('blog.admin.articles.index')}}" style="font-size:20px; color:black">Панель адміністратора</a>
                                     </li>
                                 @endif
 
@@ -63,7 +63,7 @@
 
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:20px">
                                     {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -77,8 +77,8 @@
                                     </form>
                                 </div>
                             </li>
-                        @else<a href="{{ route('login') }}"style="text-decoration: none">Войти</a>
-                        @if(Route::has('register')) <a href="{{route('register')}}" style="text-decoration: none">Регистрация</a>@endif
+                        @else<a href="{{ route('login') }}"style="text-decoration: none"><Увійти></Увійти></a>
+                        @if(Route::has('register')) <a href="{{route('register')}}" style="text-decoration: none">Реєстрація</a>@endif
                         @endauth
                         @endif
                     </ul>

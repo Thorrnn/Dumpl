@@ -22,7 +22,7 @@ class SurveyRepository extends CoreRepository
 
     public function getAllSurveys($perpage){
         $surveys = $this->startConditions()
-            ->select('surveys.id','surveys.info', 'surveys.status')
+            ->select('surveys.id','surveys.title', 'surveys.status')
             ->orderBy('surveys.id')
               //->toBase()
             ->paginate($perpage);
