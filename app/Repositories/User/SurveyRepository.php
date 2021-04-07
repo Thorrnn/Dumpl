@@ -26,17 +26,7 @@ class SurveyRepository extends CoreRepository
         return $surveys;
     }
 
-    public function getQuestionSurvey($survey_id, $perpage){
-        $question= $this->startConditions()
-            ->join('survey_questions','survey_id','=','surveys.id')
-            ->select('survey_questions.id', 'survey_questions.title')
-            ->where('surveys.id' ,$survey_id)
-            ->orderby('survey_questions.id')
-            ->toBase()
-            ->paginate($perpage);
-        return $question;
 
-    }
 
     public function getQuestionCount($survey_id){
         $count = \DB::table('survey_questions')

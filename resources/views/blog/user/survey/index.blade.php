@@ -10,7 +10,7 @@
                         @endphp
                     <div class="{{$class}}, col-12 mb-3">
                         <h2 class="text-center">{{$survey->title}}</h2>
-                        <p>{{$survey->annotation}}</p>
+                        <p>{!! $survey->annotation!!}</p>
                         <a class="align-content-end" href="{{route('blog.user.surveys.pass_poll', $survey->id)}}" title="Пройти опитування">
                             <i class="btx btn-xs"></i>
                             <button type="submit" class="btn btn-success btn-xs">Пройти опитування</button>
