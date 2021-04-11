@@ -33,7 +33,7 @@ class SurveyController
         $perpage = 0;
         $countSurveys = MainRepository::getCountSurveys();
         $paginator = $this->surveyRepository->getAllSurveys($perpage);
-        MetaTag::set('title', 'Список опросов');
+        MetaTag::set('title', 'Список опитувань');
         return view('blog.admin.survey.index', compact('countSurveys','paginator'));
     }
 
@@ -46,7 +46,7 @@ class SurveyController
     {
         $perpage = 0;
         $articles = $this->articleRepository->getAllArticles($perpage);
-        MetaTag::set('title', 'Создание опроса');
+        MetaTag::set('title', 'Створення опитування');
         return view('blog.admin.survey.add', compact('articles'));
     }
 
@@ -67,12 +67,12 @@ class SurveyController
 
         if (!$survey){
             return back()
-                ->withErrors(['msg'=>'Ошибка создания опроса'])
+                ->withErrors(['msg'=>'Помилка створення опитування'])
                 ->withInput();
         } else {
-            redirect()
+            return redirect()
                 ->route('blog.admin.surveys.index')
-                ->with(['success'=>'Опрос создана']);
+                ->with(['success' => "Опитування створено"]);
         }
     }
 
@@ -98,6 +98,8 @@ class SurveyController
     {
         $perpage = 10;
         $item= $this->surveyRepository->getId($id);
+        $perpage_n = 0;
+        $articles = $this->articleRepository->getAllArticles($perpage_n);
         if (empty($item)){
             abort(404);
         }
@@ -106,8 +108,8 @@ class SurveyController
         $questions=$this->surveyRepository->getQuestionSurvey($id, $perpage);
         $count=$this->surveyRepository->getQuestionCount($id);
         //dd($questions);
-        MetaTag::set('title', "Редактирования опроса № {$item->id}");
-        return view('blog.admin.survey.edit', compact('item','count','questions'));
+        MetaTag::set('title', "Редагування опитування № {$item->id}");
+        return view('blog.admin.survey.edit', compact('item','count','questions','articles'));
     }
 
     /**
@@ -123,7 +125,8 @@ class SurveyController
         $survey->update($request->all());
 
         return redirect()
-            ->route('blog.admin.survey.index');
+            ->route('blog.admin.surveys.index')
+            ->with(['success' => "Опитування оновлено"]);
     }
 
     /**
@@ -137,10 +140,10 @@ class SurveyController
         $result = $survey->forceDelete();
         if($result){
             return redirect()
-                ->route('blog.admin.survey.index')
-                ->with(['success' => "Опрос" .ucfirst($survey->info) . "удалена"]);
+                ->route('blog.admin.surveys.index')
+                ->with(['success' => "Опитування" .ucfirst($survey->info) . "видалено"]);
         } else {
-            return back() -> withErrors(['msg' => 'Ошибка удаления']);
+            return back() -> withErrors(['msg' => 'Помилка видалення']);
         }
     }
 }

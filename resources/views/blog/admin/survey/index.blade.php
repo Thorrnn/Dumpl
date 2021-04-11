@@ -4,9 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Список опросов@endslot;
-            @slot('parent')Главная@endslot;
-            @slot('active')Список опросов@endslot;
+            @slot('title')Список опитувань@endslot;
+            @slot('parent')Головна@endslot;
+            @slot('active')Список опитувань@endslot;
         @endcomponent
     </section>
 
@@ -20,7 +20,7 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Название</th>
+                                    <th>Назва</th>
                                     <th>Статус</th>
                                 </tr>
                                 </thead>
@@ -34,9 +34,9 @@
                                             <td>{{$survey->title}}</td>
                                             <td>{{$survey->status}}</td>
                                             <td>
-                                                <a href="{{route('blog.admin.surveys.edit', $survey->id)}}" title="просмотреть опрос">
+                                                <a href="{{route('blog.admin.surveys.edit', $survey->id)}}" title="Переглянути опитування">
                                                     <i class="btx btn-xs"></i>
-                                                    <button type="submit" class="btn btn-success btn-xs">Просмотреть</button>
+                                                    <button type="submit" class="btn btn-success btn-xs">Переглянути</button>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                                 </a>
                                                 <a class="btn btn-xs">
@@ -44,14 +44,14 @@
                                                     style="float: none">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger btn-xs">Удалить</button>
+                                                    <button type="submit" class="btn btn-danger btn-xs">Видалити</button>
                                                 </form>
                                                 </a>
                                             </td>
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="3" class="text-center"><h2>Опросов нет</h2></td>
+                                            <td colspan="3" class="text-center"><h2>Опитувань немає нет</h2></td>
                                         </tr>
                                     @endforelse
                                 </tbody>

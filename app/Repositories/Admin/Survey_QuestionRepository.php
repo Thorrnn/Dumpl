@@ -4,7 +4,7 @@
 namespace App\Repositories\Admin;
 
 
-use App\Models\Admin\Survey as Model;
+use App\Models\Admin\Survey_Questions as Model;
 use App\Repositories\CoreRepository;
 
 class Survey_QuestionRepository extends CoreRepository

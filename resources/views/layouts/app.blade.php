@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/survey_wrapper.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -77,7 +78,7 @@
                                     </form>
                                 </div>
                             </li>
-                        @else<a href="{{ route('login') }}"style="text-decoration: none"><Увійти></Увійти></a>
+                        @else<a href="{{ route('login') }}"style="text-decoration: none">Увійти</a>
                         @if(Route::has('register')) <a href="{{route('register')}}" style="text-decoration: none">Реєстрація</a>@endif
                         @endauth
                         @endif

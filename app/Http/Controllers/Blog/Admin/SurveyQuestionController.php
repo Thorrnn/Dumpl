@@ -47,7 +47,7 @@ class SurveyQuestionController
         return view('blog.admin.survey_question.add');
     }
 
-    public function add_question($id){
+    public function add_question_survey($id){
         MetaTag::set('title', 'Создание вопроса опроса');
         return view('blog.admin.survey_question.add', compact('id'));
     }

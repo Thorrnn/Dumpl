@@ -83,9 +83,9 @@ class ArticleController extends AdminBaseController
                 'ARI' =>$this->articleRepository->getARI($request['body']),
                 'article_id' => $article->id,
             ]);
-                redirect()
-                    ->route('blog.admin.articles.index')
-                    ->with(['success'=>'Статья создана']);
+            return redirect()
+                ->route('blog.admin.articles.index')
+                ->with(['success' => "Статья создана"]);
             }
         }
 
@@ -98,7 +98,7 @@ class ArticleController extends AdminBaseController
     public function show($id)
     {
         return redirect()
-            ->route('blog.admin.article.index');
+            ->route('blog.admin.articles.index');
     }
 
     /**
@@ -146,7 +146,8 @@ class ArticleController extends AdminBaseController
         ]);
 
         return redirect()
-            ->route('blog.admin.article.index');
+            ->route('blog.admin.articles.index')
+            ->with(['success' => "Статья обновлена"]);
     }
 
     /**
@@ -160,7 +161,7 @@ class ArticleController extends AdminBaseController
         $result = $article->forceDelete();
         if($result){
             return redirect()
-                ->route('blog.admin.article.index')
+                ->route('blog.admin.articles.index')
                 ->with(['success' => "Статья" .ucfirst($article->title) . "удалена"]);
         } else {
             return back() -> withErrors(['msg' => 'Ошибка удаления']);

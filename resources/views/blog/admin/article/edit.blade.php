@@ -84,7 +84,7 @@
                         <div class="box-footer">
                             <input type="hidden" name="id" value="{{$item->id}}">
                             <button type="submit" class="btn btn-primary">Сохранить</button>
-
+                            <a class="button btn-default btn" href="{{route('blog.admin.articles.index')}}" style="font-size:16px; color:black">Назад</a>
                         </div>
 
                     </form>

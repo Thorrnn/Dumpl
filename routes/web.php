@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Blog\User\SurveyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,10 +18,7 @@ use App\Http\Controllers\Blog\User\SurveyController;
 
 
 
-Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], function(){
-   Route::get('/', function () {
-        return view('welcome');
-    });
+
 
 
 
@@ -57,7 +53,7 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
         ->names('blog.admin.tests');
     Route::resource('survey_question','\App\Http\Controllers\Blog\Admin\SurveyQuestionController')
         ->names('blog.admin.survey_questions');
-    Route::get('survey_question/create/{id}', '\App\Http\Controllers\Blog\Admin\SurveyQuestionController@add_question')->name('add_question');
+    Route::get('survey_question/create/{id}', '\App\Http\Controllers\Blog\Admin\SurveyQuestionController@add_question_survey')->name('add_question_survey');
     Route::resource('test_question','\App\Http\Controllers\Blog\Admin\TestQuestionController')
         ->names('blog.admin.test_questions');
     Route::get('test_question/create/{id}', '\App\Http\Controllers\Blog\Admin\TestQuestionController@add_question')->name('add_question');
@@ -72,38 +68,8 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], fu
 
     Route::get('pass_poll/{id}', '\App\Http\Controllers\Blog\User\SurveyController@pass_poll')->name('blog.user.surveys.pass_poll');
     Route::get('/welcome', 'HomeController@index')->name('welcome');
-});
 
 
 
-
-//Переключение языков
-Route::get('setlocale/{lang}', function ($lang) {
-
-    $referer = Redirect::back()->getTargetUrl();; //URL предыдущей страницы
-    $parse_url = parse_url($referer, PHP_URL_PATH); //URI предыдущей страницы
-
-    //разбиваем на массив по разделителю
-    $segments = explode('/', $parse_url);
-
-    //Если URL (где нажали на переключение языка) содержал корректную метку языка
-    if (in_array($segments[1], App\Http\Middleware\LocaleMiddleware::$languages)) {
-
-        unset($segments[1]); //удаляем метку
-    }
-
-    //Добавляем метку языка в URL (если выбран не язык по-умолчанию)
-    array_splice($segments, 1, 0, $lang);
-
-    //формируем полный URL
-    $url = Request::root().implode("/", $segments);
-
-    //если были еще GET-параметры - добавляем их
-    if(parse_url($referer, PHP_URL_QUERY)){
-        $url = $url.'?'. parse_url($referer, PHP_URL_QUERY);
-    }
-    return redirect($url); //Перенаправляем назад на ту же страницу
-
-})->name('setlocale');
 
 

@@ -4,9 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Добавление опроса@endslot;
-            @slot('parent')Главная@endslot;
-            @slot('active')Добавление опрос@endslot;
+            @slot('title')Створення опитування@endslot;
+            @slot('parent')Головна@endslot;
+            @slot('active')Додавання опитування@endslot;
         @endcomponent
     </section>
 
@@ -58,7 +58,7 @@
                         <div class="box-footer">
                             <input type="hidden" name="id" value="">
                             <button type="submit" class="btn btn-primary">Створити</button>
-
+                            <a class="button btn-default btn" href="{{route('blog.admin.surveys.index')}}" style="font-size:16px; color:black">Назад</a>
                         </div>
 
                     </form>
