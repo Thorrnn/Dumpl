@@ -1,30 +1,5 @@
-.wrapper {
-    height: 350px;
-    margin: 100px auto 0;
-    position: relative;
-    width: 700px;
-}
-
-.slider {
-    background-color: #ddd;
-    height: inherit;
-    overflow: hidden;
-    position: relative;
-    width: inherit;
-    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, .5);
-    -o-box-shadow: 0 0 20px rgba(0, 0, 0, .5);
-    box-shadow: 0 0 20px rgba(0, 0, 0, .5);
-}
-
 .wrapper > input {
     display: none;
-}
-
-.slides {
-    height: inherit;
-    position: absolute;
-    width: inherit;
 }
 
 .wrapper .controls {
@@ -33,18 +8,7 @@
     position: absolute;
 }
 
-.wrapper label {
-    cursor: pointer;
-    display: inline-block;
-    height: 8px;
-    margin: 25px 12px 0 16px;
-    position: relative;
-    width: 8px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -o-border-radius: 50%;
-    border-radius: 50%;
-}
+
 
 .wrapper label:after {
     border: 2px solid #ddd;
@@ -55,10 +19,7 @@
     position: absolute;
     top: -4px;
     width: 12px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -o-border-radius: 50%;
-    border-radius: 50%;
+
 }
 
 .wrapper label {
@@ -68,14 +29,7 @@
     margin: 25px 12px 0 16px;
     position: relative;
     width: 8px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -o-border-radius: 50%;
-    border-radius: 50%;
-    -webkit-transition: background ease-in-out .5s;
-    -moz-transition: background ease-in-out .5s;
-    -o-transition: background ease-in-out .5s;
-    transition: background ease-in-out .5s;
+
 }
 
 .wrapper label:hover,
@@ -95,12 +49,9 @@
     -moz-transform: scale(1.5);
     -o-transform: scale(1.5);
     transform: scale(1.5);
-    -webkit-transition: transform ease-in-out .5s, opacity ease-in-out .5s;
-    -moz-transition: transform ease-in-out .5s, opacity ease-in-out .5s;
-    -o-transition: transform ease-in-out .5s, opacity ease-in-out .5s;
-    transition: transform ease-in-out .5s, opacity ease-in-out .5s;
-}
 
+}
+/* отображения слайдов */
 #slide1:checked ~ .slider > .slide1,
 #slide2:checked ~ .slider > .slide2,
 #slide3:checked ~ .slider > .slide3 {
@@ -111,4 +62,10 @@
     -o-transform: scale(1);
     transform: scale(1);
 }
+
+
+
+
+
+
 
