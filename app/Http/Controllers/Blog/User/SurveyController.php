@@ -7,7 +7,7 @@ use App\Repositories\Admin\MainRepository;
 use App\Repositories\User\SurveyRepository;
 use App\Repositories\User\ArticleRepository;
 use App\Repositories\User\Survey_QuestionRepository;
-
+use Illuminate\Http\Request;
 
 class SurveyController
 {
@@ -40,10 +40,16 @@ class SurveyController
     }
 
     public function pass_poll($id)
-    {   $survey= $this->surveyRepository->getId($id);
+    {   $survey_id= $id;
+        $survey= $this->surveyRepository->getId($id);
         $article= $this->articleController->getArticle($survey->article_id);
         $questions = $this->survey_questionController->getQuestionSurvey($id);
         //dd($survey);
-        return view('blog.user.survey.add', compact('survey','article','questions'));
+        return view('blog.user.survey.add', compact('survey','article','questions', 'survey_id'));
+    }
+
+    public function store_surveys(Request $arr)
+    {
+       dd($arr);
     }
 }

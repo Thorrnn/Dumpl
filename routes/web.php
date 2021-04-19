@@ -67,6 +67,8 @@ use Illuminate\Support\Facades\Route;
         ->names('blog.user.tests');
 
     Route::get('pass_poll/{id}', '\App\Http\Controllers\Blog\User\SurveyController@pass_poll')->name('blog.user.surveys.pass_poll');
+    Route::get('blog.user.surveys.store_surveys', '\App\Http\Controllers\Blog\User\SurveyController@store_surveys')->name('blog.user.surveys.store_surveys');
+
     Route::get('/welcome', 'HomeController@index')->name('welcome');
 
 
