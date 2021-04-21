@@ -22,16 +22,16 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm ">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('welcome')}}" style="text-shadow: 1px 1px 0px #000;  font-size:30px">Content Analysis</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse ml-4" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav">
                         <li class="nav-item mx-2">
                             <a href="{{route('welcome')}} "style="font-size:20px; color:black">Головна</a>
                         </li>
@@ -60,7 +60,7 @@
 
                     <!-- Right Side Of Navbar -->
                 </div>
-                <div class="flex-center collapse navbar-collapse">
+                <di v class="flex-center collapse navbar-collapse">
 
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
@@ -68,7 +68,7 @@
                                     {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item " href="{{ route('logout') }}"
+                                    <a class="dropdown-item " style="font-size:20px; color:black" href="{{ route('logout') }}"
                                        onclick="event.preventDefault()
                                 document.getElementById('logout-form').submit();">
                                         Выйти
@@ -78,8 +78,8 @@
                                     </form>
                                 </div>
                             </li>
-                        @else<a href="{{ route('login') }}"style="text-decoration: none">Увійти</a>
-                        @if(Route::has('register')) <a href="{{route('register')}}" style="text-decoration: none">Реєстрація</a>@endif
+                        @else<a href="{{ route('login') }}" style="font-size:20px; color:black; text-decoration: none" class="ml-2">Увійти</a>
+                        @if(Route::has('register')) <a href="{{route('register')}}" style="font-size:20px; color:black; text-decoration: none" class="ml-2">Реєстрація</a>@endif
                         @endauth
                         @endif
                     </ul>

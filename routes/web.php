@@ -26,8 +26,6 @@ use Illuminate\Support\Facades\Route;
     Route::resource('editor', 'CKEditorController');
     Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
 
-    Route::get('/welcome', 'HomeController@index')->name('welcome');
-
     /** Admin side **/
     Route::group(['middleware' => ['status', 'auth']], function (){
         $groupData =[
@@ -41,7 +39,7 @@ use Illuminate\Support\Facades\Route;
         });
     });
     Route::get('user/index', 'Blog\User\MainController@index')->name('index');
-
+    Route::get('/welcome', 'HomeController@index')->name('welcome');
     Route::resource('user','\App\Http\Controllers\Blog\Admin\UserController')
         ->names('blog.admin.users');
     Route::resource('article','\App\Http\Controllers\Blog\Admin\ArticleController')

@@ -26,7 +26,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="3" class="text-center"><h2>Доступных опросов нет</h2></td>
+                                            <td colspan="3" class="text-center"><h2>Доступних тестів немає</h2></td>
                                         </tr>
                                     @endforelse
                                 </tbody>
