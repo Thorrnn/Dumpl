@@ -10,7 +10,7 @@
 
 
 
-.wrapper label:after {
+.label-slider:after {
     border: 2px solid #ddd;
     content: " ";
     display: block;
@@ -22,7 +22,7 @@
 
 }
 
-.wrapper label {
+.label-slider {
     cursor: pointer;
     display: inline-block;
     height: 8px;

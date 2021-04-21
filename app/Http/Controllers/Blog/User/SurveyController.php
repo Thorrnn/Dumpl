@@ -50,6 +50,14 @@ class SurveyController
 
     public function store_surveys(Request $arr)
     {
-       dd($arr);
+        foreach ($arr as $key=>$question){
+            $sur_q = Article::create([
+                'answer' => $request['title'],
+                'question_id' => $request['body'],
+                'status' => '$arr',
+
+            ]);
+        }
+
     }
 }
