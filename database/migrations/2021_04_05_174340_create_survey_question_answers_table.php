@@ -18,6 +18,7 @@ class CreateSurveyQuestionAnswersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('answer');
             $table->UnsignedBigInteger('question_id');
+            $table->UnsignedBigInteger('user_id');
             $table->enum('status',['published', 'unpublished']);
             $table->timestamps();
             $table->softDeletes();
@@ -25,6 +26,11 @@ class CreateSurveyQuestionAnswersTable extends Migration
 
             $table->foreign('question_id')
                 ->references('id')->on('survey_questions')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('user_id')
+                ->references('id')->on('user')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
