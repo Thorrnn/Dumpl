@@ -7,7 +7,9 @@ use App\Repositories\Admin\MainRepository;
 use App\Repositories\User\SurveyRepository;
 use App\Repositories\User\ArticleRepository;
 use App\Repositories\User\Survey_QuestionRepository;
+use App\Models\User\Survey_Question_Answers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SurveyController
 {
@@ -50,14 +52,20 @@ class SurveyController
 
     public function store_surveys(Request $arr)
     {
-        foreach ($arr as $key=>$question){
-            $sur_q = Article::create([
-                'answer' => $request['title'],
-                'question_id' => $request['body'],
-                'status' => '$arr',
+//        dd($arr);
+        $qtns = $this->survey_questionController->getQuestionSurvey($arr->survey_id);
+//        dd($qtns);
+        foreach ($arr->arr as $key=>$question){
+            $sur_q = Survey_Question_Answers::create([
+                'answer' => $question,
+                'question_id' => $qtns[$key]->id,
+                'user_id' => Auth::user()->id,
 
             ]);
         }
+
+        return redirect()
+            ->route('blog.admin.surveys.index');
 
     }
 }

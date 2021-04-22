@@ -21,7 +21,7 @@ class Survey_QuestionRepository extends CoreRepository
 
 
     public function getQuestionSurvey($survey_id){
-        $questions = DB::select('select * from survey_questions where survey_questions.survey_id = :survey_id',['survey_id'=>$survey_id] );
+        $questions = DB::select('select * from survey__questions where survey__questions.survey_id = :survey_id',['survey_id'=>$survey_id] );
         return $questions;
     }
 }

@@ -2,11 +2,9 @@
 
 
 namespace App\Models\Admin;
-
-
 use Illuminate\Database\Eloquent\Model;
 
-class Survey_Questions extends Model
+class Survey_Question extends Model
 {
     protected $fillable = [
         'title', 'type', 'survey_id', 'id'

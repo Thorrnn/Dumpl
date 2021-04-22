@@ -11,9 +11,9 @@
                 <div class="slider col-12">
                     <div class="slides slide1">
                         <p>test test</p>
-                        <label class="label-slider" for="slide2"></label>
+                        <label class="label-slider" for="slide2">Почати</label>
                     </div>
-                    <div class="slides slide2">
+                    <div class="slides slide2 align-content-center">
                         @forelse($article as $ar)
                             @php
                                 $class = '';
@@ -28,7 +28,7 @@
                             </div>
                         @endforelse
 
-                        <label class="label-slider" for="slide3"></label>
+                        <label class="label-slider" for="slide3">Далі</label>
                     </div>
                     <div class="slides slide3">
                         <form action="{{ route('blog.user.surveys.store_surveys', $survey_id) }} " method="get"
@@ -78,9 +78,6 @@
                                 </div>
                             </div>
                         </form>
-
-
-                        <label class="label-slider" for="slide1"></label>
                     </div>
                 </div>
 

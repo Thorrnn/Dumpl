@@ -2,17 +2,11 @@
     display: none;
 }
 
-.wrapper .controls {
-    left: 50%;
-    margin-left: -98px;
-    position: absolute;
-}
+
 
 
 
 .label-slider:after {
-    border: 2px solid #ddd;
-    content: " ";
     display: block;
     height: 12px;
     left: -4px;
@@ -24,12 +18,27 @@
 
 .label-slider {
     cursor: pointer;
-    display: inline-block;
-    height: 8px;
-    margin: 25px 12px 0 16px;
+    outline: none;
+    margin: 20px 10px 0 10px;
     position: relative;
-    width: 8px;
-
+    border-radius: 5px;
+    box-shadow: inset 0 -2px 1px rgba(0,0,0,0), inset 0 1px 2px rgba(0,0,0,0), inset 0 0 0 60px rgba(255,255,0,0);
+    font-size: 18px;
+    color: white;
+    color: white;
+    text-decoration: none;
+    padding: .4em 2em calc(.6em + 2px);
+    border-radius: 3px;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    transition: 0.2s;
+}
+.label-slider:hover {
+    background: rgb(53, 167, 110);
+}
+.label-slider:active {
+    background: rgb(33,147,90);
+    box-shadow: 0 3px rgb(33,147,90) inset;
 }
 
 .wrapper label:hover,

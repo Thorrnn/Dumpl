@@ -1,17 +1,14 @@
 <?php
 
-
 namespace App\Http\Controllers\Blog\Admin;
 
-
 use App\Http\Requests\AdminSurvey_QuestionRequest;
-use App\Models\Admin\Survey_Questions;
+use App\Models\Admin\Survey_Question;
 use App\Repositories\Admin\MainRepository;
 use App\Repositories\Admin\Survey_QuestionRepository;
 use MetaTag;
 
-
-class SurveyQuestionController
+class SurveyQuestionController extends AdminBaseController
 {
     private $survey_questionRepository;
 
@@ -60,20 +57,21 @@ class SurveyQuestionController
      */
     public function store(AdminSurvey_QuestionRequest $request)
     {
-        $survey_question = Survey_Questions::create([
+        $survey_question = Survey_Question::create([
             'title' => $request['title'],
             'type' => 'integer',
             'survey_id' => $request['survey_id']
         ]);
-
+$sur_id = $request['survey_id'];
         if (!$survey_question){
             return back()
                 ->withErrors(['msg'=>'Ошибка создания вопроса  опроса'])
                 ->withInput();
         } else {
-            redirect()
-                ->route('blog.admin.surveys.edit', compact('survey_id'))
+            return redirect()
+                ->route('blog.admin.surveys.edit', $sur_id)
                 ->with(['success'=>'Вопрос опрос создан']);
+
         }
     }
 
@@ -116,7 +114,7 @@ class SurveyQuestionController
      */
     public function update(AdminSurvey_QuestionRequest $request, $id)
     {
-        $question = Survey_Questions::findOrFail($id);
+        $question = Survey_Question::findOrFail($id);
         $question->update($request->all());
 
         return redirect()
@@ -129,7 +127,7 @@ class SurveyQuestionController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Survey_Questions $question)
+    public function destroy(Survey_Question $question)
     {
         $result = $question->forceDelete();
         if($result){

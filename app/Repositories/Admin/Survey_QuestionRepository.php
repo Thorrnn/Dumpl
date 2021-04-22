@@ -3,8 +3,7 @@
 
 namespace App\Repositories\Admin;
 
-
-use App\Models\Admin\Survey_Questions as Model;
+use App\Models\Admin\Survey_Question as Model;
 use App\Repositories\CoreRepository;
 
 class Survey_QuestionRepository extends CoreRepository
@@ -21,8 +20,8 @@ class Survey_QuestionRepository extends CoreRepository
 
     public function getAllSurveyQuestions($perpage){
         $questions = $this->startConditions()
-            ->select('survey_questions.id','survey_questions.title', 'survey_questions.survey_id')
-            ->orderBy('survey_questions.id')
+            ->select('survey__questions.id','survey__questions.title', 'survey__questions.survey_id')
+            ->orderBy('survey__questions.id')
             //->toBase()
             ->paginate($perpage);
         return $questions;

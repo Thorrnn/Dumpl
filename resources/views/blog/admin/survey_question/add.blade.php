@@ -14,8 +14,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
-                    @php $survey_id = $id @endphp
-                    <form action="{{ route('blog.admin.survey_questions.store', ['id'] )}} " method="post" data-toggle="validator">
+                    <form action="{{ route('blog.admin.survey_questions.store')}} " method="post" data-toggle="validator">
                         @csrf
                         <div class="box-body">
 
@@ -27,19 +26,15 @@
                             </div>
 
                             <div class="form-group has-feedback">
-                                <label for="title">Title</label>
-                                <input type="text" class="form-control" name="survey_id" id="survey_id" value="@if(old('survey_id')) {{old('survey_id')}} @else @endif" required>
-                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                            </div>
-
-
-                            <div class="form-group has-feedback">
                                 <label for="status">Status</label>
                                 <select name="status" id="request->status" class="form-control">
                                     <option value="published">published</option>
                                     <option value="unpublished" selected>unpublished</option>
                                 </select>
                             </div>
+
+                            <input type="hidden" name="survey_id" id="survey_id"
+                                   value="{{$id}}" required>
 
                             <input type="hidden" id="_token" value="{{ csrf_token() }}">
                         </div>
