@@ -40,6 +40,7 @@ use Illuminate\Support\Facades\Route;
     });
     Route::get('user/index', 'Blog\User\MainController@index')->name('index');
     Route::get('/welcome', 'HomeController@index')->name('welcome');
+    Route::get('/', 'HomeController@home')->name('home');
     Route::resource('user','\App\Http\Controllers\Blog\Admin\UserController')
         ->names('blog.admin.users');
     Route::resource('article','\App\Http\Controllers\Blog\Admin\ArticleController')

@@ -135,6 +135,7 @@
                     <ul class="treeview-menu">
                         <li><a href="{{route('blog.admin.surveys.index')}}">Список опитувань</a></li>
                         <li><a href="{{route('blog.admin.surveys.create')}}">Добавить опитування</a></li>
+                        <li><a href="">Результати опитувань</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
