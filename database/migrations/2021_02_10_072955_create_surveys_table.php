@@ -19,12 +19,18 @@ class CreateSurveysTable extends Migration
             $table->string('title');
             $table->string('annotation');
             $table->UnsignedBigInteger('article_id');
+            $table->UnsignedBigInteger('type_id');
             $table->enum('status',['published', 'unpublished']);
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('article_id')
                 ->references('id')->on('articles')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('type_id')
+                ->references('id')->on('type_surveys')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

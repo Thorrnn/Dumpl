@@ -7,6 +7,7 @@ use App\Http\Requests\AdminSurveyRequest;
 use App\Http\Requests\AdminTestRequest;
 use App\Models\Admin\Survey;
 use App\Models\Admin\Tests;
+use App\Repositories\Admin\ArticleRepository;
 use App\Repositories\Admin\MainRepository;
 use App\Repositories\Admin\TestRepository;
 use kcfinder\text;
@@ -15,11 +16,12 @@ use MetaTag;
 class TestController
 {
     private $testRepository;
-
+    private $articleRepository;
 
     public function __construct()
     {
         $this->testRepository = app(TestRepository::class);
+        $this->articleRepository = app(ArticleRepository::class);
     }
 
     public function index()
@@ -33,7 +35,9 @@ class TestController
 
     public function create()
     {
-        MetaTag::set('title', 'Создание теста');
+        $perpage = 0;
+        $articles = $this->articleRepository->getAllArticles($perpage);
+        MetaTag::set('title', 'Створення тесту');
         return view('blog.admin.test.add');
     }
 
@@ -41,18 +45,20 @@ class TestController
     {
         $test = Tests::create([
             'title' => $request['title'],
-            'info' => $request['info'],
+            'annotation' => $request['annotation'],
+            'article_id' => $request['article_id'],
+            'type_id' => $request['type_id'],
             'status' => $request['status']
         ]);
 
         if (!$test){
             return back()
-                ->withErrors(['msg'=>'Ошибка создания теста'])
+                ->withErrors(['msg'=>'Помилка створення тесту'])
                 ->withInput();
         } else {
             redirect()
                 ->route('blog.admin.tests.index')
-                ->with(['success'=>'Тест создана']);
+                ->with(['success'=>'Тест створено']);
         }
     }
 
@@ -60,6 +66,8 @@ class TestController
     {
         $perpage = 10;
         $item= $this->testRepository->getId($id);
+        $perpage_n = 0;
+        $articles = $this->articleRepository->getAllArticles($perpage_n);
         if (empty($item)){
             abort(404);
         }
@@ -67,8 +75,8 @@ class TestController
 
         $questions=$this->testRepository->getQuestionTest($id, $perpage);
         $count=$this->testRepository->getQuestionCount($id);
-        MetaTag::set('title', "Редактирования теста № {$item->id}");
-        return view('blog.admin.test.edit', compact('item','count','questions'));
+        MetaTag::set('title', "Редагування тесту № {$item->id}");
+        return view('blog.admin.test.edit', compact('item','count','questions','articles'));
     }
 
     /**
@@ -84,18 +92,19 @@ class TestController
         $test->update($request->all());
 
         return redirect()
-            ->route('blog.admin.test.index');
+            ->route('blog.admin.tests.index')
+            ->with(['success' => "Опитування оновлено"]);
     }
 
-    public function destroy(Tests $test)
+    public function destroy(AdminTestRequest $test)
     {
         $result = $test->forceDelete();
         if($result){
             return redirect()
-                ->route('blog.admin.test.index')
-                ->with(['success' => "Опрос" .ucfirst($test->title) . "удалена"]);
+                ->route('blog.admin.tests.index')
+                ->with(['success' => "Тест" .ucfirst($test->title) . "видален"]);
         } else {
-            return back() -> withErrors(['msg' => 'Ошибка удаления']);
+            return back() -> withErrors(['msg' => 'Помилка видалення']);
         }
     }
 }

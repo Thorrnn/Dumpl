@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSurveyAnswersTable extends Migration
+class CreateTestQuestionAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,19 @@ class CreateSurveyAnswersTable extends Migration
      */
     public function up()
     {
-
-        Schema::create('survey_answers', function (Blueprint $table) {
+        Schema::create('test_question_answers', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->string('survey_id');
-            $table->string('user_id');
-            $table->enum('status',['recorded', 'unrecorded']);
+            $table->integer('answer');
+            $table->UnsignedBigInteger('question_id');
+            $table->UnsignedBigInteger('user_id');
+            $table->enum('status',['published', 'unpublished']);
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('survey_id')
-                ->references('id')->on('surveys')
+
+            $table->foreign('question_id')
+                ->references('id')->on('test_questions')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
@@ -42,6 +43,6 @@ class CreateSurveyAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('survey_answers');
+        Schema::dropIfExists('test_question_answers');
     }
 }

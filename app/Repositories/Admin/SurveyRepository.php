@@ -31,10 +31,10 @@ class SurveyRepository extends CoreRepository
 
     public function getQuestionSurvey($survey_id, $perpage){
         $question= $this->startConditions()
-            ->join('survey__questions','survey_id','=','surveys.id')
-            ->select('survey__questions.id', 'survey__questions.title')
+            ->join('survey_questions','survey_id','=','surveys.id')
+            ->select('survey_questions.id', 'survey_questions.title')
             ->where('surveys.id' ,$survey_id)
-            ->orderby('survey__questions.id')
+            ->orderby('survey_questions.id')
               ->toBase()
             ->paginate($perpage);
         return $question;

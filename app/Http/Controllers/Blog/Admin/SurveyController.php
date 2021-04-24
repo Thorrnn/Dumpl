@@ -12,10 +12,10 @@ use App\Repositories\Admin\MainRepository;
 use Illuminate\Support\Facades\Auth;
 use MetaTag;
 
-class SurveyController
+class SurveyController extends AdminBaseController
 {
     private $surveyRepository;
-
+    private $articleRepository;
 
     public function __construct()
     {
@@ -62,6 +62,7 @@ class SurveyController
             'title' => $request['title'],
             'annotation' => $request['annotation'],
             'article_id' => $request['article_id'],
+            'type_id' => $request['type_id'],
             'status' => $request['status']
         ]);
 
@@ -135,13 +136,13 @@ class SurveyController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Survey $survey)
+    public function destroy(AdminSurveyRequest $survey)
     {
         $result = $survey->forceDelete();
         if($result){
             return redirect()
                 ->route('blog.admin.surveys.index')
-                ->with(['success' => "Опитування" .ucfirst($survey->info) . "видалено"]);
+                ->with(['success' => "Опитування" .ucfirst($survey->title) . "видалено"]);
         } else {
             return back() -> withErrors(['msg' => 'Помилка видалення']);
         }

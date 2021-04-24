@@ -63,6 +63,12 @@
                                             <option value="10">10
                                         </datalist>
                                     </div>
+
+                                    <label for="education">{{$qns->title}}</label>
+                                    <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
+                                    <input type="number" value="0" required step="any" min="0" max="10" readonly
+                                           class="input_number_read_only" name="arr[{{$key}}]" placeholder="Только цифры">
+                                    <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
                                     <input type="hidden" id="_token" value="{{ csrf_token() }}">
                                 @empty
                                     <div>

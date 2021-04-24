@@ -70,7 +70,8 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/welcome', 'HomeController@index')->name('welcome');
 
-
+    Route::resource('survey_answer','\App\Http\Controllers\Blog\Admin\SurveyAnswerController')
+    ->names('blog.admin.survey_answers');
 
 
 

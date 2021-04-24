@@ -22,6 +22,7 @@
                                     <th>ID</th>
                                     <th>Назва</th>
                                     <th>Статус</th>
+                                    <th>Дії</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -51,21 +52,15 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="3" class="text-center"><h2>Опитувань немає нет</h2></td>
+                                            <td colspan="3" class="text-center"><h2>Опитувань немає</h2></td>
                                         </tr>
                                     @endforelse
                                 </tbody>
                             </table>
                         </div>
-
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
 @endsection

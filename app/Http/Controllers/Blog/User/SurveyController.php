@@ -3,11 +3,12 @@
 
 namespace App\Http\Controllers\Blog\User;
 
+use App\Models\User\SurveyAnswer;
 use App\Repositories\Admin\MainRepository;
 use App\Repositories\User\SurveyRepository;
 use App\Repositories\User\ArticleRepository;
-use App\Repositories\User\Survey_QuestionRepository;
-use App\Models\User\Survey_Question_Answers;
+use App\Repositories\User\SurveyQuestionRepository;
+use App\Models\User\SurveyQuestionAnswers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,7 @@ class SurveyController
     {
         $this->surveyRepository = app(SurveyRepository::class);
         $this->articleController = app(ArticleRepository::class);
-        $this->survey_questionController = app(Survey_QuestionRepository::class);
+        $this->survey_questionController = app(SurveyQuestionRepository::class);
     }
 
     public function index()
@@ -47,7 +48,21 @@ class SurveyController
         $article= $this->articleController->getArticle($survey->article_id);
         $questions = $this->survey_questionController->getQuestionSurvey($id);
         //dd($survey);
-        return view('blog.user.survey.add', compact('survey','article','questions', 'survey_id'));
+
+        $survey_answer = SurveyAnswer::create([
+            'survey_id' => $survey->article_id,
+            'user_id' => Auth::user()->id,
+        ]);
+        if (!$survey_answer){
+            return back()
+                ->withErrors(['msg'=>'Помилка початку тестування'])
+                ->withInput();
+        } else {
+            return view('blog.user.survey.add', compact('survey','article','questions', 'survey_id'));
+        }
+
+
+
     }
 
     public function store_surveys(Request $arr)
@@ -56,7 +71,7 @@ class SurveyController
         $qtns = $this->survey_questionController->getQuestionSurvey($arr->survey_id);
 //        dd($qtns);
         foreach ($arr->arr as $key=>$question){
-            $sur_q = Survey_Question_Answers::create([
+            $sur_q = SurveyQuestionAnswers::create([
                 'answer' => $question,
                 'question_id' => $qtns[$key]->id,
                 'user_id' => Auth::user()->id,
@@ -65,7 +80,7 @@ class SurveyController
         }
 
         return redirect()
-            ->route('blog.admin.surveys.index');
+            ->route('blog.user.surveys.index');
 
     }
 }

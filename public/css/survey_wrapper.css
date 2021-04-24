@@ -72,6 +72,17 @@
     transform: scale(1);
 }
 
+.input_number_read_only {
+     all: unset;
+     -moz-appearance: textfield;
+     width: 3em;
+     text-align: center;
+ }
+.input_number_read_only::-webkit-inner-spin-button {
+    display: none;
+}
+
+
 
 
 

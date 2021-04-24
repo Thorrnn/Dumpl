@@ -113,7 +113,7 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">Меню</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li><a href="{{route('welcome')}}"><i class="fa fa-home"></i> <span>На сайт</span></a></li>
+                <li><a href="{{route('home')}}"><i class="fa fa-home"></i> <span>На сайт</span></a></li>
 
                 <li class="treeview">
                     <a href="#"><i class="fa fa-navicon"></i> <span>Статті</span>
@@ -135,7 +135,7 @@
                     <ul class="treeview-menu">
                         <li><a href="{{route('blog.admin.surveys.index')}}">Список опитувань</a></li>
                         <li><a href="{{route('blog.admin.surveys.create')}}">Добавить опитування</a></li>
-                        <li><a href="">Результати опитувань</a></li>
+                        <li><a href="{{route('blog.admin.survey_answers.index')}}">Результати опитувань</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -147,9 +147,20 @@
                     <ul class="treeview-menu">
                         <li><a href="{{route('blog.admin.tests.index')}}">Список тестів</a></li>
                         <li><a href="{{route('blog.admin.tests.create')}}">Створити тест</a></li>
+                        <li><a href="">Результати тестів</a></li>
                     </ul>
                 </li>
-                <li><a href=""><i class="fa fa-database"></i> <span>Аналіз</span></a></li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-cubes"></i> <span>Аналіз</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="">Аналіз опитувань</a></li>
+                        <li><a href="">Аналіз тестів</a></li>
+                    </ul>
+                </li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-users"></i> <span>Користувачі</span>
                         <span class="pull-right-container">
