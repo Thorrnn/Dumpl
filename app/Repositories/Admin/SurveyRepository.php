@@ -6,6 +6,7 @@ namespace App\Repositories\Admin;
 
 use App\Models\Admin\Survey as Model;
 use App\Repositories\CoreRepository;
+use Illuminate\Support\Facades\DB;
 
 class SurveyRepository extends CoreRepository
 {
@@ -46,5 +47,9 @@ class SurveyRepository extends CoreRepository
             ->where('survey__questions.survey_id' ,$survey_id)
             ->count();
         return $count;
+    }
+    public function getTypeSurvey(){
+        $type = DB::select('select * from type_surveys');
+        return $type;
     }
 }

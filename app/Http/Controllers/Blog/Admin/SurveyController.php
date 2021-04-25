@@ -46,8 +46,9 @@ class SurveyController extends AdminBaseController
     {
         $perpage = 0;
         $articles = $this->articleRepository->getAllArticles($perpage);
+        $type = $this->surveyRepository->getTypeSurvey();
         MetaTag::set('title', 'Створення опитування');
-        return view('blog.admin.survey.add', compact('articles'));
+        return view('blog.admin.survey.add', compact('articles','type'));
     }
 
     /**
@@ -110,7 +111,7 @@ class SurveyController extends AdminBaseController
         $count=$this->surveyRepository->getQuestionCount($id);
         //dd($questions);
         MetaTag::set('title', "Редагування опитування № {$item->id}");
-        return view('blog.admin.survey.edit', compact('item','count','questions','articles'));
+        return view('blog.admin.survey.edit', compact('item','count','questions','articles', 'type'));
     }
 
     /**

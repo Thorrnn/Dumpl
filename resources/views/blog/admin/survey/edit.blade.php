@@ -4,10 +4,10 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Редактирование опроса@endslot;
-            @slot('parent')Главная@endslot;
-            @slot('user')Список опросов@endslot;
-            @slot('active')Редактирование опроса@endslot;
+            @slot('title')Редагування опитування@endslot;
+            @slot('parent')Головна@endslot;
+            @slot('user')Список опитувань@endslot;
+            @slot('active')Редагування опитування@endslot;
         @endcomponent
             <section class="content">
                 <div class="row">

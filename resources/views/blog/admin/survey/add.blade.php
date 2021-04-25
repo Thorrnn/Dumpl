@@ -30,6 +30,19 @@
                                 </select>
                             </div>
                             <div class="form-group has-feedback">
+                                <label for="address">Тип</label>
+                                <select name="type_id" id="type_id" class="form-control">
+                                    @forelse($type as $t)
+                                        @php
+                                            $class = '';
+                                        @endphp
+                                        <option value="{{$t->id}}">{{$t->name}}</option>
+                                    @empty
+                                        <option value="0">Типів немає</option>
+                                    @endforelse
+                                </select>
+                            </div>
+                            <div class="form-group has-feedback">
                                 <label for="annotation">Опис</label>
                                     <textarea name="annotation" type="text" class="form-control @error('annotation') is-invalid @enderror"  placeholder="Опис опитування">{{old('annotation')}}</textarea>
 
