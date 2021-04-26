@@ -7,7 +7,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class AdminSurvey_QuestionRequest extends FormRequest
+class AdminSurveyQuestionRequest extends FormRequest
 {
     public function authorize()
     {
@@ -17,16 +17,11 @@ class AdminSurvey_QuestionRequest extends FormRequest
     public function rules()
     {
         $id = $_POST['id'];
-        return [
-            'title' => 'required|min:5|max:100|string',
-
-        ];
+        return [];
     }
 
     public function messages()
     {
-        return [
-            'title.min' => 'Минимальная длина названия 5 символов',
-        ];
+        return [];
     }
 }

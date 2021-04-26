@@ -5,15 +5,14 @@ namespace App\Http\Controllers\Blog\Admin;
 
 use App\Http\Requests\AdminSurveyRequest;
 use App\Http\Requests\AdminTestRequest;
-use App\Models\Admin\Survey;
-use App\Models\Admin\Tests;
+use App\Models\Admin\Test;
 use App\Repositories\Admin\ArticleRepository;
 use App\Repositories\Admin\MainRepository;
 use App\Repositories\Admin\TestRepository;
 use kcfinder\text;
 use MetaTag;
 
-class TestController
+class TestController extends AdminBaseController
 {
     private $testRepository;
     private $articleRepository;
@@ -37,13 +36,14 @@ class TestController
     {
         $perpage = 0;
         $articles = $this->articleRepository->getAllArticles($perpage);
+        $type = $this->testRepository->getTypeTest();
         MetaTag::set('title', 'Створення тесту');
-        return view('blog.admin.test.add');
+        return view('blog.admin.test.add', compact('type'));
     }
 
     public function store(AdminTestRequest $request)
     {
-        $test = Tests::create([
+        $test = Test::create([
             'title' => $request['title'],
             'annotation' => $request['annotation'],
             'article_id' => $request['article_id'],
@@ -88,7 +88,7 @@ class TestController
      */
     public function update(AdminTestRequest $request, $id)
     {
-        $test = Tests::findOrFail($id);
+        $test = Test::findOrFail($id);
         $test->update($request->all());
 
         return redirect()

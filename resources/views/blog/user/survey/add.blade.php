@@ -43,32 +43,18 @@
 
 
                                     <div class="form-group has-feedback">
-                                        <label for="education">{{$qns->title}}</label>
 
-                                        <input list="fieldsArticles"
-                                               class="form-control"
-                                               name="arr[{{$key}}]" required
-                                        >
-                                        <datalist id="fieldsArticles">
-                                            <option value="0">0
-                                            <option value="1">1
-                                            <option value="2">2
-                                            <option value="3">3
-                                            <option value="4">4
-                                            <option value="5">5
-                                            <option value="6">6
-                                            <option value="7">7
-                                            <option value="8">8
-                                            <option value="9">9
-                                            <option value="10">10
-                                        </datalist>
+
+
+                                        <label for="education">{{$qns->title}}</label>
+                                        <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
+                                        <input type="number" min="0" max="10" value="1" readonly  name="arr[{{$key}}]" required class="input_number_read_only">
+                                        <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+
+
                                     </div>
 
-                                    <label for="education">{{$qns->title}}</label>
-                                    <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-                                    <input type="number" value="0" required step="any" min="0" max="10" readonly
-                                           class="input_number_read_only" name="arr[{{$key}}]" placeholder="Только цифры">
-                                    <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
+
                                     <input type="hidden" id="_token" value="{{ csrf_token() }}">
                                 @empty
                                     <div>

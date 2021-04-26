@@ -17,8 +17,8 @@ class CreateSurveyAnswersTable extends Migration
         Schema::create('survey_answers', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->string('survey_id');
-            $table->string('user_id');
+            $table->unsignedBigInteger('survey_id');
+            $table->unsignedBigInteger('user_id');
             $table->enum('status',['recorded', 'unrecorded']);
             $table->timestamps();
             $table->softDeletes();

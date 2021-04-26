@@ -18,10 +18,10 @@
             $this->call(UsersTableSeeder::class);
             $this->call(RolesTableSeeder::class);
             $this->call(GalleriesSeeder::class);
-            $this->call(TypeSurveysSeeder::class);
-            $this->call(TypeTestsSeeder::class);
-            $this->call(ArticlesSeeder::class);
-            $this->call(SurveysSeeder::class);
+            $this->call(TypeSurveysTableSeeder::class);
+            $this->call(TypeTestsTableSeeder::class);
+            $this->call(ArticlesTableSeeder::class);
+            $this->call(SurveysTableSeeder::class);
 
         }
     }

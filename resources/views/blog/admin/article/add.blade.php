@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
-                    <form action="{{ route('blog.admin.articles.store', $arr) }} " method="post" data-toggle="validator">
+                    <form action="{{ route('blog.admin.articles.store') }} " method="post" data-toggle="validator">
                         @csrf
                         <div class="box-body">
                             <div class="form-group has-feedback">

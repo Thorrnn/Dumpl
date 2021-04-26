@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
-class SurveysSeeder extends Seeder
+class SurveysTableSeeder extends Seeder
 {
     public function run()
     {

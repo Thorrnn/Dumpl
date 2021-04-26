@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
-class TypeTestsSeeder
+class TypeTestsTableSeeder  extends Seeder
 {
     public function run()
     {

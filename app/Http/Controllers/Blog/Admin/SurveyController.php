@@ -111,7 +111,7 @@ class SurveyController extends AdminBaseController
         $count=$this->surveyRepository->getQuestionCount($id);
         //dd($questions);
         MetaTag::set('title', "Редагування опитування № {$item->id}");
-        return view('blog.admin.survey.edit', compact('item','count','questions','articles', 'type'));
+        return view('blog.admin.survey.edit', compact('item','count','questions','articles'));
     }
 
     /**

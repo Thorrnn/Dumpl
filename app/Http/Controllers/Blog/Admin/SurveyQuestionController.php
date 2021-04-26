@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Blog\Admin;
 
-use App\Http\Requests\AdminSurvey_QuestionRequest;
-use App\Models\Admin\Survey_Question;
+use App\Http\Requests\AdminSurveyQuestionRequest;
+use App\Models\Admin\SurveyQuestion;
 use App\Repositories\Admin\MainRepository;
-use App\Repositories\Admin\Survey_QuestionRepository;
+use App\Repositories\Admin\SurveyQuestionRepository;
 use MetaTag;
 
 class SurveyQuestionController extends AdminBaseController
@@ -15,7 +15,7 @@ class SurveyQuestionController extends AdminBaseController
 
     public function __construct()
     {
-        $this->survey_questionRepository = app(Survey_QuestionRepository::class);
+        $this->survey_questionRepository = app(SurveyQuestionRepository::class);
     }
 
     /**
@@ -55,9 +55,9 @@ class SurveyQuestionController extends AdminBaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminSurvey_QuestionRequest $request)
+    public function store(AdminSurveyQuestionRequest $request)
     {
-        $survey_question = Survey_Question::create([
+        $survey_question = SurveyQuestion::create([
             'title' => $request['title'],
             'type' => 'integer',
             'survey_id' => $request['survey_id']
@@ -112,9 +112,9 @@ $sur_id = $request['survey_id'];
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdminSurvey_QuestionRequest $request, $id)
+    public function update(AdminSurveyQuestionRequest $request, $id)
     {
-        $question = Survey_Question::findOrFail($id);
+        $question = SurveyQuestion::findOrFail($id);
         $question->update($request->all());
 
         return redirect()
@@ -127,7 +127,7 @@ $sur_id = $request['survey_id'];
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Survey_Question $question)
+    public function destroy(AdminSurveyQuestionRequest $question)
     {
         $result = $question->forceDelete();
         if($result){

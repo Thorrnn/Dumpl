@@ -5,7 +5,8 @@ namespace App\Repositories\Admin;
 
 
 use App\Repositories\CoreRepository;
-use App\Models\Admin\Tests as Model;
+use App\Models\Admin\Test as Model;
+use Illuminate\Support\Facades\DB;
 
 class TestRepository extends CoreRepository
 {
@@ -44,5 +45,9 @@ class TestRepository extends CoreRepository
             ->where('test_questions.test_id' ,$test_id)
             ->count();
         return $count;
+    }
+    public function getTypeTest(){
+        $type = DB::select('select * from type_tests');
+        return $type;
     }
 }

@@ -43,8 +43,8 @@ class SurveyRepository extends CoreRepository
     }
 
     public function getQuestionCount($survey_id){
-        $count = \DB::table('survey__questions')
-            ->where('survey__questions.survey_id' ,$survey_id)
+        $count = \DB::table('survey_questions')
+            ->where('survey_questions.survey_id' ,$survey_id)
             ->count();
         return $count;
     }

@@ -3,10 +3,10 @@
 
 namespace App\Repositories\Admin;
 
-use App\Models\Admin\Survey_Question as Model;
+use App\Models\Admin\SurveyQuestion as Model;
 use App\Repositories\CoreRepository;
 
-class Survey_QuestionRepository extends CoreRepository
+class SurveyQuestionRepository extends CoreRepository
 {
     public function __construct()
     {
