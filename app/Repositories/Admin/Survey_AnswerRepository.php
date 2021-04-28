@@ -5,6 +5,8 @@ namespace App\Repositories\Admin;
 
 use App\Repositories\CoreRepository;
 use App\Models\Admin\SurveyAnswer as Model;
+use Illuminate\Support\Facades\DB;
+
 class Survey_AnswerRepository extends CoreRepository
 {
     public function __construct()
@@ -26,5 +28,41 @@ class Survey_AnswerRepository extends CoreRepository
             //->toBase()
             ->paginate($perpage);
         return $answers;
+    }
+
+    public function getAllInfoAnswer($answer_id){
+        $info = DB::select('select survey_answers.id, survey_answers.status, survey_answers.survey_id, survey_answers.user_id, users.login, surveys.title from survey_answers left join users on users.id = survey_answers.user_id left join surveys on surveys.id = survey_answers.survey_id where survey_answers.id = :answer_id ',['answer_id'=>$answer_id] );
+        return $info;
+    }
+
+    public function getStatAnswer($answer_id){
+        $stat = DB::select('select * from stat_survey_answers where answer_id = :answer_id ',['answer_id'=>$answer_id] );
+        return $stat;
+    }
+
+  /*  public function getQuestionAnswers{
+        $answer = \DB::select('select * from survey_question_answers where survey_id = :survey_id and user_id = :user_id',['survey_id'=>$survey_id,'user_id'=>$user_id]);
+
+        return $answer;
+    }*/
+    public function AllIdSurveyAnswer(){
+        $survey_id = DB::select('select survey_answers.survey_id from survey_answers group by survey_answers.survey_id');
+        return $survey_id;
+    }
+
+    public function countOptimalFontSizeSurvey(){
+        $count = DB::select('select count(*) from survey_answers left join surveys on surveys.id = survey_answers.survey_id group by surveys.type_id');
+        return $count;
+
+
+
+
+    }
+    public function coefAverEasyRead(){
+
+    }
+
+    public function coefAverHalfWindow(){
+
     }
 }

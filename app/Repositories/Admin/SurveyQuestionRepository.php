@@ -20,8 +20,8 @@ class SurveyQuestionRepository extends CoreRepository
 
     public function getAllSurveyQuestions($perpage){
         $questions = $this->startConditions()
-            ->select('survey__questions.id','survey__questions.title', 'survey__questions.survey_id')
-            ->orderBy('survey__questions.id')
+            ->select('survey_questions.id','survey_questions.title', 'survey_questions.survey_id')
+            ->orderBy('survey_questions.id')
             //->toBase()
             ->paginate($perpage);
         return $questions;

@@ -25,7 +25,7 @@ class SurveyAnswerController extends AdminBaseController
         $countAnswers = MainRepository::getCountSurveyAnswers();
         $paginator = $this->surveyAnswerRepository->getAllAnswer($perpage);
         MetaTag::set('title', 'Результати опитувань');
-        return view('blog.admin.survey_answer.index', compact('countAnswers','paginator'));
+        return view('blog.admin.survey_answer.index', compact('countAnswers', 'paginator'));
     }
 
     public function update(AdminSurvey_AnswerRequest $request, $id)
@@ -41,17 +41,45 @@ class SurveyAnswerController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
+
+    public function edit($id)
+    {
+        $info = $this->surveyAnswerRepository->getAllInfoAnswer($id);
+        $stat = $this->surveyAnswerRepository->getStatAnswer($id);
+
+
+        MetaTag::set('title', "Перегляд результату опитування");
+        return view('blog.admin.survey_answers.edit', compact('info', 'stat'));
+    }
+
+    public function OptimalFontSize()
+    {
+
+        $count =  $this->surveyAnswerRepository->countOptimalFontSizeSurvey();
+        $survey_id = $this->surveyAnswerRepository->AllIdSurveyAnswer();
+        for ($i = 0; $i < $count; $i++){
+            $averEasyRead[$i] =  $this->surveyAnswerRepository->coefAverEasyRead(survey_id[$i]);
+            $averHalfWindow[$i] =  $this->surveyAnswerRepository->coefAverHalfWindow(survey_id[$i]);
+        }
+
+
+
+
+
+        MetaTag::set('title', "Перегляд результату опитування");
+        return view('blog.admin.survey_answers.edit', compact('info', 'stat'));
+    }
     public function destroy(AdminSurvey_AnswerRequest $answer)
     {
         $result = $answer->forceDelete();
-        if($result){
+        if ($result) {
             return redirect()
                 ->route('blog.admin.survey_answers.index');
         } else {
-            return back() -> withErrors(['msg' => 'Помилка видалення']);
+            return back()->withErrors(['msg' => 'Помилка видалення']);
         }
     }
 }
