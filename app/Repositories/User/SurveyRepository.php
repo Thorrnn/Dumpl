@@ -44,4 +44,12 @@ class SurveyRepository extends CoreRepository
 
         return $article;
     }
+
+    public function getAnswerId($user_id, $survey_id){
+
+        $answer = \DB::select('select id from survey_answers where survey_id = :survey_id and user_id = :user_id',['survey_id'=>$survey_id,'user_id'=>$user_id]);
+        $answer[0];
+        return $answer[0]->id;
+
+    }
 }

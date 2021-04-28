@@ -33,23 +33,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{route('welcome')}}">Головна <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('blog.user.tests.index')}}">Тести</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('blog.user.surveys.index')}}">Опитування</a>
-                </li>
                 @if (Route::has('login'))
                     @auth
-
-                        @if((Auth::user()->role =='user'))
+                        @if((Auth::user()->role =='user') or (Auth::user()->role =='admin'))
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{route('welcome')}}">Головна <span
+                                        class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('blog.user.tests.index')}}">Тести</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('blog.user.surveys.index')}}">Опитування</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('index')}}" style="color:black">Кабінет User</a>
                             </li>
-                        @elseif(Auth::user()->role =='admin')
+                        @endif
+                        @if(Auth::user()->role =='admin')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('blog.admin.articles.index')}}" style="color:black">Панель
                                     адміністратора</a>

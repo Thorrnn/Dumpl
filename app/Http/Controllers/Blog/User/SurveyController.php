@@ -11,6 +11,8 @@ use App\Repositories\User\SurveyQuestionRepository;
 use App\Models\User\SurveyQuestionAnswers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User\Stat_survey_answers;
+
 
 class SurveyController
 {
@@ -70,15 +72,32 @@ class SurveyController
 //        dd($arr);
         $qtns = $this->survey_questionController->getQuestionSurvey($arr->survey_id);
 //        dd($qtns);
+        $sum=0;
+        $min=11;
+        $max=0;
         foreach ($arr->arr as $key=>$question){
+            $sum=$sum+$question;
+            if ($min > $question) {
+                $min = $question;
+            }
+            if($max < $question) {
+                $max = $question;
+            }
             $sur_q = SurveyQuestionAnswers::create([
                 'answer' => $question,
                 'question_id' => $qtns[$key]->id,
                 'user_id' => Auth::user()->id,
-
             ]);
         }
-
+        $count = count($arr->arr);
+        $aver = $sum/$count;
+        Stat_survey_answers::create([
+           'min'=> $min,
+           'max'=> $max,
+           'sum'=> $sum,
+           'average'=> $aver,
+           'answer_id' =>$this->surveyRepository->getAnswerId(Auth::user()->id, $arr->survey_id)
+        ]);
         return redirect()
             ->route('blog.user.surveys.index');
 
