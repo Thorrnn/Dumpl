@@ -17,15 +17,16 @@ class CreateSurveyQuestionAnswersTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->integer('answer');
-            $table->UnsignedBigInteger('question_id');
+            $table->integer('question_number');
+            $table->UnsignedBigInteger('answer_id');
             $table->UnsignedBigInteger('user_id');
             $table->enum('status',['published', 'unpublished']);
             $table->timestamps();
             $table->softDeletes();
 
 
-            $table->foreign('question_id')
-                ->references('id')->on('survey_questions')
+            $table->foreign('answer_id')
+                ->references('id')->on('survey_answers')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 

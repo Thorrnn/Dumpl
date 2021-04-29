@@ -24,6 +24,7 @@ class SurveyAnswerController extends AdminBaseController
         $perpage = 0;
         $countAnswers = MainRepository::getCountSurveyAnswers();
         $paginator = $this->surveyAnswerRepository->getAllAnswer($perpage);
+
         MetaTag::set('title', 'Результати опитувань');
         return view('blog.admin.survey_answer.index', compact('countAnswers', 'paginator'));
     }
@@ -58,19 +59,14 @@ class SurveyAnswerController extends AdminBaseController
     public function OptimalFontSize()
     {
 
-        $count =  $this->surveyAnswerRepository->countOptimalFontSizeSurvey();
         $survey_id = $this->surveyAnswerRepository->AllIdSurveyAnswer();
+        $count =  count($survey_id);
         for ($i = 0; $i < $count; $i++){
-            $averEasyRead[$i] =  $this->surveyAnswerRepository->coefAverEasyRead(survey_id[$i]);
-            $averHalfWindow[$i] =  $this->surveyAnswerRepository->coefAverHalfWindow(survey_id[$i]);
+            $averEasyRead[$i] =  $this->surveyAnswerRepository->sumSurveyAnswer($survey_id[$i], 1);
+            $averHalfWindow[$i] =  $this->surveyAnswerRepository->sumSurveyAnswer($survey_id[$i], 3);
         }
 
-
-
-
-
-        MetaTag::set('title', "Перегляд результату опитування");
-        return view('blog.admin.survey_answers.edit', compact('info', 'stat'));
+        return view('blog.admin.survey_answers.edit', compact('averEasyRead', 'averHalfWindow'));
     }
     public function destroy(AdminSurvey_AnswerRequest $answer)
     {
