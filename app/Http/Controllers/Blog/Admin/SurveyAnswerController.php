@@ -56,18 +56,6 @@ class SurveyAnswerController extends AdminBaseController
         return view('blog.admin.survey_answers.edit', compact('info', 'stat'));
     }
 
-    public function OptimalFontSize()
-    {
-
-        $survey_id = $this->surveyAnswerRepository->AllIdSurveyAnswer();
-        $count =  count($survey_id);
-        for ($i = 0; $i < $count; $i++){
-            $averEasyRead[$i] =  $this->surveyAnswerRepository->sumSurveyAnswer($survey_id[$i], 1);
-            $averHalfWindow[$i] =  $this->surveyAnswerRepository->sumSurveyAnswer($survey_id[$i], 3);
-        }
-
-        return view('blog.admin.survey_answers.edit', compact('averEasyRead', 'averHalfWindow'));
-    }
     public function destroy(AdminSurvey_AnswerRequest $answer)
     {
         $result = $answer->forceDelete();
