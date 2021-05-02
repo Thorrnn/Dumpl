@@ -4,9 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Редактирование статьи@endslot;
-            @slot('parent')Главная@endslot;
-            @slot('active')Редактирование статьи@endslot;
+            @slot('title')Редагування статей@endslot;
+            @slot('parent')Головна@endslot;
+            @slot('active')Редагування статті@endslot;
         @endcomponent
     </section>
 
@@ -50,9 +50,9 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>Символов</th>
-                                    <th>Слов</th>
-                                    <th>Предложений</th>
+                                    <th>Символів</th>
+                                    <th>Слів</th>
+                                    <th>Речень</th>
                                     <th>Індекс Колман - Ліау</th>
                                     <th>Автоматичний індекс легкості читання</th>
                                 </tr>
@@ -83,7 +83,7 @@
                         </div>
                         <div class="box-footer">
                             <input type="hidden" name="id" value="{{$item->id}}">
-                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                            <button type="submit" class="btn btn-primary">Зберегти</button>
                             <a class="button btn-default btn" href="{{route('blog.admin.articles.index')}}" style="font-size:16px; color:black">Назад</a>
                         </div>
 

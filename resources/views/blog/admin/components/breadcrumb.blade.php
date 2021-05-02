@@ -21,5 +21,8 @@
     @if(isset($survey_answer))
         <li><a href="{{ route('blog.admin.survey_answers.index') }}"><i></i>{{$survey_answer}}</a></li>
     @endif
+    @if(isset($survey_analysis))
+        <li><a href="{{ route('blog.admin.survey_analysis.index') }}"><i></i>{{$survey_analysis}}</a></li>
+    @endif
     <li><i class="active"></i>{{$active}}</li>
 </ol>

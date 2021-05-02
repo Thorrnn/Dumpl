@@ -69,4 +69,11 @@ class MainRepository extends CoreRepository
             ->count();
         return $answers;
     }
+
+    public static function getCountSurveyTypes(){
+        $type = \DB::table('type_surveys')
+            ->get()
+            ->count();
+        return $type;
+    }
 }

@@ -29,10 +29,7 @@ class CreateTestsTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('type_id')
-                ->references('id')->on('type_tests')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+
 
         });
 

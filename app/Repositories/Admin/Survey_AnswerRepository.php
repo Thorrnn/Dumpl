@@ -46,7 +46,8 @@ class Survey_AnswerRepository extends CoreRepository
         return $answer;
     }*/
     public function AllIdSurveyAnswer(){
-        $survey_id = DB::select('select survey_answers.survey_id from survey_answers left join surveys on surveys.id = survey_answers.survey_id where surveys.type_id = 1 group by survey_answers.survey_id');
+        $survey_id = DB::select('select survey_answers.id from survey_answers left join surveys on surveys.id = survey_answers.survey_id where surveys.type_id = 1 group by survey_answers.id');
+
         return $survey_id;
     }
 
@@ -54,13 +55,15 @@ class Survey_AnswerRepository extends CoreRepository
         $count = DB::select('select count(*) from survey_answers left join surveys on surveys.id = survey_answers.survey_id where surveys.type_id = 1 group by survey_answers.survey_id');
         return $count;
 
-
-
-
     }
     public function sumSurveyAnswer($answer_id, $question_number){
         $sum = DB::select('SELECT sum(survey_question_answers.answer) FROM survey_question_answers WHERE survey_question_answers.answer_id = :answer_id and survey_question_answers.question_number = :question_number', ['answer_id' => $answer_id,'question_number' => $question_number]);
-        return $sum;
+
+        $sum[0] = (array)$sum[0];
+
+        $res = (int)$sum[0]["sum(survey_question_answers.answer)"];
+
+        return $res;
     }
 
 }

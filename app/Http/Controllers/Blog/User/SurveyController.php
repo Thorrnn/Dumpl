@@ -85,8 +85,9 @@ class SurveyController
             }
             $sur_q = SurveyQuestionAnswers::create([
                 'answer' => $question,
-                'question_id' => $qtns[$key]->id,
+                'question_number' => $qtns[$key]->id,
                 'user_id' => Auth::user()->id,
+                'answer_id' =>$this->surveyRepository->getAnswerId(Auth::user()->id, $arr->survey_id)
             ]);
         }
         $count = count($arr->arr);

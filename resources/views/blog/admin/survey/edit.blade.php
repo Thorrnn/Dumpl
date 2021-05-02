@@ -25,7 +25,7 @@
 
 
                                     <div class="form-group has-feedback">
-                                        <label for="address">{{__('article.navList.status')}}</label>
+                                        <label for="address">Статус/label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="published" @php if ($item->status == 'published') echo 'selected' @endphp >Опубликован</option>
                                             <option value="unpublished" @php if ($item->status == 'unpublished') echo 'selected' @endphp>Неопубликован</option>
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="box-footer">
                                     <input type="hidden" name="id" value="{{$item->id}}">
-                                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                                    <button type="submit" class="btn btn-primary">Зберегти</button>
                                     <a class="button btn-default btn" href="{{route('blog.admin.surveys.index')}}" style="font-size:16px; color:black">Назад</a>
                                 </div>
                             </form>

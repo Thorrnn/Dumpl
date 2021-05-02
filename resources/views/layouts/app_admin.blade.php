@@ -157,7 +157,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="">Аналіз опитувань</a></li>
+                        <li><a href="{{route('blog.admin.survey_analysis.index')}}">Аналіз опитувань</a></li>
                         <li><a href="">Аналіз тестів</a></li>
                     </ul>
                 </li>

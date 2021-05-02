@@ -73,5 +73,8 @@ use Illuminate\Support\Facades\Route;
     Route::resource('survey_answer','\App\Http\Controllers\Blog\Admin\SurveyAnswerController')
     ->names('blog.admin.survey_answers');
 
+Route::resource('survey_analysis','\App\Http\Controllers\Blog\Admin\SurveyAnalysisController')
+    ->names('blog.admin.survey_analysis');
+
 
 

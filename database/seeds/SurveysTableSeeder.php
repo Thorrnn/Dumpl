@@ -1,38 +1,43 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class SurveysTableSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
     public function run()
     {
         $data = [
             [
                 'id' => 1,
-                'title' => 'Survey 1',
-                'annotation' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                'status' => 'published',
-                'article_id' => '1',
-                'type_id' => '1',
+                'name' => 'Знаходження оптимального розміру шрифту для основної інформації статей',
+                'annotation' => 'Знаходження оптимального розміру шрифту для основної інформації статей',
             ],
             [
                 'id' => 2,
-                'title' => 'Survey 2',
-                'annotation' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                'status' => 'published',
-                'article_id' => '2',
-                'type_id' => '1',
-            ],
-            [
-                'id' => 3,
-                'title' => 'Survey 3',
-                'annotation' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                'status' => 'published',
-                'article_id' => '3',
-                'type_id' => '1',
+                'name' => 'Знаходження оптимального розміру шрифту для основної інформації статей',
+                'annotation' => 'Знаходження оптимального розміру шрифту для основної інформації статей',
             ],
 
+            [
+                'id' => 3,
+                'name' => 'Визначення оптимальної позиції зображень на сторінці зважаючи на вподобання користувача',
+                'annotation' => 'Визначення оптимальної позиції зображень на сторінці зважаючи на вподобання користувача',
+            ],
+            [
+                'id' => 4,
+                'name' => 'Визначення оптимальної кількості шрифтів для основної інформації статті',
+                'annotation' => 'Визначення оптимальної кількості шрифтів для основної інформації статті',
+            ],
+            [
+                'id' => 5,
+                'name' => 'Визначення структури позиціонування інформації зважаючи на вподобання користувача',
+                'annotation' => 'Визначення структури позиціонування інформації зважаючи на вподобання користувача',
+            ],
 
         ];
         DB::table('surveys')->insert($data);

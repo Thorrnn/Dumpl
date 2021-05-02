@@ -4,9 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Список статей@endslot;
-            @slot('parent')Главная@endslot;
-            @slot('active')Список статей@endslot;
+            @slot('title')Аналіз результатів опитувань@endslot;
+            @slot('parent')Головна@endslot;
+            @slot('active')Аналіз результатів опитувань@endslot;
         @endcomponent
     </section>
 
@@ -19,42 +19,30 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Название</th>
-                                    <th>Статус</th>
-                                    <th>Сфера</th>
-                                    <th>Действия</th>
+                                    <th>Назва</th>
+                                    <th>Опис</th>
+                                    <th>Дія</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($paginator as $article)
+                                @forelse($types as $type)
                                     @php
                                         $class = '';
                                     @endphp
                                     <tr class="{{$class}}">
-                                        <td>{{$article->id}}</td>
-                                        <td>{{$article->title}}</td>
-                                        <td>{{$article->status}}</td>
-                                        <td>{{$article->fieldsArticles}}</td>
+                                        <td>{{$type->name}}</td>
+                                        <td>{{$type->annotation}}</td>
                                         <td>
-                                            <a href="{{route('blog.admin.articles.edit', $article->id)}}" title="просмотреть пользователя">
+                                            <a href="{{route('blog.admin.survey_analysis.show', $type->id)}}" title="Переглянути результати">
                                                 <i class="btx btn-xs"></i>
-                                                <button type="submit" class="btn btn-success btn-xs">Просмотреть</button>
+                                                <button type="submit" class="btn btn-success btn-xs">Переглянути</button>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                            </a>
-                                            <a class="btn btn-xs">
-                                                <form method="post" action="{{route('blog.admin.articles.destroy', $article->id)}}"
-                                                      style="float: none">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger btn-xs">Удалить</button>
-                                                </form>
                                             </a>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="3" class="text-center"><h2>Список статей пуст</h2></td>
+                                        <td colspan="3" class="text-center"><h2>Список типів аналізу пустий</h2></td>
                                     </tr>
                                 @endforelse
                                 </tbody>

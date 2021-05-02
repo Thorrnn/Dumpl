@@ -51,10 +51,10 @@ class SurveyAnswerController extends AdminBaseController
         $info = $this->surveyAnswerRepository->getAllInfoAnswer($id);
         $stat = $this->surveyAnswerRepository->getStatAnswer($id);
 
-
         MetaTag::set('title', "Перегляд результату опитування");
-        return view('blog.admin.survey_answers.edit', compact('info', 'stat'));
+        return view('blog.admin.survey_answer.edit', compact('info', 'stat'));
     }
+
 
     public function destroy(AdminSurvey_AnswerRequest $answer)
     {

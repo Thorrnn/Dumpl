@@ -29,10 +29,7 @@ class CreateSurveysTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('type_id')
-                ->references('id')->on('type_surveys')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+
         });
 
     }
