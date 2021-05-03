@@ -35,35 +35,58 @@ class SurveyAnalysisController extends AdminBaseController
     {
 
         if ($id = 1) {
-            $survey_id = $this->surveyAnswerRepository->AllIdSurveyAnswer();
+
+            /*Все id с опросов с первым типом*/
+            $survey_id = $this->surveyAnswerRepository->AllIdSurveyAnswer(1);
+            $survey_info = $this->surveyAnswerRepository->SurveyInfo(1);
             $count = count($survey_id);
+
+
+            $maxEasyReadValue = 0;
+            $numberMaxEasyReadSurvey = 0;
             $averEasyRead[0] = 0;
             $averHalfWindow[0] = 0;
             $title = 'ID тесту';
             $fields = 'Балл';
-           $data = array(array("name" => "Результатів немає",
-                "value" => 0));
+            $requestEasyRead = $this->surveyAnswerRepository->sumSurveyAnswer(1, 1);
+            $requestHalfWindow = $this->surveyAnswerRepository->sumSurveyAnswer(1, 3);
+
+            $dataEasyRead = array(array("id" =>"0", "title" => "Результатів немає",
+                "annotation"=>"none","min" => 0, "avg" =>0, "max" => 0 ));
+            $dataHalfWindow = array(array("id" =>"0", "title" => "Результатів немає",
+                "annotation"=>"none","min" => 0, "avg" =>0, "max" => 0 ));
+            for ($i = 0; $i < 2; $i++) {
+
+                $dataEasyRead[$i]["id"] = $requestEasyRead[$i]->id;
+                $dataEasyRead[$i]["title"] = $requestEasyRead[$i]->title;
+                $dataEasyRead[$i]["annotation"] = $requestEasyRead[$i]->annotation;
+                $dataEasyRead[$i]["max"] = $requestEasyRead[$i]->answerMax;
+                $dataEasyRead[$i]["min"] = $requestEasyRead[$i]->answerMin;
+                $dataEasyRead[$i]["avg"] = $requestEasyRead[$i]->answerAvg;
 
 
 
-            //dd($this->surveyAnswerRepository->sumSurveyAnswer($survey_id[$i], 1));
+                $dataHalfWindow[$i]["id"] = $requestHalfWindow[$i]->id;
+                $dataHalfWindow[$i]["title"] = $requestHalfWindow[$i]->title;
+                $dataHalfWindow[$i]["annotation"] = $requestHalfWindow[$i]->annotation;
+                $dataHalfWindow[$i]["max"] = $requestHalfWindow[$i]->answerMax;
+                $dataHalfWindow[$i]["min"] = $requestHalfWindow[$i]->answerMin;
+                $dataHalfWindow[$i]["avg"] = $requestHalfWindow[$i]->answerAvg;
 
-            for ($i = 0; $i < $count; $i++) {
-
-                $survey[0] = (array)$survey_id[$i];
-
-                $id = $survey[0]["id"];
-                //dd($id);
-                $data[$i]["name"] = $id;
-
-                $data[$i]["value"] = $this->surveyAnswerRepository->sumSurveyAnswer($id, 1);
-
+                if ($maxEasyReadValue < $dataEasyRead[$i]["avg"] + $dataHalfWindow[$i]["avg"]) {
+                    $maxEasyReadValue = $dataEasyRead[$i]["avg"]+ $dataHalfWindow[$i]["avg"];
+                    $numberMaxEasyReadSurvey = $i;
+                }
             }
 
-            //dd($data);
             return view('blog.admin.survey_analysis.optimal_font_size', [
-                'monthlyOrdersImageUrl' => $this->monthlyOrdersImageUrl($title, $fields, $data)
-            ],compact('survey_id'));
+                'EasyReadOrdersImageUrl' => $this->EasyReadOrdersImageUrl($title, $fields, $dataEasyRead),
+                'HalfWindowOrdersImageUrl' => $this->HalfWindowOrdersImageUrl($title, $fields, $dataHalfWindow),
+            ], compact('dataEasyRead','dataHalfWindow', 'maxEasyReadValue','numberMaxEasyReadSurvey'));
+        }
+        if ($id = 2){
+
+
         }
     }
 
@@ -72,32 +95,24 @@ class SurveyAnalysisController extends AdminBaseController
         return "https://pub.getchart.me/vega-lite?c=" . urlencode(json_encode($chart));
     }
 
-    private function monthlyOrdersImageUrl($nameTitle, $nameValue, $data)
+    private function EasyReadOrdersImageUrl($nameTitle, $nameValue, $data)
     {
-       // dd($data);
-        $date = [
-            [ "name" => $data[0]["name"], "value" => $data[0]["value"] ],
-            [ "name" => $data[1]["name"], "value" => $data[1]["value"] ],
-
-
-        ];
         $chart = [
             "data" => ["values" => $data],
-
             "width" => 450,
             "height" => 300,
             "layer" => [
                 [
                     "encoding" => [
                         "x" => [
-                            "field" => "name",
+                            "field" => "id",
                             "type" => "ordinal",
 
                             "axis" => ["labelAngle" => 0],
                             "title" => $nameTitle
                         ],
                         "y" => [
-                            "field" => "value",
+                            "field" => "avg",
                             "type" => "quantitative",
                             "title" => $nameValue
                         ]
@@ -106,15 +121,46 @@ class SurveyAnalysisController extends AdminBaseController
                         ["mark" => ["type" => "bar"]],
                         [
                             "mark" => ["type" => "text", "dy" => -8],
-                            "encoding" => ["text" => ["field" => "value", "type" => "quantitative"]]
+                            "encoding" => ["text" => ["field" => "avg", "type" => "quantitative"]]
                         ]
                     ]
                 ]
             ],
-
-
         ];
         return $this->buildGetChartMeUrl($chart);
     }
+    private function HalfWindowOrdersImageUrl($nameTitle, $nameValue, $data)
+    {
+        $chart = [
+            "data" => ["values" => $data],
+            "width" => 450,
+            "height" => 300,
+            "layer" => [
+                [
+                    "encoding" => [
+                        "x" => [
+                            "field" => "id",
+                            "type" => "ordinal",
 
+                            "axis" => ["labelAngle" => 0],
+                            "title" => $nameTitle
+                        ],
+                        "y" => [
+                            "field" => "avg",
+                            "type" => "quantitative",
+                            "title" => $nameValue
+                        ]
+                    ],
+                    "layer" => [
+                        ["mark" => ["type" => "bar"]],
+                        [
+                            "mark" => ["type" => "text", "dy" => -8],
+                            "encoding" => ["text" => ["field" => "avg", "type" => "quantitative"]]
+                        ]
+                    ]
+                ]
+            ],
+        ];
+        return $this->buildGetChartMeUrl($chart);
+    }
 }
