@@ -4,9 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Добавление теста@endslot;
-            @slot('parent')Главная@endslot;
-            @slot('active')Добавление теста@endslot;
+            @slot('title')Добавление теста @endslot;
+            @slot('parent')Главная @endslot;
+            @slot('active')Добавление теста @endslot;
         @endcomponent
     </section>
 
@@ -24,7 +24,7 @@
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="annotation">Опис</label>
-                                <input type="text" class="form-control" name="" id="annotation" value="@if(old('annotation')) {{old('annotation')}} @else @endif" required>
+                                <input type="text" class="form-control" name="annotation" id="annotation" value="@if(old('annotation')) {{old('annotation')}} @else @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
                             <div class="form-group has-feedback">
@@ -37,6 +37,19 @@
                                         <option value="{{$t->id}}">{{$t->name}}</option>
                                     @empty
                                         <option value="0">Типів немає</option>
+                                    @endforelse
+                                </select>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="article_id">Стаття</label>
+                                <select name="article_id" id="article_id" class="form-control">
+                                    @forelse($articles as $article)
+                                        @php
+                                            $class = '';
+                                        @endphp
+                                        <option value="{{$article->id}}">{{$article->title}}</option>
+                                    @empty
+                                        <option value="0">Статей немає</option>
                                     @endforelse
                                 </select>
                             </div>

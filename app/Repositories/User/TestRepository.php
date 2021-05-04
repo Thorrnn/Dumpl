@@ -19,7 +19,7 @@ class TestRepository extends CoreRepository
 
     public function getAccessTest($perpage){
         $tests = $this->startConditions()
-            ->select('tests.id','tests.info')
+            ->select('tests.id','tests.title')
             ->orderBy('tests.id')
             //->toBase()
             ->paginate($perpage);

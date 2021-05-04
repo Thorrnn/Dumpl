@@ -17,7 +17,7 @@ class AdminTestQuestionRequest extends FormRequest
     {
         $id = $_POST['id'];
         return [
-            'title' => 'required|min:5|max:100|string',
+            'title' => 'required|min:3|max:100|string',
 
         ];
     }
@@ -25,7 +25,7 @@ class AdminTestQuestionRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.min' => 'Минимальная длина названия 5 символов',
+            'title.min' => 'Минимальная длина названия 3 символов',
         ];
     }
 }

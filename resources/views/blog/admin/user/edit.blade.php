@@ -4,10 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Редактирование пользователей@endslot;
-            @slot('parent')Главная@endslot;
-            @slot('user')Список пользователей@endslot;
-            @slot('active')Редактирование пользователей@endslot;
+            @slot('title')Редактирование пользователей @endslot;
+            @slot('parent')Главная @endslot;
+            @slot('active')Редактирование пользователей @endslot;
         @endcomponent
 
         <div class="content">

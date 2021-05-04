@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SurveysTableSeeder extends Seeder
+class TestsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -55,6 +55,6 @@ class SurveysTableSeeder extends Seeder
             ],
 
         ];
-        DB::table('surveys')->insert($data);
+        DB::table('tests')->insert($data);
     }
 }

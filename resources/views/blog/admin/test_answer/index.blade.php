@@ -4,9 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Список результатів тесту@endslot;
-            @slot('parent')Головна@endslot;
-            @slot('active')Список результатів тесту@endslot;
+            @slot('title')Список результатів тесту @endslot;
+            @slot('parent')Головна @endslot;
+            @slot('active')Список результатів тесту @endslot;
         @endcomponent
     </section>
 
@@ -23,7 +23,6 @@
                                     <th>ID,Назва тесту</th>
                                     <th>ID,Логін користувача</th>
                                     <th>Статус екземпляр тесту</th>
-                                    <th>Відсоток правильних відповідей </th>
                                     <th>Дії</th>
                                 </tr>
                                 </thead>
@@ -37,19 +36,22 @@
                                         <td>{{$test->test_id}}, {{$test->title}}</td>
                                         <td>{{$test->user_id}}, {{$test->login}}</td>
                                         <td>{{$test->status}}</td>
-                                        <td></td>
                                         <td>
-                                            <a href="{{route('blog.admin.survey_answers.edit', $test->id)}}" title="Переглянути результат тесту">
+                                            <a href="{{route('blog.admin.test_answers.edit', $test->id)}}"
+                                               title="Переглянути результат тесту">
                                                 <i class="btx btn-xs"></i>
-                                                <button type="submit" class="btn btn-success btn-xs">Переглянути</button>
+                                                <button type="submit" class="btn btn-success btn-xs">Переглянути
+                                                </button>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                             </a>
                                             <a class="btn btn-xs">
-                                                <form method="post" action="{{route('blog.admin.survey_answers.destroy', $test->id)}}"
+                                                <form method="post"
+                                                      action="{{route('blog.admin.test_answers.destroy', $test->id)}}"
                                                       style="float: none">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger btn-xs">Видалити</button>
+                                                    <button type="submit" class="btn btn-danger btn-xs">Видалити
+                                                    </button>
                                                 </form>
                                             </a>
                                         </td>

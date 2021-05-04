@@ -4,10 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Редагування опитування@endslot;
-            @slot('parent')Головна@endslot;
-            @slot('user')Список опитувань@endslot;
-            @slot('active')Редагування опитування@endslot;
+            @slot('title')Редагування опитування @endslot;
+            @slot('parent')Головна @endslot;
+            @slot('active')Редагування опитування @endslot;
         @endcomponent
             <section class="content">
                 <div class="row">
@@ -18,17 +17,17 @@
                                 @csrf
                                 <div class="box-body">
                                     <div class="form-group has-feedback">
-                                        <label for="name">Назва</label>
+                                        <label for="title">Назва</label>
                                         <input type="text" class="form-control" name="title" id="title" value="@if(old('title')) {{old('title')}} @else {{$item->title ?? ""}} @endif" required>
                                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
 
 
                                     <div class="form-group has-feedback">
-                                        <label for="address">Статус/label>
+                                        <label for="status">Статус</label>
                                         <select name="status" id="status" class="form-control">
-                                            <option value="published" @php if ($item->status == 'published') echo 'selected' @endphp >Опубликован</option>
-                                            <option value="unpublished" @php if ($item->status == 'unpublished') echo 'selected' @endphp>Неопубликован</option>
+                                            <option value="published" @php if ($item->status == 'published') echo 'selected' @endphp >Опублікован</option>
+                                            <option value="unpublished" @php if ($item->status == 'unpublished') echo 'selected' @endphp>Неопублікован</option>
                                         </select>
                                     </div>
                                     <div class="form-group has-feedback">

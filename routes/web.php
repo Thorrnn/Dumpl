@@ -66,12 +66,16 @@ use Illuminate\Support\Facades\Route;
         ->names('blog.user.tests');
 
     Route::get('pass_poll/{id}', '\App\Http\Controllers\Blog\User\SurveyController@pass_poll')->name('blog.user.surveys.pass_poll');
-    Route::get('blog.user.surveys.store_surveys', '\App\Http\Controllers\Blog\User\SurveyController@store_surveys')->name('blog.user.surveys.store_surveys');
+    Route::get('pass_poll_test/{id}', '\App\Http\Controllers\Blog\User\TestController@pass_poll_test')->name('blog.user.tests.pass_poll_test');
 
+    Route::get('blog.user.surveys.store_surveys', '\App\Http\Controllers\Blog\User\SurveyController@store_surveys')->name('blog.user.surveys.store_surveys');
+    Route::get('blog.user.surveys.store_tests', '\App\Http\Controllers\Blog\User\TestController@store_tests')->name('blog.user.surveys.store_tests');
     Route::get('/welcome', 'HomeController@index')->name('welcome');
 
     Route::resource('survey_answer','\App\Http\Controllers\Blog\Admin\SurveyAnswerController')
     ->names('blog.admin.survey_answers');
+Route::resource('test_answer','\App\Http\Controllers\Blog\Admin\TestAnswerController')
+    ->names('blog.admin.test_answers');
 
 Route::resource('survey_analysis','\App\Http\Controllers\Blog\Admin\SurveyAnalysisController')
     ->names('blog.admin.survey_analysis');

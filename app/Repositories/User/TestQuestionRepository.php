@@ -20,7 +20,7 @@ class TestQuestionRepository extends CoreRepository
     }
 
     public function getQuestionTest($test_id){
-        $questions = DB::select('select * from test_questions where test_questions.test_id = :test_id',['test_id'=>$test_id] );
+        $questions = DB::select('select * from test_questions where test_questions.test_id = :test_id order by test_questions.id',['test_id'=>$test_id] );
         return $questions;
     }
 }

@@ -24,7 +24,7 @@ class TestAnswerRepository extends CoreRepository
         $answers = $this->startConditions()
             ->join('users','user_id','=','users.id')
             ->join('tests','test_id','=','tests.id')
-            ->select('test_answers.id','test_answers.user_id', 'test_answers.survey_id', 'test_answers.status', 'tests.title', 'users.login')
+            ->select('test_answers.id','test_answers.user_id', 'test_answers.test_id', 'test_answers.status', 'tests.title', 'users.login')
             ->orderBy('test_answers.id')
             //->toBase()
             ->paginate($perpage);

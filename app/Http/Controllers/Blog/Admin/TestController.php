@@ -38,11 +38,12 @@ class TestController extends AdminBaseController
         $articles = $this->articleRepository->getAllArticles($perpage);
         $type = $this->testRepository->getTypeTest();
         MetaTag::set('title', 'Створення тесту');
-        return view('blog.admin.test.add', compact('type'));
+        return view('blog.admin.test.add', compact('type','articles'));
     }
 
     public function store(AdminTestRequest $request)
     {
+      //  dd($request);
         $test = Test::create([
             'title' => $request['title'],
             'annotation' => $request['annotation'],

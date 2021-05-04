@@ -3,45 +3,26 @@
 @section('content')
     <section class="content">
         <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="box">
-                    <div class="box-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
-                                <tbody>
-                                    @forelse($paginator as $survey)
-                                        @php
-                                        $class = '';
-                                        @endphp
-                                        <tr class="{{$class}}">
-                                            <td>{{$survey->info}}</td>
-                                            <td>
-                                                <a onClick="return window.confirm('Пройти опитування можливо тільки один раз. Почати?');" href="{{}}" title="Пройти опрос">
-                                                    <i class="btx btn-xs"></i>
-                                                    <button type="submit" class="btn btn-success btn-xs">Пройти</button>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="3" class="text-center"><h2>Доступних тестів немає</h2></td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                        </div>
-
-
+            <div class="row">
+                @forelse($paginator as $test)
+                    @php
+                        $class = '';
+                    @endphp
+                    <div class="{{$test}}, col-12 mb-3">
+                        <h2 class="text-center">{{$test->title}}</h2>
+                        <p>{!! $test->annotation!!}</p>
+                        <a class="align-content-end" onClick="return window.confirm('Пройти тест можливо лише один раз. Почати?');" href="{{route('blog.user.tests.pass_poll_test', $test->id)}}" title="Пройти тестування">
+                            <i class="btx btn-xs"></i>
+                            <button type="submit" class="btn btn-success btn-xs">Пройти тест</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </a>
                     </div>
-
-                </div>
-
+                @empty
+                    <div>
+                        <h2>Доступних тестів немає</h2>
+                    </div>
+                @endforelse
             </div>
-
-        </div>
         </div>
     </section>
-    @endsection
-
+@endsection

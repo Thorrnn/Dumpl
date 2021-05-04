@@ -147,7 +147,7 @@
                     <ul class="treeview-menu">
                         <li><a href="{{route('blog.admin.tests.index')}}">Список тестів</a></li>
                         <li><a href="{{route('blog.admin.tests.create')}}">Створити тест</a></li>
-                        <li><a href="">Результати тестів</a></li>
+                        <li><a href="{{route('blog.admin.test_answers.index')}}">Результати тестів</a></li>
                     </ul>
                 </li>
                 <li class="treeview">

@@ -4,9 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Список тестов@endslot;
-            @slot('parent')Главная@endslot;
-            @slot('active')Список тестов@endslot;
+            @slot('title')Список тестов @endslot;
+            @slot('parent')Главная @endslot;
+            @slot('active')Список тестов @endslot;
         @endcomponent
     </section>
 
@@ -20,8 +20,9 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Название</th>
+                                    <th>Назва</th>
                                     <th>Статус</th>
+                                    <th>Дія</th>
                                 </tr>
                                 </thead>
                                 <tbody>

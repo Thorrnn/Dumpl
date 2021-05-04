@@ -3,8 +3,8 @@
 
 namespace App\Http\Controllers\Blog\Admin;
 
-use App\Http\Requests\AdminTest_QuestionRequest;
-use App\Models\Admin\Test_Questions;
+use App\Http\Requests\AdminTestQuestionRequest;
+use App\Models\Admin\TestQuestion;
 use App\Repositories\Admin\MainRepository;
 use App\Repositories\Admin\Test_QuestionRepository;
 use MetaTag;
@@ -41,24 +41,24 @@ class TestQuestionController
         return view('blog.admin.test_question.add', compact('id'));
     }
 
-    public function store(AdminTest_QuestionRequest $request)
+    public function store(AdminTestQuestionRequest $request)
     {
-        $survey_question = Test_Questions::create([
+        $survey_question = TestQuestion::create([
             'title' => $request['title'],
             'option_a' => $request['option_a'],
             'option_b' => $request['option_b'],
             'option_c' => $request['option_c'],
-            'option_c' => $request['option_c'],
+            'option_correct' => $request['option_correct'],
             'test_id' => $request['test_id']
         ]);
-
+        $test_id = $request['test_id'];
         if (!$survey_question){
             return back()
                 ->withErrors(['msg'=>'Ошибка создания вопроса  опроса'])
                 ->withInput();
         } else {
             redirect()
-                ->route('blog.admin.tests.edit', compact('test_id'))
+                ->route('blog.admin.tests.edit', 'test_id')
                 ->with(['success'=>'Вопрос теста создан']);
         }
     }

@@ -28,8 +28,8 @@ class AdminTestRequest extends FormRequest
     {
         $id = $_POST['id'];
         return [
-            'title' => 'required|min:5|max:100|string',
-            'info' => 'required|min:5|max:254|string',
+            'title' => 'required|min:3|max:100|string',
+            'annotation' => 'required|min:3|max:254|string',
 
         ];
     }
@@ -37,8 +37,8 @@ class AdminTestRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.min' => 'Минимальная длина названия 5 символов',
-            'info.min' => 'Минимальная длина описания 5 символов',
+            'title.min' => 'Минимальная длина названия 3 символов',
+            'annotation.min' => 'Минимальная длина описания 3 символов',
         ];
     }
 }
