@@ -4,9 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Редактирование пользователей @endslot;
-            @slot('parent')Главная @endslot;
-            @slot('active')Редактирование пользователей @endslot;
+            @slot('title')Редагування користувача @endslot;
+            @slot('parent')Головна @endslot;
+            @slot('active')Редагування користувача @endslot;
         @endcomponent
 
         <div class="content">
@@ -101,7 +101,8 @@
                             </div>
                             <div class="box-footer">
                                 <input type="hidden" name="id" value="{{$item->id}}">
-                                <button type="submit" class="btn btn-primary">Сохранить</button>
+                                <button type="submit" class="btn btn-primary">Зберегти</button>
+                                <a class="button btn-default btn" href="{{route('blog.admin.users.index')}}" style="font-size:16px; color:black">Назад</a>
                             </div>
                         </form>
                     </div>

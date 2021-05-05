@@ -18,7 +18,7 @@
                             @csrf
                             <div class="box-body">
                                 <div class="form-group has-feedback">
-                                    <label for="name">Title</label>
+                                    <label for="name">Назва</label>
                                     <input type="text" class="form-control" name="title" id="title"
                                            value="@if(old('title')) {{old('title')}} @else {{$item->title ?? ""}} @endif"
                                            required>
@@ -27,7 +27,7 @@
                             </div>
                             <div class="box-footer">
                                 <input type="hidden" name="id" value="{{$item->id}}">
-                                <button type="submit" class="btn btn-primary">Сохранить</button>
+                                <button type="submit" class="btn btn-primary">Зберегти</button>
                             </div>
                         </form>
                     </div>

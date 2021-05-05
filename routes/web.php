@@ -38,7 +38,7 @@ use Illuminate\Support\Facades\Route;
                 ->names('blog.admin.index');
         });
     });
-    Route::get('user/index', 'Blog\User\MainController@index')->name('index');
+    //Route::get('user/index', 'Blog\User\MainController@index')->name('index');
     Route::get('/welcome', 'HomeController@index')->name('welcome');
     Route::get('/', 'HomeController@home')->name('home');
     Route::resource('user','\App\Http\Controllers\Blog\Admin\UserController')

@@ -31,6 +31,7 @@ class UserController extends AdminBaseController
     {
         $perpage = 0;
         $countUsers = MainRepository::getCountUsers();
+
         $paginator = $this->userRepository->getAllUsers($perpage);
         MetaTag::set('title', 'Список пользователей');
         return view('blog.admin.user.index', compact('countUsers','paginator'));

@@ -10,25 +10,26 @@
                 <input type="radio" name="point" id="slide3">
                 <div class="slider col-12">
                     <div class="slides slide1">
-                        <p>test test</p>
-                        <label class="label-slider" for="slide2">Почати</label>
+                        <div class="mt-2">
+                            <p class="text-left" style="font-size: 18px; color: black">Необхідно ознайомитися з інформацією статті та відповісти на питання.</p>
+                            <p class="text-left" style="font-size: 18px; color: black">Якщо ви перезавантажите сторінку то вийдете з опитування і не сможете його продовжити.</p>
+                            <label class="label-slider" for="slide2">Почати</label>
+                        </div>
                     </div>
-                    <div class="slides slide2 align-content-center">
+                    <div class="slides slide2 align-content-center mt-3">
                         @forelse($article as $ar)
                             @php
                                 $class = '';
                             @endphp
-                            <div>
-                                <h2 class="text-center">{{$ar->title}}</h2>
-                                <p class="text-justify">{!!$ar->body!!}</p>
-                            </div>
+                                <h2 class="text-center mb-2">{{$ar->title}}</h2>
+                                <p class="text-justify mt-2">{!!$ar->body!!}</p>
                         @empty
                             <div>
                                 <h2>Помилка завантаження статті</h2>
                             </div>
                         @endforelse
 
-                        <label class="label-slider" for="slide3">Далі</label>
+                        <label class="label-slider" for="slide3">Відповісти на питання</label>
                     </div>
                     <div class="slides slide3">
                         <form action="{{ route('blog.user.surveys.store_tests', $test_id) }} " method="get"
@@ -41,23 +42,33 @@
                                         $class = '';
                                     @endphp
                                     <div class="form-group has-feedback">
-                                        <label for="education">{{$questions[$key]->title}}</label>
+                                        <label class="h4">{{$questions[$key]->title}}</label>
                                         <div>
-                                            <input type="radio" id="contactChoice1"
-                                                   name="arr[{{$key}}]" value="{{$qns[0]}}">
-                                            <label>{{$qns[0]}}</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" id="contactChoice{{$key}}0"
+                                                       name="arr[{{$key}}]" value="{{$qns[0]}}">
+                                                <label for="contactChoice{{$key}}0"
+                                                       class="form-check-label">{{$qns[0]}}</label>
+                                            </div>
 
-                                            <input type="radio" id="contactChoice2"
-                                                   name="arr[{{$key}}]" value="{{$qns[1]}}">
-                                            <label>{{$qns[1]}}</label>
-
-                                            <input type="radio" id="contactChoice3"
-                                                   name="arr[{{$key}}]" value="{{$qns[2]}}">
-                                            <label>{{$qns[2]}}</label>
-
-                                            <input type="radio" id="contactChoice4"
-                                                   name="arr[{{$key}}]" value="{{$qns[3]}}">
-                                            <label>{{$qns[3]}}</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" id="contactChoice{{$key}}1"
+                                                       name="arr[{{$key}}]" value="{{$qns[1]}}">
+                                                <label for="contactChoice{{$key}}1"
+                                                       class="form-check-label">{{$qns[1]}}</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" id="contactChoice{{$key}}2"
+                                                       name="arr[{{$key}}]" value="{{$qns[2]}}">
+                                                <label for="contactChoice{{$key}}2"
+                                                       class="form-check-label">{{$qns[2]}}</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" id="contactChoice{{$key}}3"
+                                                       name="arr[{{$key}}]" value="{{$qns[3]}}">
+                                                <label for="contactChoice{{$key}}3"
+                                                       class="form-check-label">{{$qns[3]}}</label>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -73,8 +84,8 @@
 
                                 <input type="hidden" name="test_id" id="test_id"
                                        value="{{$test_id}}" required>
-                                    <input type="hidden" name="test_answer_id" id="test_answer_id"
-                                           value="{{$test_answer_id}}" required>
+                                <input type="hidden" name="test_answer_id" id="test_answer_id"
+                                       value="{{$test_answer_id}}" required>
                                 <div class="box-footer">
                                     <input type="hidden" name="id" value="">
 

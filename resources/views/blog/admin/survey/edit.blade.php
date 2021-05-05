@@ -66,7 +66,7 @@
                         <div>
                             <a href="{{route('add_question_survey', $item->id)}}" title="Додати питання">
                                 <i class="btx btn-xs"></i>
-                                <button type="submit" class="btn btn-success btn-xs">Добавить вопрос</button>
+                                <button type="submit" class="btn btn-success btn-xs">Додати питання</button>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                             </a>
                         </div>
@@ -79,8 +79,8 @@
                                             <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Название</th>
-                                                <th>Действие</th>
+                                                <th>Назва</th>
+                                                <th>Дія</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -95,7 +95,7 @@
                                         </table>
                                     </div>
                                 @else
-                                    <p class="text-danger">Вопросов нет</p>
+                                    <p class="text-danger">Питань немає</p>
                                 @endif
                             </div>
 

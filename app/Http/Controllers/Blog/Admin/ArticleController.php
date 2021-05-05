@@ -132,17 +132,22 @@ class ArticleController extends AdminBaseController
      */
     public function update(AdminArticleRequest $request, $id)
     {
+
         $article = Article::findOrFail($id);
         $article->update($request->all());
+        $idArticle = $this->articleRepository->getStatArticle($id);
+        $idArticle = $idArticle[0]->id;
+       // dd($idArticle);
+        $stat_article = Stat_article::findOrFail($idArticle);
 
-        $stat_article = Article::findOrFail($id);
-        $stat_article ->updated([
+        $stat_article ->update([
             'sentences' => $this->articleRepository->getCountSentence($request['body']),
             'words' => $this->articleRepository->getCountWord($request['body']),
             'letter' => $this->articleRepository->getCountLeter($request['body']),
             'ColemanLiauIndex' => $this->articleRepository->getColemanLiauIndex($request['body']),
             'ARI' => $this->articleRepository->getARI($request['body']),
-            'FleschReadingEase' =>  2/*$this->articleRepository->getFleschReadingEase($request['body'])*/,
+            'article_id' => $id,
+
         ]);
 
         return redirect()

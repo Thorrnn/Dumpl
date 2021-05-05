@@ -10,7 +10,7 @@ abstract class AdminBaseController extends MainBaseController
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('status');
+        //$this->middleware('status');
 
 
     }

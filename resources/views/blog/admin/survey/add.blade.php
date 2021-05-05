@@ -6,7 +6,7 @@
         @component('blog.admin.components.breadcrumb')
             @slot('title')Створення опитування @endslot;
             @slot('parent')Головна @endslot;
-            @slot('active')Додавання опитування @endslot;
+            @slot('active')Створення опитування @endslot;
         @endcomponent
     </section>
 

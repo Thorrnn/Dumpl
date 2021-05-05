@@ -19,31 +19,31 @@
                         @csrf
                         <div class="box-body">
                             <div class="form-group has-feedback">
-                                <label for="name">{{__('article.navList.title')}}</label>
+                                <label for="name">Назва</label>
                                 <input type="text" class="form-control" name="title" id="title" value="@if(old('title')) {{old('title')}} @else {{$item->title ?? ""}} @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
 
                             <div class="form-group has-feedback">
-                                <label for="address">{{__('article.navList.status')}}</label>
+                                <label for="address">Статус</label>
                                 <select name="status" id="status" class="form-control">
-                                    <option value="published" @php if ($item->status == 'published') echo 'selected' @endphp >Опубликован</option>
-                                    <option value="unpublished" @php if ($item->status == 'unpublished') echo 'selected' @endphp>Неопубликован</option>
+                                    <option value="published" @php if ($item->status == 'published') echo 'selected' @endphp >Опублікована</option>
+                                    <option value="unpublished" @php if ($item->status == 'unpublished') echo 'selected' @endphp>Неопублікована</option>
                                 </select>
                             </div>
 
                             <div class="form-group has-feedback">
-                                <label for="name">{{__('article.navList.annotation')}}</label>
+                                <label for="name">Анотація</label>
                                 <input type="text" class="form-control" name="annotation" id="annotation" value="@if(old('annotation')) {{old('annotation')}} @else {{$item->annotation ?? ""}} @endif" required>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             </div>
 
                             <div class="form-group has-feedback">
-                                <label for="body">{{__('article.navList.info')}}</label>
+                                <label for="body">Опис</label>
                                 <textarea name="info" id="editorInfoArticles" cols="80" rows="10">@if( old('info')) {{old('info')}} @else {{$item->info ?? ""}} @endif </textarea>
                             </div>
                                <div class="form-group has-feedback">
-                                <label for="body">Body</label>
+                                <label for="body">Тіло</label>
                                 <textarea name="body" id="editorBodyArticles" cols="80" rows="10">@if( old('body')) {{old('body')}} @else {{$item->body ?? ""}} @endif</textarea>
                             </div>
                             <div class="table-responsive">

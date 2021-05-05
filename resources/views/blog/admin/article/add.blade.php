@@ -4,9 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Создание статьи @endslot;
-            @slot('parent')Главная @endslot;
-            @slot('active')Создание статьи @endslot;
+            @slot('title')Створення статті @endslot;
+            @slot('parent')Головна @endslot;
+            @slot('active')Створення статті @endslot;
         @endcomponent
     </section>
 
@@ -26,7 +26,7 @@
                             <div class="form-group has-feedback">
                                 <label for="address">Статус</label>
                                 <select name="status" id="status" class="form-control">
-                                        <option value="published">Опублікован</option>
+                                        <option value="published">Опублікована</option>
                                     <option value="unpublished" selected>Неопублікована</option>
                                 </select>
                             </div>

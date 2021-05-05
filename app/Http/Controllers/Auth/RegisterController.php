@@ -64,7 +64,7 @@ class RegisterController extends Controller
             ],
             'education' => [
                 'required',
-                Rule::in(['preschool', 'generalSecondary', 'out-of-school', 'vocational', 'higher',
+                Rule::in(['preschool', 'generalSecondary_start', 'generalSecondary_middle','generalSecondary_high', 'out-of-school', 'vocational', 'higher',
                     'postgraduate', 'graduateSchool', 'doctoralStudies', 'self-education']),
             ],
             'aboutMyself' => ['string'],
@@ -86,6 +86,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         $user = User::create([
             'login' => $data['login'],
             'email' => $data['email'],
@@ -97,6 +98,7 @@ class RegisterController extends Controller
             'aboutMyself' => $data['aboutMyself'],
             'fieldActivity' => $data['fieldActivity'],
             'password' => Hash::make($data['password']),
+            'role' => 'user'
         ]);
         \DB::table('user_roles')->insert([
             'user_id' => $user->id,

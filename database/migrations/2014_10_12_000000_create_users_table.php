@@ -37,7 +37,7 @@ class CreateUsersTable extends Migration
             $table->integer('age');
             $table->enum('role',['admin', 'moderator','user']);
             $table->enum('sex',['male', 'female']);
-            $table->enum('education',['preschool', 'generalSecondary', 'out-of-school', 'vocational', 'higher',
+            $table->enum('education',['preschool', 'generalSecondary_start', 'generalSecondary_middle','generalSecondary_high','out-of-school', 'vocational', 'higher',
                 'postgraduate', 'graduateSchool', 'doctoralStudies', 'self-education']);
             $table->enum('fieldActivity',['ecology', 'economy', 'medicine', 'physicalEducation' , 'pedagogy' , 'management' , 'art' , 'science']);
             $table->string('aboutMyself');

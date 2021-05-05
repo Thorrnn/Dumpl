@@ -46,6 +46,10 @@ class TestController
         $article = $this->articleController->getArticle($test->article_id);
 
         $questions = $this->test_questionController->getQuestionTest($id);
+        $quertAnswer[0][0] = 0;
+        $quertAnswer[0][1] = 0;
+        $quertAnswer[0][2] = 0;
+        $quertAnswer[0][3] = 0;
 
         foreach ($questions as $key => $q) {
             $rnd = random_int(1, 8);

@@ -4,9 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title') Панель управления @endslot
-                @slot('parent') Главная @endslot
-                @slot('active') Панель управления @endslot
+            @slot('title') Панель управління @endslot
+                @slot('parent') Головна @endslot
+                @slot('active') Панель управління @endslot
         @endcomponent
     </section>
 

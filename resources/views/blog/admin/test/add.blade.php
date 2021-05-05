@@ -4,9 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Добавление теста @endslot;
-            @slot('parent')Главная @endslot;
-            @slot('active')Добавление теста @endslot;
+            @slot('title')Додавання тесту @endslot;
+            @slot('parent')Головна @endslot;
+            @slot('active')Додавання тесту @endslot;
         @endcomponent
     </section>
 
@@ -56,15 +56,15 @@
                             <div class="form-group has-feedback">
                                 <label for="address">Статус</label>
                                 <select name="status" id="status" class="form-control">
-                                    <option value="published">published</option>
-                                    <option value="unpublished" selected>unpublished</option>
+                                    <option value="published">Опублікований</option>
+                                    <option value="unpublished" selected>Неопублікований</option>
                                 </select>
                             </div>
                             <input type="hidden" id="_token" value="{{ csrf_token() }}">
                         </div>
                         <div class="box-footer">
                             <input type="hidden" name="id" value="">
-                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                            <button type="submit" class="btn btn-primary">Зберегти</button>
 
                         </div>
 

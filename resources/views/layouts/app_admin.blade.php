@@ -73,12 +73,12 @@
                             <li class="user-footer">
                                 <div class="pull-left">
                                     <a href="{{ route('blog.admin.users.edit', Auth::user()->id) }}"
-                                       class="btn btn-default btn-flat">Профиль</a>
+                                       class="btn btn-default btn-flat">Профіль</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"
-                                       class="btn btn-default btn-flat">Выход</a>
+                                       class="btn btn-default btn-flat">Вийти</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                           style="display: none;">
                                         {{ csrf_field() }}
@@ -127,14 +127,14 @@
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-cubes"></i> <span>Опитування</span>
+                    <a href="#"><i class="glyphicon glyphicon-list-alt"></i> <span>Опитування</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{route('blog.admin.surveys.index')}}">Список опитувань</a></li>
-                        <li><a href="{{route('blog.admin.surveys.create')}}">Добавить опитування</a></li>
+                        <li><a href="{{route('blog.admin.surveys.create')}}">Додати опитування</a></li>
                         <li><a href="{{route('blog.admin.survey_answers.index')}}">Результати опитувань</a></li>
                     </ul>
                 </li>
@@ -151,7 +151,7 @@
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-cubes"></i> <span>Аналіз</span>
+                    <a href="#"><i class="glyphicon glyphicon-pencil"></i> <span>Аналіз</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>

@@ -5,7 +5,7 @@
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
             @slot('title')Список статей @endslot;
-            @slot('parent')Главная @endslot;
+            @slot('parent')Головна @endslot;
             @slot('active')Список статей @endslot;
         @endcomponent
     </section>
@@ -20,10 +20,10 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Название</th>
+                                    <th>Назва</th>
                                     <th>Статус</th>
                                     <th>Сфера</th>
-                                    <th>Действия</th>
+                                    <th>Дія</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -37,9 +37,9 @@
                                         <td>{{$article->status}}</td>
                                         <td>{{$article->fieldsArticles}}</td>
                                         <td>
-                                            <a href="{{route('blog.admin.articles.edit', $article->id)}}" title="просмотреть пользователя">
+                                            <a href="{{route('blog.admin.articles.edit', $article->id)}}" title="Перегляд статті">
                                                 <i class="btx btn-xs"></i>
-                                                <button type="submit" class="btn btn-success btn-xs">Просмотреть</button>
+                                                <button type="submit" class="btn btn-success btn-xs">Переглянути</button>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                             </a>
                                             <a class="btn btn-xs">
@@ -47,14 +47,14 @@
                                                       style="float: none">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger btn-xs">Удалить</button>
+                                                    <button type="submit" class="btn btn-danger btn-xs">Видалити</button>
                                                 </form>
                                             </a>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="3" class="text-center"><h2>Список статей пуст</h2></td>
+                                        <td colspan="3" class="text-center"><h2>Список статей порожній</h2></td>
                                     </tr>
                                 @endforelse
                                 </tbody>

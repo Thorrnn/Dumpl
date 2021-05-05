@@ -4,9 +4,9 @@
 
     <section class="content-header">
         @component('blog.admin.components.breadcrumb')
-            @slot('title')Список тестов @endslot;
-            @slot('parent')Главная @endslot;
-            @slot('active')Список тестов @endslot;
+            @slot('title')Список тестів @endslot;
+            @slot('parent')Головна @endslot;
+            @slot('active')Список тестів @endslot;
         @endcomponent
     </section>
 
@@ -35,9 +35,9 @@
                                             <td>{{$test->title}}</td>
                                             <td>{{$test->status}}</td>
                                             <td>
-                                                <a href="{{route('blog.admin.tests.edit', $test->id)}}" title="просмотреть тест">
+                                                <a href="{{route('blog.admin.tests.edit', $test->id)}}" title="пПерегляд тесту">
                                                     <i class="btx btn-xs"></i>
-                                                    <button type="submit" class="btn btn-success btn-xs">Просмотреть</button>
+                                                    <button type="submit" class="btn btn-success btn-xs">Перегляд</button>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                                 </a>
                                                 <a class="btn btn-xs">
@@ -45,14 +45,14 @@
                                                     style="float: none">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger btn-xs">Удалить</button>
+                                                    <button type="submit" class="btn btn-danger btn-xs">Видалити</button>
                                                 </form>
                                                 </a>
                                             </td>
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="3" class="text-center"><h2>Тестов нет</h2></td>
+                                            <td colspan="3" class="text-center"><h2>Тестів немає</h2></td>
                                         </tr>
                                     @endforelse
                                 </tbody>

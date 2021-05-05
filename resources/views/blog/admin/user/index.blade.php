@@ -1,7 +1,13 @@
 @extends('layouts.app_admin')
 
 @section('content')
-
+    <section class="content-header">
+        @component('blog.admin.components.breadcrumb')
+            @slot('title')Список користувачів @endslot;
+            @slot('parent')Головна @endslot;
+            @slot('active')Список користувачів @endslot;
+        @endcomponent
+    </section>
 
 
     <section class="content">
@@ -14,12 +20,12 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Логин</th>
+                                    <th>Логін</th>
                                     <th>Email</th>
-                                    <th>Имя</th>
-                                    <th>Фамилия</th>
+                                    <th>Ім`я</th>
+                                    <th>Прізвище</th>
                                     <th>Роль</th>
-                                    <th>Действия</th>
+                                    <th>Дія</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -37,9 +43,9 @@
                                             <td>{{$user->surname}}</td>
                                             <td>{{$user->role}}</td>
                                             <td>
-                                                <a href="{{route('blog.admin.users.edit', $user->id)}}" title="просмотреть пользователя">
+                                                <a href="{{route('blog.admin.users.edit', $user->id)}}" title="Перегляд користувача">
                                                     <i class="btx btn-xs"></i>
-                                                    <button type="submit" class="btn btn-success btn-xs">Просмотреть</button>
+                                                    <button type="submit" class="btn btn-success btn-xs">Перегляд</button>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                                 </a>
                                                 <a class="btn btn-xs">
@@ -47,21 +53,21 @@
                                                     style="float: none">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger btn-xs">Удалить</button>
+                                                    <button type="submit" class="btn btn-danger btn-xs">Видалити</button>
                                                 </form>
                                                 </a>
                                             </td>
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="3" class="text-center"><h2>Пользователей нет</h2></td>
+                                            <td colspan="3" class="text-center"><h2>Користувачів немає</h2></td>
                                         </tr>
                                     @endforelse
                                 </tbody>
                             </table>
                         </div>
                         <div class="text-center">
-                            <p>{{count($paginator)}} пользователей из {{$countUsers}}</p>
+                            <p>{{count($paginator)}} користувачів з {{$countUsers}}</p>
                                 @if($paginator->total() > $paginator->count())
                                     <br>
                                     <div class="row justify-content-center">
