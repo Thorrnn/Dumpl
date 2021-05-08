@@ -11,32 +11,48 @@
                 <div class="slider col-12">
                     <div class="slides slide1">
                         <div class="mt-2">
-                            <p class="text-left" style="font-size: 18px; color: black">Необхідно ознайомитися з інформацією статті та відповісти на питання.</p>
-                            <p class="text-left" style="font-size: 18px; color: black">Якщо ви перезавантажите сторінку то вийдете з опитування і не сможете його продовжити.</p>
-                            <label class="label-slider" for="slide2">Почати</label>
+                            <p class="text-left" style="font-size: 18px; color: black">Необхідно ознайомитися з
+                                інформацією статті та відповісти на питання.</p>
+                            <p class="text-left" style="font-size: 18px; color: black">Якщо ви перезавантажите сторінку
+                                то вийдете з опитування і не сможете його продовжити.</p>
+                            <label class="label-slider" onClick="stopwatch.start();" for="slide2">Почати</label>
                         </div>
                     </div>
                     <div class="slides slide2 align-content-center mt-3">
+                        <nav class="controls">
+                            <a href="#" class="button" onClick="stopwatch.start();">Start</a>
+                            <a href="#" class="button" onClick="stopwatch.lap();">Lap</a>
+                            <a href="#" class="button" onClick="stopwatch.stop();">Stop</a>
+                            <a href="#" class="button" onClick="stopwatch.restart();">Restart</a>
+                            <a href="#" class="button" onClick="stopwatch.clear();">Clear Laps</a>
+                        </nav>
+
+                        <p class="stopwatch hidden"></p>
+                        <ul class="results hidden"></ul>
+
+
+
                         @forelse($article as $ar)
                             @php
                                 $class = '';
                             @endphp
-                                <h2 class="text-center mb-2">{{$ar->title}}</h2>
-                                <p class="text-justify mt-2">{!!$ar->body!!}</p>
+                            <h2 class="text-center mb-2">{{$ar->title}}</h2>
+                            <p class="text-justify mt-2">{!!$ar->body!!}</p>
                         @empty
                             <div>
                                 <h2>Помилка завантаження статті</h2>
                             </div>
                         @endforelse
 
-                        <label class="label-slider" for="slide3">Відповісти на питання</label>
+                        <label class="label-slider" onClick="stopwatch.lap();" for="slide3">Відповісти на питання</label>
                     </div>
                     <div class="slides slide3">
                         <form action="{{ route('blog.user.surveys.store_tests', $test_id) }} " method="get"
                               data-toggle="validator">
                             @csrf
                             <div class="box-body">
-
+                                <input class="form-check-input" type="hidden" id="time"
+                                       name="time" value="time">
                                 @forelse($quertAnswer as $key=>$qns)
                                     @php
                                         $class = '';
@@ -69,6 +85,7 @@
                                                 <label for="contactChoice{{$key}}3"
                                                        class="form-check-label">{{$qns[3]}}</label>
                                             </div>
+
                                         </div>
 
                                     </div>
@@ -101,7 +118,108 @@
 
         </div>
 
+        <script>
+            class Stopwatch {
+                constructor(display, results) {
+                    this.running = false;
+                    this.display = display;
+                    this.results = results;
+                    this.laps = [];
+                    this.reset();
+                    this.print(this.times);
+                }
 
+                reset() {
+                    this.times = [0, 0, 0];
+                }
+
+                start() {
+                    if (!this.time) this.time = performance.now();
+                    if (!this.running) {
+                        this.running = true;
+                        requestAnimationFrame(this.step.bind(this));
+                    }
+                }
+
+                lap() {
+                    /*let times = this.times;
+                    let li = document.createElement('p');
+                    li.innerText = this.format(times);*/
+                    document.getElementById('time').value = this.times[1];
+                 /*   this.results.appendChild(li);*/
+
+                }
+
+                stop() {
+                    this.running = false;
+                    this.time = null;
+                }
+
+                restart() {
+                    if (!this.time) this.time = performance.now();
+                    if (!this.running) {
+                        this.running = true;
+                        requestAnimationFrame(this.step.bind(this));
+                    }
+                    this.reset();
+                }
+
+                clear() {
+                    clearChildren(this.results);
+                }
+
+                step(timestamp) {
+                    if (!this.running) return;
+                    this.calculate(timestamp);
+                    this.time = timestamp;
+                    this.print();
+                    requestAnimationFrame(this.step.bind(this));
+                }
+
+                calculate(timestamp) {
+                    var diff = timestamp - this.time;
+                    // Hundredths of a second are 100 ms
+                    this.times[2] += diff / 10;
+                    // Seconds are 100 hundredths of a second
+                    if (this.times[2] >= 100) {
+                        this.times[1] += 1;
+                        this.times[2] -= 100;
+                    }
+                    // Minutes are 60 seconds
+                  /*  if (this.times[1] >= 60) {
+                        this.times[0] += 1;
+                        this.times[1] -= 60;
+                    }*/
+                }
+
+                print() {
+                    this.display.innerText = this.format(this.times);
+                }
+
+                format(times) {
+                    return `\
+${pad0(times[0], 2)}:\
+${pad0(times[1], 2)}:\
+${pad0(Math.floor(times[2]), 2)}`;
+                }
+            }
+
+            function pad0(value, count) {
+                var result = value.toString();
+                for (; result.length < count; --count)
+                    result = '0' + result;
+                return result;
+            }
+
+            function clearChildren(node) {
+                while (node.lastChild)
+                    node.removeChild(node.lastChild);
+            }
+
+            let stopwatch = new Stopwatch(
+                document.querySelector('.stopwatch'),
+                document.querySelector('.results'));
+        </script>
     </section>
 @endsection
 

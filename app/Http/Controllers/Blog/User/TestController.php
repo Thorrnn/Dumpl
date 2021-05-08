@@ -112,6 +112,7 @@ class TestController
             'right_answers' => 0,
             'percent_right' => 0,
             'test_id' => $id,
+            'reading_time' => 0,
             'user_id' => Auth::user()->id,
 
         ]);
@@ -129,7 +130,7 @@ class TestController
 
     public function store_tests(Request $arr)
     {
-       // dd($arr);
+      //  dd($arr->time);
         $qtns = $this->test_questionController->getQuestionTest($arr->test_id);
 
 //        dd($qtns[0]->option_correct);
@@ -150,6 +151,7 @@ class TestController
             'count_questions' => $count,
             'right_answers' => $CountRightAnswers,
             'percent_right' => $percentRight,
+            'reading_time' =>$arr->time,
         ]);
 
         if (!$testAnswer) {

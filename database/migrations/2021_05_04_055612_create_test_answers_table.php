@@ -21,6 +21,7 @@ class CreateTestAnswersTable extends Migration
             $table->integer('count_questions');
             $table->integer('right_answers');
             $table->integer('percent_right');
+            $table->integer('reading_time');
             $table->enum('status', ['recorded', 'unrecorded']);
             $table->timestamps();
             $table->softDeletes();
