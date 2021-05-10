@@ -76,4 +76,10 @@ class MainRepository extends CoreRepository
             ->count();
         return $type;
     }
+    public static function getCountTestTypes(){
+        $type = \DB::table('type_tests')
+            ->get()
+            ->count();
+        return $type;
+    }
 }

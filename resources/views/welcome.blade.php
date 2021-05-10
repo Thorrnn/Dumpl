@@ -5,19 +5,10 @@
     <div class="container">
         <div class="row">
             <div class="col-12 ">
-
-
-                <nav class="controls">
-                    <a href="#" class="button" onClick="stopwatch.start();">Start</a>
-                    <a href="#" class="button" onClick="stopwatch.lap();">Lap</a>
-                    <a href="#" class="button" onClick="stopwatch.stop();">Stop</a>
-                    <a href="#" class="button" onClick="stopwatch.restart();">Restart</a>
-                    <a href="#" class="button" onClick="stopwatch.clear();">Clear Laps</a>
-                </nav>
-                <p class="stopwatch"></p>
-                <ul class="results"></ul>
-
-
+                <h1 class="text-center">Добрий день!</h1>
+                <p style="font-size: 22px">Цей сайт є моєю дипломною роботу. Будь-ласка зареєструйтесь та пройдіть тести та опитування.
+                Це дуже допоможе мені у написанні роботи.</p>
+                <h3 class="text-center">Дуже дякую!</h3>
             </div>
         </div>
     </div>

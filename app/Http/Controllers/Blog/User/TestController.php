@@ -113,6 +113,7 @@ class TestController
             'percent_right' => 0,
             'test_id' => $id,
             'reading_time' => 0,
+            'status' => 'unrecorded',
             'user_id' => Auth::user()->id,
 
         ]);
@@ -122,7 +123,7 @@ class TestController
                 ->withErrors(['msg' => 'Помилка початку тестування'])
                 ->withInput();
         } else {
-            return view('blog.user.test.add', compact('questions','test_answer_id', 'test', 'article', 'quertAnswer', 'test_id'));
+            return view('blog.user.test.add', compact('questions', 'test_answer_id', 'test', 'article', 'quertAnswer', 'test_id'));
         }
 
 
@@ -130,7 +131,7 @@ class TestController
 
     public function store_tests(Request $arr)
     {
-      //  dd($arr->time);
+        //  dd($arr->time);
         $qtns = $this->test_questionController->getQuestionTest($arr->test_id);
 
 //        dd($qtns[0]->option_correct);
@@ -144,14 +145,18 @@ class TestController
             }
         }
         $percentRight = $CountRightAnswers / $count * 100;
-
+        $stat = 'unrecorded';
+        if ($arr->time > 30 and $percentRight > 40) {
+            $stat = 'recorded';
+        }
         $testAnswer = TestAnswer::findOrFail($arr->test_answer_id);
         //dd($percentRight);
         $testAnswer->update([
             'count_questions' => $count,
             'right_answers' => $CountRightAnswers,
             'percent_right' => $percentRight,
-            'reading_time' =>$arr->time,
+            'reading_time' => $arr->time,
+            'status' => $stat
         ]);
 
         if (!$testAnswer) {

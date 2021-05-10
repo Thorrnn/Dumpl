@@ -15,7 +15,7 @@
             <div class="col-12">
                 <div class="box">
                     <div class="box-body">
-                        <h1 class="text-center text-bold">Результати аналізу тестування</h1>
+                        <h1 class="text-center text-bold">Результати аналізу опитування</h1>
                         <h4 class="text-bold">Середне значення бальної оцінки легкості читання тексту статті </h4>
                         <img class="text-center" src="{{ $EasyReadOrdersImageUrl }}"/>
 

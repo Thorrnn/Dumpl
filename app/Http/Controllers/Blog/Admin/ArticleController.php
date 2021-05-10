@@ -137,9 +137,9 @@ class ArticleController extends AdminBaseController
         $article->update($request->all());
         $idArticle = $this->articleRepository->getStatArticle($id);
         $idArticle = $idArticle[0]->id;
-       // dd($idArticle);
+       // dd($idArticle);preg_replace('/\W/', ' ', $str);
         $stat_article = Stat_article::findOrFail($idArticle);
-
+//dd(count(preg_split('/\s+/u', "Можно украсить двор красивыми и пышными клумбами из цветущих растений. При посещении природных уголков, необходимо все за собой оставлять в чистоте, вывозить весь мусор с собой. Желательно убирать за другими посетителями, если они не позаботились о чистоте этого уголка.", null, PREG_SPLIT_NO_EMPTY)));
         $stat_article ->update([
             'sentences' => $this->articleRepository->getCountSentence($request['body']),
             'words' => $this->articleRepository->getCountWord($request['body']),

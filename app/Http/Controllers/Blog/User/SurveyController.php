@@ -32,7 +32,8 @@ class SurveyController
     {
         $perpage = 0;
         $countSurveys = MainRepository::getCountSurveys();
-        $paginator = $this->surveyRepository->getAccessSurveys($perpage);
+        $id = $this->surveyRepository->getDoneSurveys(Auth::user()->id);
+        $paginator = $this->surveyRepository->getAccessSurveys($perpage, $id);
 
         return view('blog.user.survey.index', compact('countSurveys','paginator'));
     }
@@ -52,7 +53,7 @@ class SurveyController
         //dd($survey);
 
         $survey_answer = SurveyAnswer::create([
-            'survey_id' => $survey->article_id,
+            'survey_id' => $survey->id,
             'user_id' => Auth::user()->id,
         ]);
         if (!$survey_answer){
@@ -69,7 +70,7 @@ class SurveyController
 
     public function store_surveys(Request $arr)
     {
-//        dd($arr);
+     //   dd($arr);
         $qtns = $this->survey_questionController->getQuestionSurvey($arr->survey_id);
 //        dd($qtns);
         $sum=0;
@@ -85,7 +86,7 @@ class SurveyController
             }
             $sur_q = SurveyQuestionAnswers::create([
                 'answer' => $question,
-                'question_number' => $qtns[$key]->id,
+                'question_number' => $qtns[$key]->question_number,
                 'user_id' => Auth::user()->id,
                 'answer_id' =>$this->surveyRepository->getAnswerId(Auth::user()->id, $arr->survey_id)
             ]);

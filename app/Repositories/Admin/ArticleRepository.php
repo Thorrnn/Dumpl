@@ -30,18 +30,58 @@ class ArticleRepository extends CoreRepository
             ->paginate($perpage);
         return $articles;
     }
+   public function delSpecialLetter($text){
+       $text = trim($text, " \n\r\t\v\0" );
+       $text = str_replace("&ndash", "", $text);
+       $text = str_replace("<p>", "", $text);
+       $text = str_replace("</p>", "", $text);
+       $text = str_replace("<s>", "", $text);
+       $text = str_replace("</s>", "", $text);
+       $text = str_replace("<h1>", "", $text);
+       $text = str_replace("</h1>", "", $text);
+       $text = str_replace("<h2>", "", $text);
+       $text = str_replace("</h2>", "", $text);
+       $text = str_replace("<h3>", "", $text);
+       $text = str_replace("</h3>", "", $text);
+       $text = str_replace("<h4>", "", $text);
+       $text = str_replace("</h4>", "", $text);
+       $text = str_replace("<h5>", "", $text);
+       $text = str_replace("</h5>", "", $text);
+       $text = str_replace("<h6>", "", $text);
+       $text = str_replace("</h6>", "", $text);
+       $text = str_replace("<em>", "", $text);
+       $text = str_replace("</em>", "", $text);
+       $text = str_replace("<strong>", "", $text);
+       $text = str_replace("</strong>", "", $text);
+       $text = str_replace("<ul>", "", $text);
+       $text = str_replace("</ul>", "", $text);
+       $text = str_replace("<li>", "", $text);
+       $text = str_replace("</li>", "", $text);
+       $text = str_replace("<ol>", "", $text);
+       $text = str_replace("</ol>", "", $text);
+       $text = str_replace("<blockquote>", "", $text);
+       $text = str_replace("</blockquote>", "", $text);
+       $text = str_replace("</small>", "", $text);
+       $text = str_replace("<small>", "", $text);
+       return $text;
+   }
+
+
 
     public function getCountLeter($text){
+        $text = $this->delSpecialLetter($text);
         $count = iconv_strlen($text);
         return $count;
     }
 
     public function getCountWord($text){
-        $count = str_word_count($text);
+        $text = $this->delSpecialLetter($text);
+        $count = count(preg_split('/\s+/u', $text, null, PREG_SPLIT_NO_EMPTY));
         return $count;
     }
 
     public function getCountSyllables($text){
+        $text = $this->delSpecialLetter($text);
         #char patterns
         $RusA = "[абвгдеёжзийклмнопрстуфхцчшщъыьэюя]";
         $RusV = "[аеёиоуыэюя]";
@@ -66,6 +106,7 @@ class ArticleRepository extends CoreRepository
     }
 
     public function getCountSentence($text){
+        $text = $this->delSpecialLetter($text);
         $count = 0;
         $array = explode ( '. ',$text);
         foreach($array as $arr) {
@@ -79,13 +120,15 @@ class ArticleRepository extends CoreRepository
     }
 
     public function getColemanLiauIndex($text){
+        $text = $this->delSpecialLetter($text);
         $index = 0.0588 * ($this->getCountLeter($text)/$this->getCountWord($text) * 100)
-            - (0.296 * $this->getCountSentence($text)/$this->getCountWord($text) * 100)- 15.8;
+            - (0.296 * $this->getCountSentence($text)/$this->getCountWord($text) * 100) - 15.8;
 
         return $index;
     }
 
     public function getARI($text){
+        $text = $this->delSpecialLetter($text);
         $index = (4.71 * ($this->getCountLeter($text) / $this->getCountWord($text)))
             + ((0.5 * $this->getCountWord($text)/$this->getCountSentence($text))- 21.43);
 
@@ -93,6 +136,7 @@ class ArticleRepository extends CoreRepository
     }
 
     public function getStatArticle($article_id){
+
         $articles = DB::select('select * from stat_articles where article_id = :article_id',['article_id'=>$article_id] );
         return $articles;
     }

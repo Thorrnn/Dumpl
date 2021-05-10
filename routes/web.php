@@ -79,6 +79,8 @@ Route::resource('test_answer','\App\Http\Controllers\Blog\Admin\TestAnswerContro
 
 Route::resource('survey_analysis','\App\Http\Controllers\Blog\Admin\SurveyAnalysisController')
     ->names('blog.admin.survey_analysis');
+Route::resource('test_analysis','\App\Http\Controllers\Blog\Admin\TestAnalysisController')
+    ->names('blog.admin.test_analysis');
 
 
 

@@ -34,58 +34,66 @@ class SurveyAnalysisController extends AdminBaseController
     public function show($id)
     {
 
-        if ($id = 1) {
+        if ($id == 1) {
 
             /*Все id с опросов с первым типом*/
             $survey_id = $this->surveyAnswerRepository->AllIdSurveyAnswer(1);
-            $survey_info = $this->surveyAnswerRepository->SurveyInfo(1);
-            $count = count($survey_id);
+            if (count($survey_id) == 0) {
+                return redirect()
+                    ->route('blog.admin.survey_analysis.index')
+                    ->with(['success' => "Опитування цього типу не проведени"]);
+
+            } else{
+                $survey_info = $this->surveyAnswerRepository->SurveyInfo(1);
+                $count = count($survey_id);
 
 
-            $maxEasyReadValue = 0;
-            $numberMaxEasyReadSurvey = 0;
-            $averEasyRead[0] = 0;
-            $averHalfWindow[0] = 0;
-            $title = 'ID тесту';
-            $fields = 'Балл';
-            $requestEasyRead = $this->surveyAnswerRepository->sumSurveyAnswer(1, 1);
-            $requestHalfWindow = $this->surveyAnswerRepository->sumSurveyAnswer(1, 3);
+                $maxEasyReadValue = 0;
+                $numberMaxEasyReadSurvey = 0;
+                $averEasyRead[0] = 0;
+                $averHalfWindow[0] = 0;
+                $title = 'ID тесту';
+                $fields = 'Балл';
+                $requestEasyRead = $this->surveyAnswerRepository->sumSurveyAnswer(1, 1);
+             //   dd($requestEasyRead);
+                $requestHalfWindow = $this->surveyAnswerRepository->sumSurveyAnswer(1, 3);
 
-            $dataEasyRead = array(array("id" =>"0", "title" => "Результатів немає",
-                "annotation"=>"none","min" => 0, "avg" =>0, "max" => 0 ));
-            $dataHalfWindow = array(array("id" =>"0", "title" => "Результатів немає",
-                "annotation"=>"none","min" => 0, "avg" =>0, "max" => 0 ));
-            for ($i = 0; $i < 2; $i++) {
+                $dataEasyRead = array(array("id" =>"0", "title" => "Результатів немає",
+                    "annotation"=>"none","min" => 0, "avg" =>0, "max" => 0 ));
+                $dataHalfWindow = array(array("id" =>"0", "title" => "Результатів немає",
+                    "annotation"=>"none","min" => 0, "avg" =>0, "max" => 0 ));
+                for ($i = 0; $i < count($requestEasyRead); $i++) {
 
-                $dataEasyRead[$i]["id"] = $requestEasyRead[$i]->id;
-                $dataEasyRead[$i]["title"] = $requestEasyRead[$i]->title;
-                $dataEasyRead[$i]["annotation"] = $requestEasyRead[$i]->annotation;
-                $dataEasyRead[$i]["max"] = $requestEasyRead[$i]->answerMax;
-                $dataEasyRead[$i]["min"] = $requestEasyRead[$i]->answerMin;
-                $dataEasyRead[$i]["avg"] = $requestEasyRead[$i]->answerAvg;
+                    $dataEasyRead[$i]["id"] = $requestEasyRead[$i]->id;
+                    $dataEasyRead[$i]["title"] = $requestEasyRead[$i]->title;
+                    $dataEasyRead[$i]["annotation"] = $requestEasyRead[$i]->annotation;
+                    $dataEasyRead[$i]["max"] = $requestEasyRead[$i]->answerMax;
+                    $dataEasyRead[$i]["min"] = $requestEasyRead[$i]->answerMin;
+                    $dataEasyRead[$i]["avg"] = $requestEasyRead[$i]->answerAvg;
 
 
 
-                $dataHalfWindow[$i]["id"] = $requestHalfWindow[$i]->id;
-                $dataHalfWindow[$i]["title"] = $requestHalfWindow[$i]->title;
-                $dataHalfWindow[$i]["annotation"] = $requestHalfWindow[$i]->annotation;
-                $dataHalfWindow[$i]["max"] = $requestHalfWindow[$i]->answerMax;
-                $dataHalfWindow[$i]["min"] = $requestHalfWindow[$i]->answerMin;
-                $dataHalfWindow[$i]["avg"] = $requestHalfWindow[$i]->answerAvg;
+                    $dataHalfWindow[$i]["id"] = $requestHalfWindow[$i]->id;
+                    $dataHalfWindow[$i]["title"] = $requestHalfWindow[$i]->title;
+                    $dataHalfWindow[$i]["annotation"] = $requestHalfWindow[$i]->annotation;
+                    $dataHalfWindow[$i]["max"] = $requestHalfWindow[$i]->answerMax;
+                    $dataHalfWindow[$i]["min"] = $requestHalfWindow[$i]->answerMin;
+                    $dataHalfWindow[$i]["avg"] = $requestHalfWindow[$i]->answerAvg;
 
-                if ($maxEasyReadValue < $dataEasyRead[$i]["avg"] + $dataHalfWindow[$i]["avg"]) {
-                    $maxEasyReadValue = $dataEasyRead[$i]["avg"]+ $dataHalfWindow[$i]["avg"];
-                    $numberMaxEasyReadSurvey = $i;
+                    if ($maxEasyReadValue < $dataEasyRead[$i]["avg"] + $dataHalfWindow[$i]["avg"]) {
+                        $maxEasyReadValue = $dataEasyRead[$i]["avg"]+ $dataHalfWindow[$i]["avg"];
+                        $numberMaxEasyReadSurvey = $i;
+                    }
                 }
-            }
 
-            return view('blog.admin.survey_analysis.optimal_font_size', [
-                'EasyReadOrdersImageUrl' => $this->EasyReadOrdersImageUrl($title, $fields, $dataEasyRead),
-                'HalfWindowOrdersImageUrl' => $this->HalfWindowOrdersImageUrl($title, $fields, $dataHalfWindow),
-            ], compact('dataEasyRead','dataHalfWindow', 'maxEasyReadValue','numberMaxEasyReadSurvey'));
+                return view('blog.admin.survey_analysis.optimal_font_size', [
+                    'EasyReadOrdersImageUrl' => $this->EasyReadOrdersImageUrl($title, $fields, $dataEasyRead),
+                    'HalfWindowOrdersImageUrl' => $this->HalfWindowOrdersImageUrl($title, $fields, $dataHalfWindow),
+                ], compact('dataEasyRead','dataHalfWindow', 'maxEasyReadValue','numberMaxEasyReadSurvey'));}
+
         }
-        if ($id = 2){
-
+        if ($id == 2){
+            /*Все id с опросов с вторым типом*/
 
         }
     }
