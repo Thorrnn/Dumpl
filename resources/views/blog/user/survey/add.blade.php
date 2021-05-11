@@ -43,18 +43,12 @@
 
 
                                     <div class="form-group has-feedback">
-
-
-
                                         <label for="education">{{$qns->title}}</label>
                                         <button type="button" onclick="this.nextElementSibling.stepDown()">-</button>
-                                        <input type="number" min="0" max="10" value="1" readonly  name="arr[{{$key}}]" required class="input_number_read_only">
+                                        <input type="number" min="0" max="10" value="1" readonly name="arr[{{$key}}]"
+                                               required class="input_number_read_only">
                                         <button type="button" onclick="this.previousElementSibling.stepUp()">+</button>
-
-
                                     </div>
-
-
                                     <input type="hidden" id="_token" value="{{ csrf_token() }}">
                                 @empty
                                     <div>

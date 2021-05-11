@@ -19,16 +19,11 @@
                         </div>
                     </div>
                     <div class="slides slide2 align-content-center mt-3">
-                        <nav class="controls">
-                            <a href="#" class="button" onClick="stopwatch.start();">Start</a>
-                            <a href="#" class="button" onClick="stopwatch.lap();">Lap</a>
-                            <a href="#" class="button" onClick="stopwatch.stop();">Stop</a>
-                            <a href="#" class="button" onClick="stopwatch.restart();">Restart</a>
-                            <a href="#" class="button" onClick="stopwatch.clear();">Clear Laps</a>
-                        </nav>
+                        <div class="hidden">
+                            <p class="stopwatch hidden "style="color: white"></p>
+                            <ul class="results hidden" style="color: whitesmoke"></ul>
+                        </div>
 
-                        <p class="stopwatch hidden"></p>
-                        <ul class="results hidden"></ul>
 
 
 

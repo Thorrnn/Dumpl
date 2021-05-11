@@ -28,7 +28,8 @@ class TestController
     {
         $perpage = 0;
         $countTests = MainRepository::getCountTests();
-        $paginator = $this->testRepository->getAccessTest($perpage);
+        $id = $this->testRepository->getDoneTests(Auth::user()->id);
+        $paginator = $this->testRepository->getAccessTest($perpage, $id);
         //MetaTag::set('title', 'Список опросов');
         return view('blog.user.test.index', compact('countTests', 'paginator'));
     }
@@ -46,85 +47,93 @@ class TestController
         $article = $this->articleController->getArticle($test->article_id);
 
         $questions = $this->test_questionController->getQuestionTest($id);
-        $quertAnswer[0][0] = 0;
-        $quertAnswer[0][1] = 0;
-        $quertAnswer[0][2] = 0;
-        $quertAnswer[0][3] = 0;
+         if (count($questions) > 0) {
 
-        foreach ($questions as $key => $q) {
-            $rnd = random_int(1, 8);
 
-            if ($rnd == 1) {
-                $quertAnswer[$key][0] = $q->option_correct;
-                $quertAnswer[$key][1] = $q->option_a;
-                $quertAnswer[$key][2] = $q->option_b;
-                $quertAnswer[$key][3] = $q->option_c;
-            }
-            if ($rnd == 2) {
-                $quertAnswer[$key][0] = $q->option_b;
-                $quertAnswer[$key][1] = $q->option_correct;
-                $quertAnswer[$key][2] = $q->option_c;
-                $quertAnswer[$key][3] = $q->option_a;
-            }
-            if ($rnd == 3) {
-                $quertAnswer[$key][0] = $q->option_c;
-                $quertAnswer[$key][1] = $q->option_a;
-                $quertAnswer[$key][2] = $q->option_correct;
-                $quertAnswer[$key][3] = $q->option_b;
-            }
-            if ($rnd == 4) {
-                $quertAnswer[$key][0] = $q->option_c;
-                $quertAnswer[$key][1] = $q->option_a;
-                $quertAnswer[$key][2] = $q->option_b;
-                $quertAnswer[$key][3] = $q->option_correct;
-            }
-            if ($rnd == 5) {
-                $quertAnswer[$key][0] = $q->option_correct;
-                $quertAnswer[$key][1] = $q->option_c;
-                $quertAnswer[$key][2] = $q->option_a;
-                $quertAnswer[$key][3] = $q->option_b;
+             $quertAnswer[0][0] = 0;
+             $quertAnswer[0][1] = 0;
+             $quertAnswer[0][2] = 0;
+             $quertAnswer[0][3] = 0;
 
-            }
-            if ($rnd == 6) {
-                $quertAnswer[$key][0] = $q->option_c;
-                $quertAnswer[$key][1] = $q->option_correct;
-                $quertAnswer[$key][2] = $q->option_b;
-                $quertAnswer[$key][3] = $q->option_a;
-            }
-            if ($rnd == 7) {
-                $quertAnswer[$key][0] = $q->option_c;
-                $quertAnswer[$key][1] = $q->option_b;
-                $quertAnswer[$key][2] = $q->option_correct;
-                $quertAnswer[$key][3] = $q->option_a;
-            }
-            if ($rnd == 8) {
-                $quertAnswer[$key][0] = $q->option_a;
-                $quertAnswer[$key][1] = $q->option_b;
-                $quertAnswer[$key][2] = $q->option_c;
-                $quertAnswer[$key][3] = $q->option_correct;
-            }
+             foreach ($questions as $key => $q) {
+                 $rnd = random_int(1, 8);
 
-        }
+                 if ($rnd == 1) {
+                     $quertAnswer[$key][0] = $q->option_correct;
+                     $quertAnswer[$key][1] = $q->option_a;
+                     $quertAnswer[$key][2] = $q->option_b;
+                     $quertAnswer[$key][3] = $q->option_c;
+                 }
+                 if ($rnd == 2) {
+                     $quertAnswer[$key][0] = $q->option_b;
+                     $quertAnswer[$key][1] = $q->option_correct;
+                     $quertAnswer[$key][2] = $q->option_c;
+                     $quertAnswer[$key][3] = $q->option_a;
+                 }
+                 if ($rnd == 3) {
+                     $quertAnswer[$key][0] = $q->option_c;
+                     $quertAnswer[$key][1] = $q->option_a;
+                     $quertAnswer[$key][2] = $q->option_correct;
+                     $quertAnswer[$key][3] = $q->option_b;
+                 }
+                 if ($rnd == 4) {
+                     $quertAnswer[$key][0] = $q->option_c;
+                     $quertAnswer[$key][1] = $q->option_a;
+                     $quertAnswer[$key][2] = $q->option_b;
+                     $quertAnswer[$key][3] = $q->option_correct;
+                 }
+                 if ($rnd == 5) {
+                     $quertAnswer[$key][0] = $q->option_correct;
+                     $quertAnswer[$key][1] = $q->option_c;
+                     $quertAnswer[$key][2] = $q->option_a;
+                     $quertAnswer[$key][3] = $q->option_b;
+
+                 }
+                 if ($rnd == 6) {
+                     $quertAnswer[$key][0] = $q->option_c;
+                     $quertAnswer[$key][1] = $q->option_correct;
+                     $quertAnswer[$key][2] = $q->option_b;
+                     $quertAnswer[$key][3] = $q->option_a;
+                 }
+                 if ($rnd == 7) {
+                     $quertAnswer[$key][0] = $q->option_c;
+                     $quertAnswer[$key][1] = $q->option_b;
+                     $quertAnswer[$key][2] = $q->option_correct;
+                     $quertAnswer[$key][3] = $q->option_a;
+                 }
+                 if ($rnd == 8) {
+                     $quertAnswer[$key][0] = $q->option_a;
+                     $quertAnswer[$key][1] = $q->option_b;
+                     $quertAnswer[$key][2] = $q->option_c;
+                     $quertAnswer[$key][3] = $q->option_correct;
+                 }
+
+             }
 //dd($quertAnswer);
 
-        $test_answer = TestAnswer::create([
-            'count_questions' => 0,
-            'right_answers' => 0,
-            'percent_right' => 0,
-            'test_id' => $id,
-            'reading_time' => 0,
-            'status' => 'unrecorded',
-            'user_id' => Auth::user()->id,
+             $test_answer = TestAnswer::create([
+                 'count_questions' => 0,
+                 'right_answers' => 0,
+                 'percent_right' => 0,
+                 'test_id' => $id,
+                 'reading_time' => 0,
+                 'status' => 'unrecorded',
+                 'user_id' => Auth::user()->id,
 
-        ]);
-        $test_answer_id = $test_answer->id;
-        if (!$test_answer) {
-            return back()
-                ->withErrors(['msg' => 'Помилка початку тестування'])
-                ->withInput();
-        } else {
-            return view('blog.user.test.add', compact('questions', 'test_answer_id', 'test', 'article', 'quertAnswer', 'test_id'));
-        }
+             ]);
+             $test_answer_id = $test_answer->id;
+             if (!$test_answer) {
+                 return back()
+                     ->withErrors(['msg' => 'Помилка початку тестування'])
+                     ->withInput();
+             } else {
+                 return view('blog.user.test.add', compact('questions', 'test_answer_id', 'test', 'article', 'quertAnswer', 'test_id'));
+             }
+         }
+
+         else return redirect() ->route('blog.user.tests.index');
+
+
 
 
     }
