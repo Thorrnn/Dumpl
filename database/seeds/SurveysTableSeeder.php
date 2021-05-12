@@ -16,7 +16,7 @@ class SurveysTableSeeder extends Seeder
                 'id' => 1,
                 'title' => 'Мінімальний розмір шрифту',
                 'annotation' => 'Знаходження оптимального розміру шрифту для основної інформації статей. Мінімальне значення.',
-                'article_id' => 1,
+                'article_id' => 15,
                 'type_id' => 1,
                 'status' => 'published'
             ],
@@ -24,7 +24,7 @@ class SurveysTableSeeder extends Seeder
                 'id' => 2,
                 'title' => 'Середній розмір шрифту',
                 'annotation' => 'Знаходження оптимального розміру шрифту для основної інформації статей. Середне значення.',
-                'article_id' => 2,
+                'article_id' => 4,
                 'type_id' => 1,
                 'status' => 'published'
             ],
@@ -33,7 +33,7 @@ class SurveysTableSeeder extends Seeder
                 'id' => 3,
                 'title' => 'Найбільший розмір шрифту',
                 'annotation' => 'Визначення оптимальної позиції зображень на сторінці зважаючи на вподобання користувача. Найбільше значення.',
-                'article_id' => 3,
+                'article_id' => 15,
                 'type_id' => 1,
                 'status' => 'published'
             ],
@@ -41,7 +41,7 @@ class SurveysTableSeeder extends Seeder
                 'id' => 4,
                 'title' => 'Один шрифт',
                 'annotation' => 'Визначення оптимальної кількості шрифтів. Один шрифт',
-                'article_id' => 4,
+                'article_id' => 3,
                 'type_id' => 2,
                 'status' => 'published'
             ],
@@ -49,7 +49,7 @@ class SurveysTableSeeder extends Seeder
                 'id' => 5,
                 'title' => 'Два шрифти',
                 'annotation' => 'Визначення оптимальної кількості шрифтів. Два шрифти',
-                'article_id' => 5,
+                'article_id' => 13,
                 'type_id' => 2,
                 'status' => 'published'
             ],
@@ -57,7 +57,7 @@ class SurveysTableSeeder extends Seeder
                 'id' => 6,
                 'title' => 'Три шрифти',
                 'annotation' => 'Визначення оптимальної кількості шрифтів. Три шрифти',
-                'article_id' => 6,
+                'article_id' => 1,
                 'type_id' => 2,
                 'status' => 'published'
             ],
@@ -65,7 +65,7 @@ class SurveysTableSeeder extends Seeder
                 'id' => 7,
                 'title' => 'Розміщення в одну колонку',
                 'annotation' => 'Визначення структури позиціонування інформації зважаючи на вподобання користувача',
-                'article_id' => 7,
+                'article_id' => 3  ,
                 'type_id' => 3,
                 'status' => 'published'
             ],
@@ -73,7 +73,7 @@ class SurveysTableSeeder extends Seeder
                 'id' => 8,
                 'title' => 'Розміщення у дві паралельні колонки',
                 'annotation' => 'Визначення структури позиціонування інформації зважаючи на вподобання користувача',
-                'article_id' => 8,
+                'article_id' => 2,
                 'type_id' => 3,
                 'status' => 'published'
             ],
@@ -81,7 +81,7 @@ class SurveysTableSeeder extends Seeder
                 'id' => 9,
                 'title' => 'Розміщення у три паралельні колонки',
                 'annotation' => 'Визначення структури позиціонування інформації зважаючи на вподобання користувача',
-                'article_id' => 9,
+                'article_id' => 1,
                 'type_id' => 3,
                 'status' => 'published'
             ],
@@ -89,7 +89,7 @@ class SurveysTableSeeder extends Seeder
                 'id' => 10,
                 'title' => 'Зображення у вигляді F стилю',
                 'annotation' => 'Визначення оптимальної позиції зображень на сторінці. Зображення у вигляді F стилю',
-                'article_id' => 10,
+                'article_id' => 7,
                 'type_id' => 4,
                 'status' => 'published'
             ],
@@ -97,7 +97,7 @@ class SurveysTableSeeder extends Seeder
                 'id' => 11,
                 'title' => 'Обтікання зображень текстом',
                 'annotation' => 'Визначення оптимальної позиції зображень на сторінці. Обтікання зображень текстом',
-                'article_id' => 11,
+                'article_id' => 8,
                 'type_id' => 4,
                 'status' => 'published'
             ],
@@ -105,34 +105,11 @@ class SurveysTableSeeder extends Seeder
                 'id' => 12,
                 'title' => 'Поодинокі зображення',
                 'annotation' => 'Визначення оптимальної позиції зображень на сторінці. Поодинокі зображення',
-                'article_id' => 12,
+                'article_id' => 9,
                 'type_id' => 4,
                 'status' => 'published'
             ],
-            [
-                'id' => 13,
-                'title' => 'Зображення займає 35%',
-                'annotation' => 'Визначення оптимального розміру картинок на сторінці. Зображення займає 35%',
-                'article_id' => 13,
-                'type_id' => 5,
-                'status' => 'published'
-            ],
-            [
-                'id' => 14,
-                'title' => 'Зображення займає 50%',
-                'annotation' => 'Визначення оптимального розміру картинок на сторінці. Зображення займає 50%',
-                'article_id' => 14,
-                'type_id' => 5,
-                'status' => 'published'
-            ],
-            [
-                'id' => 15,
-                'title' => 'Зображення займає 75%',
-                'annotation' => 'Визначення оптимального розміру картинок на сторінці. Зображення займає 75%',
-                'article_id' => 15,
-                'type_id' => 5,
-                'status' => 'published'
-            ],
+
 
         ];
         DB::table('surveys')->insert($data);

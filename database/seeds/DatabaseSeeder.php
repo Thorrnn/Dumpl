@@ -19,7 +19,10 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeSurveysTableSeeder::class);
         $this->call(TypeTestsTableSeeder::class);
         $this->call(ArticlesTableSeeder::class);
-    $this->call(TestsTableSeeder::class);
+        $this->call(TestsTableSeeder::class);
+        $this->call(SurveysTableSeeder::class);
+        $this->call(TestQuestionsTableSeeder::class);
+        $this->call(SurveyQuestionsTableSeeder::class);
      //   $this->call(SurveysTableSeeder::class);
 
     }

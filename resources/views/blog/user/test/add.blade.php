@@ -9,39 +9,38 @@
                 <input type="radio" name="point" id="slide2">
                 <input type="radio" name="point" id="slide3">
                 <div class="slider col-12">
-                    <div class="slides slide1">
+                    <div class="slides slide1" style="max-width: 65%">
                         <div class="mt-2">
                             <p class="text-left" style="font-size: 18px; color: black">Необхідно ознайомитися з
-                                інформацією статті та відповісти на питання.</p>
+                                інформацією статті та відповісти на питання за змістом.</p>
                             <p class="text-left" style="font-size: 18px; color: black">Якщо ви перезавантажите сторінку
                                 то вийдете з опитування і не сможете його продовжити.</p>
                             <label class="label-slider" onClick="stopwatch.start();" for="slide2">Почати</label>
                         </div>
                     </div>
-                    <div class="slides slide2 align-content-center mt-3">
+                    <div class="slides slide2 mt-3" style="max-width: 100%">
                         <div class="hidden">
                             <p class="stopwatch hidden "style="color: white"></p>
                             <ul class="results hidden" style="color: whitesmoke"></ul>
                         </div>
+                        <div  style="justify-content: center">
+                            @forelse($article as $ar)
+                                @php
+                                    $class = '';
+                                @endphp
+                                <h2 class="text-center mb-2">{{$ar->title}}</h2>
+                                <p class="text-justify mt-2">{!!$ar->body!!}</p>
+                            @empty
+                                <div>
+                                    <h2>Помилка завантаження статті</h2>
+                                </div>
+                            @endforelse
 
+                            <label class="label-slider" onClick="stopwatch.lap();" for="slide3">Відповісти на питання</label>
+                        </div>
 
-
-
-                        @forelse($article as $ar)
-                            @php
-                                $class = '';
-                            @endphp
-                            <h2 class="text-center mb-2">{{$ar->title}}</h2>
-                            <p class="text-justify mt-2">{!!$ar->body!!}</p>
-                        @empty
-                            <div>
-                                <h2>Помилка завантаження статті</h2>
-                            </div>
-                        @endforelse
-
-                        <label class="label-slider" onClick="stopwatch.lap();" for="slide3">Відповісти на питання</label>
                     </div>
-                    <div class="slides slide3">
+                    <div class="slides slide3" style="max-width:65%">
                         <form action="{{ route('blog.user.surveys.store_tests', $test_id) }} " method="get"
                               data-toggle="validator">
                             @csrf
@@ -56,7 +55,7 @@
                                         <label class="h4">{{$questions[$key]->title}}</label>
                                         <div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" id="contactChoice{{$key}}0"
+                                                <input class="form-check-input" type="radio" checked id="contactChoice{{$key}}0"
                                                        name="arr[{{$key}}]" value="{{$qns[0]}}">
                                                 <label for="contactChoice{{$key}}0"
                                                        class="form-check-label">{{$qns[0]}}</label>
