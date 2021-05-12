@@ -79,7 +79,7 @@ class TestsTableSeeder extends Seeder
             ],
             [
                 'id' => 9,
-                'title' => 'Поодинокі "жирністю"',
+                'title' => 'Виділення "жирністю"',
                 'annotation' => 'Визначення ефективності виділення',
                 'article_id' => 12,
                 'type_id' => 9,

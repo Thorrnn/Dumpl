@@ -9,16 +9,16 @@
                 <input type="radio" name="point" id="slide2">
                 <input type="radio" name="point" id="slide3">
                 <div class="slider col-12">
-                    <div class="slides slide1" style="max-width: 65%">
+                    <div class="slides slide1" style="max-width: 60%">
                         <div class="mt-2">
-                            <p class="text-left" style="font-size: 18px; color: black">Необхідно ознайомитися з
+                            <p class="text-left" style="font-size: 16px; color: black">Необхідно ознайомитися з
                                 інформацією статті та відповісти на питання за змістом.</p>
-                            <p class="text-left" style="font-size: 18px; color: black">Якщо ви перезавантажите сторінку
+                            <p class="text-left" style="font-size: 16px; color: black">Якщо ви перезавантажите сторінку
                                 то вийдете з опитування і не сможете його продовжити.</p>
                             <label class="label-slider" onClick="stopwatch.start();" for="slide2">Почати</label>
                         </div>
                     </div>
-                    <div class="slides slide2 mt-3" style="max-width: 100%">
+                    <div class="slides slide2 mt-3" style="max-width: 88%">
                         <div class="hidden">
                             <p class="stopwatch hidden "style="color: white"></p>
                             <ul class="results hidden" style="color: whitesmoke"></ul>
