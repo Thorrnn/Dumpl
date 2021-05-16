@@ -16,7 +16,7 @@ class TestsTableSeeder extends Seeder
                 'id' => 1,
                 'title' => 'Мінімальний розмір шрифту',
                 'annotation' => 'Знаходження оптимального розміру шрифту для основної інформації статей. Мінімальне значення.',
-                'article_id' => 1,
+                'article_id' => 10,
                 'type_id' => 1,
                 'status' => 'published'
             ],
@@ -24,7 +24,7 @@ class TestsTableSeeder extends Seeder
                 'id' => 2,
                 'title' => 'Середній розмір шрифту',
                 'annotation' => 'Знаходження оптимального розміру шрифту для основної інформації статей. Середне значення.',
-                'article_id' => 2,
+                'article_id' => 11,
                 'type_id' => 1,
                 'status' => 'published'
             ],
@@ -33,7 +33,7 @@ class TestsTableSeeder extends Seeder
                 'id' => 3,
                 'title' => 'Найбільший розмір шрифту',
                 'annotation' => 'Визначення оптимальної позиції зображень на сторінці зважаючи на вподобання користувача. Найбільше значення.',
-                'article_id' => 3,
+                'article_id' => 12,
                 'type_id' => 1,
                 'status' => 'published'
             ],

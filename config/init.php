@@ -17,7 +17,7 @@
         $host = $_SERVER['HTTP_HOST'];
     }
 
-    $allowed_hosts = 'http://contentanalysis.loc/index.php';
+    $allowed_hosts = 'http://dumpl.loc/index.php';
 
     $app_path = preg_replace("#[^/]+$#", '', $allowed_hosts);
 

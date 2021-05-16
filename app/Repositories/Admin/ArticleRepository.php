@@ -25,18 +25,35 @@ class ArticleRepository extends CoreRepository
         $articles = $this->startConditions()
            // ->leftjoin('users', 'users.id','=','articles.author_id')
             ->select('articles.id','articles.title','articles.fieldsArticles','articles.status')
-            ->orderBy('articles.title')
+            ->orderBy('articles.id')
             //  ->toBase()
             ->paginate($perpage);
         return $articles;
     }
    public function delSpecialLetter($text){
        $text = trim($text, " \n\r\t\v\0" );
+       $text = str_replace("&ndash;", "", $text);
+       $text = str_replace("&nbsp;", "", $text);
+       $text = str_replace("&mdash;", "", $text);
        $text = str_replace("&ndash", "", $text);
-       $text = str_replace("<p>", "", $text);
+       $text = str_replace("&nbsp", "", $text);
+       $text = str_replace("&mdash", "", $text);
+
+       $text = str_replace("&laquo;", "", $text);
+       $text = str_replace("&laquo", "", $text);
+       $text = str_replace("&raquo;", "", $text);
+       $text = str_replace("&raquo", "", $text);
+       $text = str_replace("&#39;", "'", $text);
+
+       $text = str_replace("\t", "", $text);
+       $text = str_replace("\r", "", $text);
+       $text = str_replace("\n", "", $text);
+
+       $text = str_replace("\"\"\"", "", $text);
+    /*   $text = str_replace("<p>", "", $text);
        $text = str_replace("</p>", "", $text);
        $text = str_replace("<s>", "", $text);
-       $text = str_replace("</s>", "", $text);
+       $text = str_replace("<h/[1-7]>", "", $text);
        $text = str_replace("<h1>", "", $text);
        $text = str_replace("</h1>", "", $text);
        $text = str_replace("<h2>", "", $text);
@@ -63,6 +80,55 @@ class ArticleRepository extends CoreRepository
        $text = str_replace("</blockquote>", "", $text);
        $text = str_replace("</small>", "", $text);
        $text = str_replace("<small>", "", $text);
+
+
+
+       $text = str_replace("text-align:right", "", $text);
+       $text = str_replace("text-align:center", "", $text);
+       $text = str_replace("text-align:left", "", $text);
+       $text = str_replace("text-align:justify", "", $text);
+       $text = str_replace("span", "", $text);
+       $text = str_replace("</span>", "", $text);
+
+       $text = str_replace("color", "", $text);
+       $text = str_replace("<span>", "", $text);
+       $text = str_replace("</span>", "", $text);
+
+       $text = str_replace("border=", "", $text);
+       $text = str_replace("cellpadding=", "", $text);
+       $text = str_replace("align=", "", $text);
+       $text = str_replace("cellspacing=", "", $text);
+       $text = str_replace("class=", "", $text);
+
+
+       $text = str_replace("<td>", "", $text);
+       $text = str_replace("</td>", "", $text);
+       $text = str_replace("<tr>", "", $text);
+       $text = str_replace("</tr>", "", $text);
+       $text = str_replace("<tbody>", "", $text);
+       $text = str_replace("</tbody>", "", $text);
+    //   $text = str_replace("</h4>", "", $text);
+    //   $text = str_replace("<h4>", "", $text);
+
+       $text = str_replace("<table", "", $text);
+       $text = str_replace("</table>", "", $text);
+       $text = str_replace("style=", "", $text);
+
+              $text = str_replace("<br>", "", $text);
+       $text = str_replace("<br />", "", $text);
+
+
+       $text = str_replace("<\t>", "", $text);
+       $text = str_replace("<\r>", "", $text);
+       $text = str_replace("<\n>", "", $text);
+       $text = str_replace("table", "", $text);
+
+
+*/
+
+      $text = strip_tags($text);
+
+       //dd($text);
        return $text;
    }
 
