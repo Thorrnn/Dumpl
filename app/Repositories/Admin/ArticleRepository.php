@@ -189,7 +189,7 @@ class ArticleRepository extends CoreRepository
         $text = $this->delSpecialLetter($text);
         $index = 0.0588 * ($this->getCountLeter($text)/$this->getCountWord($text) * 100)
             - (0.296 * $this->getCountSentence($text)/$this->getCountWord($text) * 100) - 15.8;
-
+        $index = $index/2;
         return $index;
     }
 
@@ -197,7 +197,7 @@ class ArticleRepository extends CoreRepository
         $text = $this->delSpecialLetter($text);
         $index = (4.71 * ($this->getCountLeter($text) / $this->getCountWord($text)))
             + ((0.5 * $this->getCountWord($text)/$this->getCountSentence($text))- 21.43);
-
+        $index = $index/2;
         return $index;
     }
 

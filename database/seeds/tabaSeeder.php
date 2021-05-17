@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TestQuestionsTableSeeder extends Seeder
+class tabaSeeder extends Seeder
 
 {
     public function run()
@@ -780,3 +780,4 @@ class TestQuestionsTableSeeder extends Seeder
         DB::table('test_questions')->insert($data);
     }
 }
+
